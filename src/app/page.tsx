@@ -55,22 +55,14 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="relative h-[600px] w-full flex items-center justify-center bg-card">
-          <Image
-            src="https://placehold.co/1200x600.png"
-            alt="Hero background"
-            data-ai-hint="modern architecture"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-black/50" />
-          <div className="relative container px-4 md:px-6 text-center text-white">
-            <div className="flex flex-col justify-center space-y-4">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+        <section className="w-full py-20 md:py-32 lg:py-40 bg-card">
+          <div className="container px-4 md:px-6 text-center">
+            <div className="flex flex-col items-center space-y-6">
+              <div className="space-y-4">
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                   Building the Future, One Project at a Time.
                 </h1>
-                <p className="max-w-[600px] mx-auto text-gray-200 md:text-xl">
+                <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
                   Akash Enterprises is your trusted partner in construction and development, delivering excellence and reliability for over a decade.
                 </p>
               </div>
@@ -78,9 +70,19 @@ export default function Home() {
                 <Button asChild size="lg">
                   <Link href="/portfolio">Our Work</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="bg-transparent border-white text-white hover:bg-white hover:text-black">
+                <Button asChild variant="secondary" size="lg">
                    <Link href="/contact">Contact Us</Link>
                 </Button>
+              </div>
+              <div className="w-full max-w-5xl pt-8">
+                 <Image
+                    src="https://placehold.co/1200x600.png"
+                    alt="Hero image"
+                    data-ai-hint="modern architecture"
+                    width={1200}
+                    height={600}
+                    className="object-cover rounded-xl shadow-2xl"
+                  />
               </div>
             </div>
           </div>
