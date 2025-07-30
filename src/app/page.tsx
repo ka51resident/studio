@@ -5,6 +5,27 @@ import { Briefcase, Building2, Star, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+const heroSlides = [
+  {
+    title: "Building the Future, One Project at a Time.",
+    description: "Akash Enterprises is your trusted partner in construction and development, delivering excellence and reliability for over a decade.",
+    imageUrl: "https://placehold.co/1200x600.png",
+    imageHint: "modern architecture"
+  },
+  {
+    title: "Innovative Commercial Spaces.",
+    description: "We create cutting-edge commercial buildings that are both functional and aesthetically pleasing, designed to meet the demands of modern business.",
+    imageUrl: "https://placehold.co/1200x600.png",
+    imageHint: "corporate building"
+  },
+  {
+    title: "Luxury Residential Properties.",
+    description: "Our residential projects are the epitome of comfort and luxury, built with the finest materials and an unwavering attention to detail.",
+    imageUrl: "https://placehold.co/1200x600.png",
+    imageHint: "luxury home"
+  },
+];
+
 const stats = [
   {
     icon: <Building2 className="h-8 w-8 text-primary" />,
@@ -55,37 +76,54 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-card">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Building the Future, <span className="text-primary">One Project at a Time.</span>
-                  </h1>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Akash Enterprises is your trusted partner in construction and development, delivering excellence and reliability for over a decade.
-                  </p>
-                </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button asChild size="lg">
-                    <Link href="/portfolio">Our Work</Link>
-                  </Button>
-                  <Button asChild variant="outline" size="lg">
-                     <Link href="/contact">Contact Us</Link>
-                  </Button>
-                </div>
-              </div>
-              <Image
-                src="https://placehold.co/600x400.png"
-                width="600"
-                height="400"
-                alt="Hero"
-                data-ai-hint="modern architecture"
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
-              />
-            </div>
-          </div>
+        <section className="w-full bg-card">
+          <Carousel
+            className="w-full"
+            opts={{
+              loop: true,
+            }}
+          >
+            <CarouselContent>
+              {heroSlides.map((slide, index) => (
+                <CarouselItem key={index}>
+                  <div className="relative h-[600px] w-full">
+                    <Image
+                      src={slide.imageUrl}
+                      alt={slide.title}
+                      data-ai-hint={slide.imageHint}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/50" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="container px-4 md:px-6 text-center text-white">
+                        <div className="flex flex-col justify-center space-y-4">
+                          <div className="space-y-2">
+                            <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                              {slide.title}
+                            </h1>
+                            <p className="max-w-[600px] mx-auto text-gray-200 md:text-xl">
+                              {slide.description}
+                            </p>
+                          </div>
+                          <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center">
+                            <Button asChild size="lg">
+                              <Link href="/portfolio">Our Work</Link>
+                            </Button>
+                            <Button asChild variant="outline" size="lg" className="bg-transparent border-white text-white hover:bg-white hover:text-black">
+                               <Link href="/contact">Contact Us</Link>
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white bg-black/50 border-white hover:bg-white hover:text-black" />
+            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white bg-black/50 border-white hover:bg-white hover:text-black" />
+          </Carousel>
         </section>
 
         <section id="stats" className="py-12 md:py-24">
