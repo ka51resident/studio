@@ -31,16 +31,16 @@ const timelineEvents = [
 
 export default function AboutPage() {
   return (
-    <div className="container py-12 md:py-24">
+    <div className="container py-12 md:py-24 animate-in fade-in duration-500">
       <section className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">About Akash Enterprises</h1>
-        <p className="max-w-3xl mx-auto text-muted-foreground text-lg">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4 animate-in fade-in slide-in-from-top-4 duration-700">About Akash Enterprises</h1>
+        <p className="max-w-3xl mx-auto text-muted-foreground text-lg animate-in fade-in slide-in-from-top-6 duration-700">
           For over 15 years, we have been a cornerstone of the construction industry, committed to building with integrity, quality, and a passion for excellence.
         </p>
       </section>
 
       <section className="grid md:grid-cols-2 gap-12 items-center mb-24">
-        <div>
+        <div className="animate-in fade-in slide-in-from-left duration-700">
           <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
           <p className="text-muted-foreground mb-4">
             Our mission is to deliver superior construction services by consistently improving the quality of our product; to add value for clients through innovation, foresight, integrity, and aggressive performance; and to serve with character and purpose that brings honor to our name.
@@ -50,7 +50,7 @@ export default function AboutPage() {
             To be the preeminent provider of superior construction services by consistently improving the quality of our product; to add value for clients through innovation, foresight, and integrity.
           </p>
         </div>
-        <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
+        <div className="relative h-96 rounded-lg overflow-hidden shadow-lg animate-in fade-in zoom-in duration-700">
           <Image
             src="https://placehold.co/600x450.png"
             alt="Our team"
@@ -68,7 +68,7 @@ export default function AboutPage() {
           
           <div className="space-y-12">
             {timelineEvents.map((event, index) => (
-              <div key={index} className="relative flex items-center md:justify-normal md:odd:flex-row-reverse">
+              <div key={index} className="relative flex items-center md:justify-normal md:odd:flex-row-reverse animate-in fade-in slide-in-from-bottom-8 duration-700" style={{ animationDelay: `${index * 150}ms` }}>
                 <div className="hidden md:block w-1/2"></div>
                 <div className="hidden md:flex items-center justify-center w-12">
                   <div className="z-10 flex items-center justify-center w-12 h-12 bg-card rounded-full ring-4 ring-primary shadow-lg">

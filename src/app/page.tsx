@@ -58,7 +58,7 @@ export default function Home() {
         <section className="w-full py-20 md:py-32 lg:py-40 bg-card">
           <div className="container px-4 md:px-6 text-center">
             <div className="flex flex-col items-center space-y-6">
-              <div className="space-y-4">
+              <div className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-700">
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                   Building the Future, One Project at a Time.
                 </h1>
@@ -66,7 +66,7 @@ export default function Home() {
                   Akash Enterprises is your trusted partner in construction and development, delivering excellence and reliability for over a decade.
                 </p>
               </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center">
+              <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center animate-in fade-in slide-in-from-top-6 duration-700">
                 <Button asChild size="lg">
                   <Link href="/portfolio">Our Work</Link>
                 </Button>
@@ -74,7 +74,7 @@ export default function Home() {
                    <Link href="/contact">Contact Us</Link>
                 </Button>
               </div>
-              <div className="w-full max-w-5xl pt-8">
+              <div className="w-full max-w-5xl pt-8 animate-in fade-in zoom-in-95 duration-700">
                  <Image
                     src="https://placehold.co/1200x600.png"
                     alt="Hero image"
@@ -92,7 +92,7 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {stats.map((stat, index) => (
-                <Card key={index} className="flex flex-col items-center justify-center p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Card key={index} className="flex flex-col items-center justify-center p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: `${index * 150}ms`, animationFillMode: 'backwards' }}>
                   <CardContent className="flex flex-col items-center gap-4">
                     {stat.icon}
                     <p className="text-4xl font-bold">{stat.value}</p>
@@ -150,8 +150,8 @@ export default function Home() {
               Our Clientele & Partners
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center">
-              {clients.map((client) => (
-                <div key={client.name} className="flex justify-center">
+              {clients.map((client, index) => (
+                <div key={client.name} className="flex justify-center animate-in fade-in zoom-in-95" style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'backwards' }}>
                   <Image
                     src={client.logo}
                     alt={client.name}

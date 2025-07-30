@@ -56,15 +56,15 @@ export default function PortfolioPage() {
       : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <div className="container py-12 md:py-24">
+    <div className="container py-12 md:py-24 animate-in fade-in duration-500">
       <section className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">Our Portfolio</h1>
-        <p className="max-w-2xl mx-auto text-muted-foreground text-lg">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4 animate-in fade-in slide-in-from-top-4 duration-700">Our Portfolio</h1>
+        <p className="max-w-2xl mx-auto text-muted-foreground text-lg animate-in fade-in slide-in-from-top-6 duration-700">
           Explore a selection of our finest projects that showcase our commitment to quality and excellence.
         </p>
       </section>
 
-      <div className="flex justify-center flex-wrap gap-2 mb-12">
+      <div className="flex justify-center flex-wrap gap-2 mb-12 animate-in fade-in slide-in-from-top-8 duration-700">
         {categories.map((category) => (
           <Button
             key={category}
@@ -78,7 +78,7 @@ export default function PortfolioPage() {
 
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProjects.map((project, index) => (
-          <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
+          <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group animate-in fade-in zoom-in-95" style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'backwards' }}>
             <CardHeader className="p-0">
               <div className="relative h-60 w-full">
                 <Image
