@@ -1,9 +1,14 @@
+
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Briefcase, Building2, Star, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import Autoplay from "embla-carousel-autoplay";
+import React from "react";
 
 const stats = [
   {
@@ -50,12 +55,21 @@ const clients = [
   { name: "Apex Group", logo: "https://placehold.co/150x60.png", hint: "business logo" },
 ];
 
+const heroImages = [
+    { src: "https://placehold.co/1200x600.png", alt: "Modern architecture", hint: "modern architecture" },
+    { src: "https://placehold.co/1200x600.png", alt: "Construction site", hint: "construction site" },
+    { src: "https://placehold.co/1200x600.png", alt: "Finished project", hint: "luxury home" },
+]
+
 
 export default function Home() {
+    const plugin = React.useRef(
+      Autoplay({ delay: 3000, stopOnInteraction: true })
+    )
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="w-full py-20 md:py-32 lg:py-40 bg-card">
+        <section className="w-full py-12 md:py-20 lg:py-28 bg-card">
           <div className="container px-4 md:px-6 text-center">
             <div className="flex flex-col items-center space-y-6">
               <div className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-700">
@@ -75,14 +89,31 @@ export default function Home() {
                 </Button>
               </div>
               <div className="w-full max-w-5xl pt-8 animate-in fade-in zoom-in-95 duration-700">
-                 <Image
-                    src="https://placehold.co/1200x600.png"
-                    alt="Hero image"
-                    data-ai-hint="modern architecture"
-                    width={1200}
-                    height={600}
-                    className="object-cover rounded-xl shadow-2xl"
-                  />
+                 <Carousel 
+                    plugins={[plugin.current]}
+                    className="w-full"
+                    onMouseEnter={plugin.current.stop}
+                    onMouseLeave={plugin.current.reset}
+                 >
+                    <CarouselContent>
+                      {heroImages.map((image, index) => (
+                        <CarouselItem key={index}>
+                          <div className="p-1">
+                             <Image
+                                src={image.src}
+                                alt={image.alt}
+                                data-ai-hint={image.hint}
+                                width={1200}
+                                height={600}
+                                className="object-cover rounded-xl shadow-2xl"
+                              />
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
               </div>
             </div>
           </div>
