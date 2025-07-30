@@ -4,27 +4,37 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Briefcase, Building2, Star, Users } from "lucide-react";
+import { Briefcase, Building2, ShieldCheck, Star, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
 import React from "react";
+import AnimatedCounter from "@/components/animated-counter";
 
 const stats = [
   {
     icon: <Building2 className="h-8 w-8 text-primary" />,
-    value: "15+",
+    value: 15,
     label: "Years of Service",
+    postfix: "+",
   },
   {
     icon: <Briefcase className="h-8 w-8 text-primary" />,
-    value: "300+",
+    value: 300,
     label: "Projects Completed",
+    postfix: "+",
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
-    value: "250+",
+    value: 250,
     label: "Satisfied Clients",
+    postfix: "+",
+  },
+  {
+    icon: <ShieldCheck className="h-8 w-8 text-primary" />,
+    value: 1.5,
+    label: "Million Safe Man-Hours",
+    postfix: "M+",
   },
 ];
 
@@ -121,12 +131,24 @@ export default function Home() {
 
         <section id="stats" className="py-12 md:py-24">
           <div className="container px-4 md:px-6">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
+              Our Achievements
+            </h2>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {stats.map((stat, index) => (
                 <Card key={index} className="flex flex-col items-center justify-center p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: `${index * 150}ms`, animationFillMode: 'backwards' }}>
                   <CardContent className="flex flex-col items-center gap-4">
                     {stat.icon}
-                    <p className="text-4xl font-bold">{stat.value}</p>
+                    <div className="text-4xl font-bold">
+                        {stat.postfix === "M+" ? (
+                            <>
+                                <AnimatedCounter target={15} duration={1500} />
+                                <span>.5M+</span>
+                            </>
+                        ) : (
+                           <AnimatedCounter target={stat.value} postfix={stat.postfix} />
+                        )}
+                    </div>
                     <p className="text-muted-foreground">{stat.label}</p>
                   </CardContent>
                 </Card>

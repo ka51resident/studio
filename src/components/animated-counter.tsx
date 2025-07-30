@@ -1,0 +1,53 @@
+
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+
+type AnimatedCounterProps = {
+  target: number;
+  duration?: number;
+  className?: string;
+  postfix?: string;
+};
+
+const easeOutQuad = (t: number) => t * (2 - t);
+
+export default function AnimatedCounter({
+  target,
+  duration = 2000,
+  className,
+  postfix = "",
+}: AnimatedCounterProps) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const entry = useIntersectionObserver(ref, { freezeOnceVisible: true });
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (entry?.isIntersecting) {
+      let startTime: number | null = null;
+      const animationFrame = (currentTime: number) => {
+        if (startTime === null) startTime = currentTime;
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
+        const easedProgress = easeOutQuad(progress);
+        const currentCount = Math.floor(easedProgress * target);
+        setCount(currentCount);
+
+        if (elapsedTime < duration) {
+          requestAnimationFrame(animationFrame);
+        } else {
+          setCount(target);
+        }
+      };
+      requestAnimationFrame(animationFrame);
+    }
+  }, [entry?.isIntersecting, target, duration]);
+
+  return (
+    <span className={className}>
+      {count}
+      {postfix}
+    </span>
+  );
+}
