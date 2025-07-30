@@ -1,6 +1,7 @@
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Briefcase, Flag, Trophy, Zap } from "lucide-react";
 import Image from "next/image";
+import TimelineItem from "./_components/timeline-item";
 
 const timelineEvents = [
   {
@@ -68,26 +69,7 @@ export default function AboutPage() {
           
           <div className="space-y-12">
             {timelineEvents.map((event, index) => (
-              <div key={index} className="relative flex items-center md:justify-normal md:odd:flex-row-reverse animate-in fade-in slide-in-from-bottom-8 duration-700" style={{ animationDelay: `${index * 150}ms` }}>
-                <div className="hidden md:block w-1/2"></div>
-                <div className="hidden md:flex items-center justify-center w-12">
-                  <div className="z-10 flex items-center justify-center w-12 h-12 bg-card rounded-full ring-4 ring-primary shadow-lg">
-                    {event.icon}
-                  </div>
-                </div>
-                <Card className="w-full md:w-1/2 p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <div className="flex items-center gap-4 mb-2">
-                    <div className="flex md:hidden items-center justify-center w-10 h-10 bg-card rounded-full ring-2 ring-primary shadow-lg shrink-0">
-                      {event.icon}
-                    </div>
-                    <time className="text-lg font-bold text-primary">{event.year}</time>
-                  </div>
-                  <CardHeader className="p-0">
-                    <CardTitle>{event.title}</CardTitle>
-                  </CardHeader>
-                  <CardDescription className="pt-2">{event.description}</CardDescription>
-                </Card>
-              </div>
+              <TimelineItem key={index} event={event} index={index} />
             ))}
           </div>
         </div>
