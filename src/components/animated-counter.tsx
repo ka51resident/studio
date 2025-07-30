@@ -23,6 +23,8 @@ export default function AnimatedCounter({
   const entry = useIntersectionObserver(ref, { freezeOnceVisible: true });
   const [count, setCount] = useState(0);
 
+  const isDecimal = target % 1 !== 0;
+
   useEffect(() => {
     if (entry?.isIntersecting) {
       let startTime: number | null = null;
@@ -31,7 +33,14 @@ export default function AnimatedCounter({
         const elapsedTime = currentTime - startTime;
         const progress = Math.min(elapsedTime / duration, 1);
         const easedProgress = easeOutQuad(progress);
-        const currentCount = Math.floor(easedProgress * target);
+        
+        let currentCount;
+        if (isDecimal) {
+            currentCount = easedProgress * target;
+        } else {
+            currentCount = Math.floor(easedProgress * target);
+        }
+
         setCount(currentCount);
 
         if (elapsedTime < duration) {
@@ -42,11 +51,13 @@ export default function AnimatedCounter({
       };
       requestAnimationFrame(animationFrame);
     }
-  }, [entry?.isIntersecting, target, duration]);
+  }, [entry?.isIntersecting, target, duration, isDecimal]);
+
+  const displayValue = isDecimal ? count.toFixed(1) : count;
 
   return (
     <span className={className}>
-      {count}
+      {displayValue}
       {postfix}
     </span>
   );

@@ -140,14 +140,7 @@ export default function Home() {
                   <CardContent className="flex flex-col items-center gap-4">
                     {stat.icon}
                     <div className="text-4xl font-bold">
-                        {stat.postfix === "M+" ? (
-                            <>
-                                <AnimatedCounter target={15} duration={1500} />
-                                <span>.5M+</span>
-                            </>
-                        ) : (
-                           <AnimatedCounter target={stat.value} postfix={stat.postfix} />
-                        )}
+                       <AnimatedCounter target={stat.value} postfix={stat.postfix} />
                     </div>
                     <p className="text-muted-foreground">{stat.label}</p>
                   </CardContent>
