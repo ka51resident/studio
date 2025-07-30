@@ -98,6 +98,7 @@ export default function Home() {
                    <Link href="/contact">Contact Us</Link>
                 </Button>
               </div>
+              
               <div className="w-full max-w-5xl pt-8 animate-in fade-in zoom-in-95 duration-700">
                  <Carousel 
                     plugins={[plugin.current]}
