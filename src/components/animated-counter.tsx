@@ -15,7 +15,7 @@ const easeOutQuad = (t: number) => t * (2 - t);
 
 export default function AnimatedCounter({
   target,
-  duration = 2000,
+  duration = 4000,
   className,
   postfix = "",
 }: AnimatedCounterProps) {
