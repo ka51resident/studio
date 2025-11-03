@@ -6,7 +6,7 @@ import { Menu } from 'lucide-react';
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetDescription } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import Logo from './logo';
 
@@ -77,7 +77,7 @@ export default function Header() {
           </nav>
         </div>
 
-        <div className="flex items-center justify-end">
+        <div className="hidden items-center justify-end md:flex">
           <Button asChild>
             <Link href="/contact">Get a Quote</Link>
           </Button>
