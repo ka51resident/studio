@@ -57,6 +57,21 @@ const testimonials = [
     name: "Anjali Mehta",
     title: "Founder, Creative Minds",
   },
+  {
+    quote: "Akash Enterprises transformed our vision into reality. Their commitment to quality and deadlines is unparalleled. We couldn't be happier with the outcome.",
+    name: "Priya Sharma",
+    title: "CEO, Innovate Solutions",
+  },
+  {
+    quote: "The team's professionalism and expertise were evident from day one. They delivered an exceptional product that exceeded all our expectations.",
+    name: "Rohan Gupta",
+    title: "Director, TechCorp",
+  },
+  {
+    quote: "Working with Akash Enterprises was a seamless experience. Their communication was clear and consistent, making the entire process a breeze.",
+    name: "Anjali Mehta",
+    title: "Founder, Creative Minds",
+  },
 ];
 
 const clients = [
@@ -94,9 +109,13 @@ function StatCard({ stat, index }: { stat: typeof stats[0], index: number }) {
 
 
 export default function Home() {
-    const plugin = React.useRef(
+    const heroPlugin = React.useRef(
       Autoplay({ delay: 5000, stopOnInteraction: true })
     )
+    const testimonialsPlugin = React.useRef(
+      Autoplay({ delay: 3000, stopOnInteraction: true })
+    )
+
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
@@ -122,10 +141,10 @@ export default function Home() {
               
               <div className="w-full max-w-5xl pt-8 animate-in fade-in zoom-in-95 duration-700">
                  <Carousel 
-                    plugins={[plugin.current]}
+                    plugins={[heroPlugin.current]}
                     className="w-full"
-                    onMouseEnter={plugin.current.stop}
-                    onMouseLeave={plugin.current.reset}
+                    onMouseEnter={heroPlugin.current.stop}
+                    onMouseLeave={heroPlugin.current.reset}
                  >
                     <CarouselContent>
                       {heroImages.map((image, index) => (
@@ -170,6 +189,9 @@ export default function Home() {
                 align: "start",
                 loop: true,
               }}
+              plugins={[testimonialsPlugin.current]}
+              onMouseEnter={testimonialsPlugin.current.stop}
+              onMouseLeave={testimonialsPlugin.current.reset}
               className="w-full max-w-4xl mx-auto"
             >
               <CarouselContent>
