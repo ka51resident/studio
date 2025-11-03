@@ -6,7 +6,6 @@ import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
-import { X } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 
 export type Project = {
@@ -41,15 +40,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl p-0" onPointerDownOutside={(e) => e.preventDefault()}>
-        <button onClick={onClose} className="absolute top-4 right-4 z-10 p-2 rounded-full bg-background/50 hover:bg-background">
-          <X className="h-5 w-5" />
-          <span className="sr-only">Close</span>
-        </button>
+      <DialogContent className="max-w-4xl p-0">
         <div className="grid md:grid-cols-2">
           <div className="p-8 flex flex-col justify-center">
             <DialogHeader>
-              <Badge variant="secondary" className="w-fit mb-2">{project.category}</Badge>
+              <Badge variant="secondary" className="w-fit mb-2 bg-primary/20 text-primary font-bold">
+                {project.category}
+              </Badge>
               <DialogTitle className="text-3xl font-bold mb-2">{project.title}</DialogTitle>
               <DialogDescription className="text-base text-muted-foreground">
                 {project.description}
