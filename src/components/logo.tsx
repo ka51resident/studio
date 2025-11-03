@@ -8,13 +8,10 @@ export default function Logo() {
       <Image
         src={logo}
         alt="Akash Enterprises Logo"
-        width={32}
-        height={32}
+        width={200}
+        height={64}
         className="text-primary"
       />
-      <span className="font-bold text-xl tracking-tight">
-        Akash Enterprises
-      </span>
     </Link>
   );
 }

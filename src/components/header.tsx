@@ -6,7 +6,7 @@ import { Menu } from 'lucide-react';
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetDescription } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import Logo from './logo';
 
@@ -25,7 +25,7 @@ export default function Header() {
     <Link
       href={href}
       className={cn(
-        'text-sm font-medium transition-colors hover:text-primary',
+        'text-base font-semibold transition-colors hover:text-primary',
         pathname === href ? 'text-primary' : 'text-muted-foreground'
       )}
       onClick={() => setIsMobileMenuOpen(false)}
@@ -36,7 +36,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
+      <div className="container flex h-18 items-center">
         <div className="mr-4 hidden md:flex">
           <Logo />
         </div>
@@ -45,13 +45,14 @@ export default function Header() {
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon">
-                <Menu className="h-6 w-6" />
+                <Menu className="h-8 w-6" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
                 <SheetHeader>
                     <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                    <SheetDescription className="sr-only">Main navigation links for the site.</SheetDescription>
                 </SheetHeader>
               <div className="py-6">
                 <Logo />
