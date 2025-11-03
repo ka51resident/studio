@@ -74,7 +74,7 @@ const heroImages = [
 
 export default function Home() {
     const plugin = React.useRef(
-      Autoplay({ delay: 3000, stopOnInteraction: true })
+      Autoplay({ delay: 5000, stopOnInteraction: true })
     )
   return (
     <div className="flex flex-col min-h-screen">
@@ -109,16 +109,14 @@ export default function Home() {
                     <CarouselContent>
                       {heroImages.map((image, index) => (
                         <CarouselItem key={index}>
-                          <div className="p-1">
-                             <Image
-                                src={image.src}
-                                alt={image.alt}
-                                data-ai-hint={image.hint}
-                                width={1200}
-                                height={600}
-                                className="object-cover rounded-xl shadow-2xl"
-                              />
-                          </div>
+                           <Image
+                              src={image.src}
+                              alt={image.alt}
+                              data-ai-hint={image.hint}
+                              width={1200}
+                              height={600}
+                              className="object-cover rounded-xl shadow-2xl"
+                            />
                         </CarouselItem>
                       ))}
                     </CarouselContent>
