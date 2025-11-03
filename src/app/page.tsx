@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Briefcase, Building2, ShieldCheck, Star, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -108,7 +108,7 @@ export default function Home() {
                  >
                     <CarouselContent>
                       {heroImages.map((image, index) => (
-                        <CarouselItem key={index}>
+                        <CarouselItem key={index} className="pl-0">
                            <Image
                               src={image.src}
                               alt={image.alt}
@@ -120,8 +120,6 @@ export default function Home() {
                         </CarouselItem>
                       ))}
                     </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
                   </Carousel>
               </div>
             </div>
@@ -183,8 +181,6 @@ export default function Home() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
             </Carousel>
           </div>
         </section>
