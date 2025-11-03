@@ -1,14 +1,14 @@
 
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { useEffect, useState } from "react";
 
 type AnimatedCounterProps = {
   target: number;
   duration?: number;
   className?: string;
   postfix?: string;
+  isInView: boolean;
 };
 
 const easeOutQuad = (t: number) => t * (2 - t);
@@ -18,15 +18,14 @@ export default function AnimatedCounter({
   duration = 2000,
   className,
   postfix = "",
+  isInView,
 }: AnimatedCounterProps) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const entry = useIntersectionObserver(ref, { freezeOnceVisible: true });
   const [count, setCount] = useState(0);
 
   const isDecimal = target % 1 !== 0;
 
   useEffect(() => {
-    if (entry?.isIntersecting) {
+    if (isInView) {
       let startTime: number | null = null;
       const animationFrame = (currentTime: number) => {
         if (startTime === null) startTime = currentTime;
@@ -51,7 +50,7 @@ export default function AnimatedCounter({
       };
       requestAnimationFrame(animationFrame);
     }
-  }, [entry?.isIntersecting, target, duration, isDecimal]);
+  }, [isInView, target, duration, isDecimal]);
 
   const displayValue = isDecimal ? count.toFixed(1) : count;
 

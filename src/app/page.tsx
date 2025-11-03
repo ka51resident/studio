@@ -8,9 +8,10 @@ import { Briefcase, Building2, ShieldCheck, Star, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
-import React from "react";
+import React, { useRef } from "react";
 import AnimatedCounter from "@/components/animated-counter";
 import logo from '../components/logo.png';
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 
 const stats = [
@@ -72,6 +73,24 @@ const heroImages = [
     { src: "https://placehold.co/1200x600.png", alt: "Construction site", hint: "construction site" },
     { src: "https://placehold.co/1200x600.png", alt: "Finished project", hint: "luxury home" },
 ]
+
+function StatCard({ stat, index }: { stat: typeof stats[0], index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const entry = useIntersectionObserver(ref, { freezeOnceVisible: true, threshold: 0.1 });
+  const isInView = !!entry?.isIntersecting;
+
+  return (
+    <Card ref={ref} className="flex flex-col items-center justify-center p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: `${index * 150}ms`, animationFillMode: 'backwards' }}>
+      <CardContent className="flex flex-col items-center gap-4">
+        {stat.icon}
+        <div className="text-4xl font-bold">
+            <AnimatedCounter target={stat.value} postfix={stat.postfix} isInView={isInView} />
+        </div>
+        <p className="text-muted-foreground">{stat.label}</p>
+      </CardContent>
+    </Card>
+  )
+}
 
 
 export default function Home() {
@@ -135,15 +154,7 @@ export default function Home() {
             </h2>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {stats.map((stat, index) => (
-                <Card key={index} className="flex flex-col items-center justify-center p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: `${index * 150}ms`, animationFillMode: 'backwards' }}>
-                  <CardContent className="flex flex-col items-center gap-4">
-                    {stat.icon}
-                    <div className="text-4xl font-bold">
-                       <AnimatedCounter target={stat.value} postfix={stat.postfix} />
-                    </div>
-                    <p className="text-muted-foreground">{stat.label}</p>
-                  </CardContent>
-                </Card>
+                <StatCard key={index} stat={stat} index={index} />
               ))}
             </div>
           </div>
