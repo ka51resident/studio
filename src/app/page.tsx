@@ -260,10 +260,10 @@ export default function Home() {
                             </TabsTrigger>
                         ))}
                     </TabsList>
-                    <TabsContent value={selectedCategory}>
+                    <TabsContent value={selectedCategory} key={selectedCategory}>
                          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
                             {filteredClients.map((client, index) => (
-                                <div key={index} className="flex items-center justify-center p-4 bg-background rounded-lg shadow-sm border border-border/50 aspect-video animate-in fade-in-0 duration-500" style={{ animationDelay: `${index * 50}ms`}}>
+                                <div key={client.name} className="flex items-center justify-center p-4 bg-background rounded-lg shadow-sm border border-border/50 aspect-video animate-in fade-in-0 duration-500" style={{ animationDelay: `${index * 50}ms`}}>
                                     {client.logo ? (
                                     <Image
                                         src={client.logo}
@@ -287,4 +287,5 @@ export default function Home() {
       </main>
     </div>
   );
-}
+
+    
