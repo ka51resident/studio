@@ -2,187 +2,136 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import ProjectModal from "./_components/project-modal";
-import type { Project } from "./_components/project-modal";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent } from "@/components/ui/card";
+import { CheckCircle2 } from "lucide-react";
 
-const projects: Project[] = [
+const services = [
   {
-    title: "Modern Corporate HQ",
-    category: "Commercial",
-    imageUrl: "https://picsum.photos/seed/project1/600/400",
-    hint: "modern office building",
-    description: "A landmark corporate headquarters designed for innovation and collaboration. This state-of-the-art facility features an open-concept layout, sustainable building materials, and advanced smart-building technology to create a productive and inspiring work environment.",
-    details: [
-      { label: "Location", value: "Metropolis" },
-      { label: "Size", value: "250,000 sq ft" },
-      { label: "Duration", value: "24 Months" },
-      { label: "Features", value: "LEED Platinum, Rooftop Garden, Smart HVAC" },
-    ],
-    images: [
-      { src: "https://picsum.photos/seed/p1-1/800/600", alt: "Office Lobby", hint: "modern office lobby" },
-      { src: "https://picsum.photos/seed/p1-2/800/600", alt: "Exterior View", hint: "office building exterior" },
-      { src: "https://picsum.photos/seed/p1-3/800/600", alt: "Collaborative Workspace", hint: "open office workspace" },
+    id: "eht-ht-lt",
+    title: "EHT, HT & LT",
+    icon: "plug-zap",
+    image: "https://picsum.photos/seed/eht/800/600",
+    imageHint: "electrical substation",
+    description: "We provide the solution to your Substation Construction needs by involving in all the phases from the scratch resulting in the requirement of Customer’s each structural, electrical and mechanical specifications.",
+    content: "We power up 11kV/66kV/110kV/220kV Substations involving Site & Equipment Solution, Power Sanctioning & Statutory Approvals, Construction Drawing, and Cost Estimation, Design / Build capabilities, AutoCAD drawing and line mapping, Transformer Installation & Civil Works, Control Systems, Switchgear selection and Installation of LT Switchgear panel, Structural steel and fence selection, Engineering, Testing & Commissioning, Substation Maintenance Works. Our commitment to quality of the work and teamwork has earned us the trust of many long-standing customers. The rich field experience and design exposure reinforced the confidence to undertake varieties of contract works & a wide range of maintenance works for all types of projects.",
+    substations: [
+      "66/110/220 KV SUBSTATION",
+      "66/110/220 KV UG CABLING & OVERHEAD LINES",
+      "HT SUBSTATIONS & PANELS",
+      "TRANSFORMERS & INSTALLATION",
+      "LV PANELS & INSTALLATION",
     ],
   },
   {
-    title: "Luxury Residential Tower",
-    category: "Residential",
-    imageUrl: "https://picsum.photos/seed/project2/600/400",
-    hint: "apartment building",
-    description: "An iconic residential tower offering breathtaking city views and unparalleled luxury. Each unit is meticulously crafted with high-end finishes, and residents enjoy access to a full suite of amenities including a pool, fitness center, and private cinema.",
-    details: [
-        { label: "Location", value: "Coast City" },
-        { label: "Units", value: "150" },
-        { label: "Height", value: "40 Stories" },
-        { label: "Amenities", value: "Rooftop Pool, Gym, Concierge" },
-    ],
-    images: [
-      { src: "https://picsum.photos/seed/p2-1/800/600", alt: "Apartment Interior", hint: "luxury apartment interior" },
-      { src: "https://picsum.photos/seed/p2-2/800/600", alt: "Rooftop Pool", hint: "rooftop pool city" },
-      { src: "https://picsum.photos/seed/p2-3/800/600", alt: "Building Lobby", hint: "luxury hotel lobby" },
-    ],
+    id: "industrial",
+    title: "Industrial Electrification",
+    icon: "factory",
+    image: "https://picsum.photos/seed/industrial/800/600",
+    imageHint: "industrial factory interior",
+    description: "Comprehensive electrical solutions for industrial facilities, ensuring safety, efficiency, and reliability for all your manufacturing and operational needs.",
+    content: "We specialize in providing robust electrical systems for new industrial constructions and upgrades. Our services cover everything from power distribution and motor control centers to automated systems and hazardous location wiring, ensuring your facility meets all industry standards and operates at peak performance.",
+    substations: [],
   },
   {
-    title: "State-of-the-Art Factory",
-    category: "Industrial",
-    imageUrl: "https://picsum.photos/seed/project3/600/400",
-    hint: "industrial factory",
-    description: "A cutting-edge industrial facility designed for maximum efficiency and safety. This project involved complex engineering and the integration of automated systems to support large-scale manufacturing operations.",
-    details: [
-        { label: "Location", value: "Industrial Park 12" },
-        { label: "Size", value: "500,000 sq ft" },
-        { label: "Technology", value: "Automated Assembly Lines, Robotics" },
-        { label: "Completed", value: "2022" },
-    ],
-    images: [
-      { src: "https://picsum.photos/seed/p3-1/800/600", alt: "Factory Floor", hint: "factory assembly line" },
-      { src: "https://picsum.photos/seed/p3-2/800/600", alt: "Warehouse section", hint: "large industrial warehouse" },
-      { src: "https://picsum.photos/seed/p3-3/800/600", alt: "Exterior of factory", hint: "modern factory exterior" },
-    ],
+    id: "commercial-residential",
+    title: "Commercial & Residential",
+    icon: "building",
+    image: "https://picsum.photos/seed/commercial/800/600",
+    imageHint: "modern apartment building",
+    description: "Tailored electrical services for commercial buildings and residential properties, focusing on safety, aesthetics, and modern conveniences.",
+    content: "From office buildings and retail spaces to multi-family homes and custom residences, we provide complete electrical wiring, lighting design, smart home integration, and energy-efficient solutions. Our goal is to create safe, comfortable, and functional environments for work and living.",
+    substations: [],
   },
   {
-    title: "Community Shopping Mall",
-    category: "Commercial",
-    imageUrl: "https://picsum.photos/seed/project4/600/400",
-    hint: "shopping mall exterior",
-    description: "A vibrant shopping and lifestyle destination for the community. The mall features a diverse mix of retail stores, dining options, and entertainment venues, all housed within an inviting, modern architectural design.",
-    details: [
-        { label: "Location", value: "Oakwood Suburbs" },
-        { label: "Retail Space", value: "300,000 sq ft" },
-        { label: "Anchor Tenants", value: "3" },
-        { label: "Parking", value: "2,000+ spaces" },
-    ],
-    images: [
-      { src: "https://picsum.photos/seed/p4-1/800/600", alt: "Mall interior", hint: "shopping mall interior" },
-      { src: "https://picsum.photos/seed/p4-2/800/600", alt: "Food court", hint: "mall food court" },
-      { src: "https://picsum.photos/seed/p4-3/800/600", alt: "Exterior at night", hint: "mall exterior night" },
-    ],
+    id: "healthcare-hospitality",
+    title: "Healthcare & Hospitality",
+    icon: "hospital",
+    image: "https://picsum.photos/seed/hospitality/800/600",
+    imageHint: "hotel lobby",
+    description: "Specialized electrical systems for healthcare and hospitality sectors, meeting stringent regulatory requirements and ensuring guest and patient safety.",
+    content: "We understand the critical nature of electrical systems in hospitals, clinics, and hotels. We provide reliable power, life-safety systems, nurse call stations, and sophisticated lighting and energy management systems designed for 24/7 operation and the comfort of your guests and patients.",
+    substations: [],
   },
   {
-    title: "Eco-Friendly Villa",
-    category: "Residential",
-    imageUrl: "https://picsum.photos/seed/project5/600/400",
-    hint: "modern house",
-    description: "A stunning example of sustainable luxury living. This custom-built villa integrates seamlessly with its natural surroundings and incorporates green technologies such as solar power, rainwater harvesting, and passive cooling.",
-    details: [
-        { label: "Location", value: "Green Valley" },
-        { label: "Bedrooms", value: "5" },
-        { label: "Lot Size", value: "2 Acres" },
-        { label: "Green Features", value: "Solar Panels, Rainwater Harvesting" },
-    ],
-    images: [
-      { src: "https://picsum.photos/seed/p5-1/800/600", alt: "Villa living room", hint: "luxury living room" },
-      { src: "https://picsum.photos/seed/p5-2/800/600", alt: "Villa exterior and pool", hint: "modern house pool" },
-      { src: "https://picsum.photos/seed/p5-3/800/600", alt: "Master bedroom", hint: "luxury bedroom view" },
-    ],
+    id: "elv",
+    title: "ELV Systems",
+    icon: "shield",
+    image: "https://picsum.photos/seed/elv/800/600",
+    imageHint: "security camera network",
+    description: "Design and installation of Extra-Low Voltage (ELV) systems for modern communication, security, and building automation.",
+    content: "Our ELV services include structured cabling, access control, CCTV, public address systems, and fire alarm systems. We integrate these critical systems to enhance the safety, security, and connectivity of your facility, all while ensuring seamless operation.",
+    substations: [],
   },
   {
-    title: "Logistics Warehouse",
-    category: "Industrial",
-    imageUrl: "https://picsum.photos/seed/project6/600/400",
-    hint: "large warehouse",
-    description: "A massive logistics and distribution center built to streamline supply chain operations. The facility includes high-bay storage, advanced docking systems, and a fully integrated warehouse management system.",
-    details: [
-        { label: "Location", value: "Port District" },
-        { label: "Size", value: "1,000,000 sq ft" },
-        { label: "Loading Docks", value: "120" },
-        { label: "Completion", value: "18 Months" },
-    ],
-    images: [
-      { src: "https://picsum.photos/seed/p6-1/800/600", alt: "Warehouse interior", hint: "warehouse shelving" },
-      { src: "https://picsum.photos/seed/p6-2/800/600", alt: "Loading docks", hint: "truck loading dock" },
-      { src: "https://picsum.photos/seed/p6-3/800/600", alt: "Aerial view", hint: "warehouse aerial view" },
-    ],
+    id: "value-added",
+    title: "Value Added Services",
+    icon: "gem",
+    image: "https://picsum.photos/seed/value/800/600",
+    imageHint: "electrical engineering schematic",
+    description: "Beyond standard installations, we offer services that enhance the longevity, efficiency, and reliability of your electrical infrastructure.",
+    content: "Our value-added services include energy audits, power quality analysis, preventative maintenance programs, thermal imaging, and retrofitting of existing systems. We help you optimize energy consumption, prevent downtime, and extend the life of your electrical assets.",
+    substations: [],
   },
 ];
 
-const categories = ["All", "Commercial", "Residential", "Industrial"];
-
-export default function PortfolioPage() {
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
-  const filteredProjects =
-    activeCategory === "All"
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
-
+export default function ServicesPage() {
   return (
     <div className="container py-12 md:py-24 animate-in fade-in duration-500">
       <section className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4 animate-in fade-in slide-in-from-top-4 duration-700">Our Portfolio</h1>
-        <p className="max-w-2xl mx-auto text-muted-foreground text-lg animate-in fade-in slide-in-from-top-6 duration-700">
-          Explore a selection of our finest projects that showcase our commitment to quality and excellence.
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4 animate-in fade-in slide-in-from-top-4 duration-700">Our Services</h1>
+        <p className="max-w-3xl mx-auto text-muted-foreground text-lg animate-in fade-in slide-in-from-top-6 duration-700">
+          We offer a comprehensive range of electrical engineering services, tailored to meet the unique needs of each sector we serve.
         </p>
       </section>
 
-      <div className="flex justify-center flex-wrap gap-2 mb-12 animate-in fade-in slide-in-from-top-8 duration-700">
-        {categories.map((category) => (
-          <Button
-            key={category}
-            variant={activeCategory === category ? "default" : "outline"}
-            onClick={() => setActiveCategory(category)}
-          >
-            {category}
-          </Button>
-        ))}
-      </div>
+      <Tabs defaultValue={services[0].id} className="w-full">
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 h-auto">
+          {services.map((service) => (
+            <TabsTrigger key={service.id} value={service.id} className="text-sm font-semibold py-3 px-2">
+              {service.title}
+            </TabsTrigger>
+          ))}
+        </TabsList>
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredProjects.map((project, index) => (
-          <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group animate-in fade-in zoom-in-95 flex flex-col" style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'backwards' }}>
-            <CardHeader className="p-0">
-              <div className="relative h-60 w-full">
-                <Image
-                  src={project.imageUrl}
-                  alt={project.title}
-                  data-ai-hint={project.hint}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            </CardHeader>
-            <CardContent className="p-6 flex-grow">
-              <CardTitle>{project.title}</CardTitle>
-            </CardContent>
-            <CardFooter className="p-6 pt-0 flex justify-between items-center">
-              <Badge variant={project.category === "Commercial" ? "default" : project.category === "Residential" ? "secondary" : "outline"}>
-                {project.category}
-              </Badge>
-              <Button variant="link" className="p-0 h-auto" onClick={() => setSelectedProject(project)}>Read More</Button>
-            </CardFooter>
-          </Card>
+        {services.map((service) => (
+          <TabsContent key={service.id} value={service.id} className="mt-8">
+            <Card className="overflow-hidden shadow-lg">
+                <div className="grid md:grid-cols-2">
+                    <div className="p-8 md:p-10 flex flex-col justify-center">
+                        <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
+                        <p className="text-muted-foreground text-base mb-6">{service.description}</p>
+                        <p className="text-muted-foreground text-base">{service.content}</p>
+
+                        {service.substations && service.substations.length > 0 && (
+                            <div className="mt-8">
+                                <h3 className="font-bold text-xl mb-4">Specialized Installations</h3>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                                {service.substations.map((item, index) => (
+                                    <div key={index} className="flex items-center gap-3 bg-muted/50 p-3 rounded-lg">
+                                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0"/>
+                                        <span className="font-medium text-sm">{item}</span>
+                                    </div>
+                                ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                    <div className="relative min-h-[300px] md:min-h-0">
+                         <Image
+                            src={service.image}
+                            alt={service.title}
+                            data-ai-hint={service.imageHint}
+                            fill
+                            className="object-cover"
+                         />
+                    </div>
+                </div>
+            </Card>
+          </TabsContent>
         ))}
-      </section>
-      
-      <ProjectModal 
-        project={selectedProject} 
-        onClose={() => setSelectedProject(null)} 
-      />
+      </Tabs>
     </div>
   );
 }
