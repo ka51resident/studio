@@ -95,10 +95,21 @@ export default {
             height: '0',
           },
         },
+        'jumble-in': {
+          'from': {
+            opacity: '0',
+            transform: 'translateY(20px) scale(0.95)',
+          },
+          'to': {
+            opacity: '1',
+            transform: 'translateY(0) scale(1)',
+          }
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'jumble-in': 'jumble-in 0.6s ease-out forwards',
       },
     },
   },
