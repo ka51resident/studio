@@ -111,7 +111,11 @@ function StatCard({ stat, index }: { stat: typeof stats[0], index: number }) {
   const isInView = !!entry?.isIntersecting;
 
   return (
-    <Card ref={ref} className="flex flex-col items-center justify-center p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: `${index * 150}ms`, animationFillMode: 'backwards' }}>
+    <Card ref={ref} className={cn(
+        "flex flex-col items-center justify-center p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 opacity-0",
+        isInView && "animate-in fade-in slide-in-from-bottom-8"
+      )}
+      style={{ animationDelay: `${index * 150}ms`, animationFillMode: 'backwards' }}>
       <CardContent className="flex flex-col items-center gap-4 p-0">
         {stat.icon}
         <div className="text-4xl font-bold">
@@ -284,5 +288,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
