@@ -117,11 +117,15 @@ function StatItem({ stat, index }: { stat: (typeof stats)[0]; index: number }) {
     <div
       ref={ref}
       className={cn(
-        "flex flex-col items-center gap-2 p-6 text-center opacity-0",
+        "flex flex-col items-center gap-4 p-6 text-center bg-card rounded-lg shadow-lg",
+        "transition-all duration-300 hover:scale-105 hover:shadow-xl",
         isInView && "animate-in fade-in-0 duration-700",
       )}
       style={{ animationDelay: `${index * 150}ms` }}
     >
+      <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mb-4">
+        {stat.icon}
+      </div>
       <div className="text-4xl sm:text-5xl font-bold tracking-tighter text-primary">
         <AnimatedCounter
           target={stat.value}
@@ -202,9 +206,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="stats" className="py-8 bg-card">
+        <section id="stats" className="py-12 bg-background">
           <div className="container px-4 md:px-6">
-            <div className="grid grid-cols-2 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x border-y">
+            <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
+              Our Achievements
+            </h2>
+            <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
               {stats.map((stat, index) => (
                 <StatItem key={index} stat={stat} index={index} />
               ))}
@@ -212,8 +219,7 @@ export default function Home() {
           </div>
         </section>
 
-
-        <section id="testimonials" className="py-12 md:py-24 bg-background">
+        <section id="testimonials" className="py-12 md:py-24 bg-card">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
               What Our Clients Say
@@ -254,7 +260,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="clients" className="py-12 md:py-24">
+        <section id="clients" className="py-12 md:py-24 bg-background">
             <div className="container px-4 md:px-6">
                 <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
                 Our Clientele &amp; Partners
@@ -270,7 +276,7 @@ export default function Home() {
                     <TabsContent value={selectedCategory} key={selectedCategory}>
                          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
                             {filteredClients.map((client, index) => (
-                                <div key={client.name} className="flex items-center justify-center p-4 bg-background rounded-lg shadow-sm border border-border/50 aspect-video animate-in fade-in-0 duration-500" style={{ animationDelay: `${index * 50}ms`}}>
+                                <div key={client.name} className="flex items-center justify-center p-4 bg-card rounded-lg shadow-sm border border-border/50 aspect-video animate-in fade-in-0 duration-500" style={{ animationDelay: `${index * 50}ms`}}>
                                     {client.logo ? (
                                     <Image
                                         src={client.logo}
