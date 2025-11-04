@@ -2,12 +2,14 @@ import { Twitter, Linkedin, Facebook } from 'lucide-react';
 import Link from 'next/link';
 import Logo from './logo';
 import { Button } from './ui/button';
+import Image from 'next/image';
+// import certificationLogo from './certification.png';
 
 export default function Footer() {
   return (
     <footer className="border-t bg-card">
       <div className="container py-8">
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-4">
           <div className="space-y-4">
             <Logo />
             <p className="text-sm text-muted-foreground">
@@ -19,7 +21,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/" className="text-sm text-muted-foreground hover:text-primary">Home</Link></li>
               <li><Link href="/about" className="text-sm text-muted-foreground hover:text-primary">About Us</Link></li>
-              <li><Link href="/portfolio" className="text-sm text-muted-foreground hover:text-primary">Portfolio</Link></li>
+              <li><Link href="/portfolio" className="text-sm text-muted-foreground hover:text-primary">Services</Link></li>
               <li><Link href="/contact" className="text-sm text-muted-foreground hover:text-primary">Contact</Link></li>
             </ul>
           </div>
@@ -42,6 +44,18 @@ export default function Footer() {
                 </Link>
               </Button>
             </div>
+          </div>
+          <div>
+            <h3 className="font-semibold mb-4">Our Certifications</h3>
+            {/* 
+            <Image 
+                src={certificationLogo}
+                alt="TÜV NORD Certification" 
+                width={150} 
+                height={150}
+                className="rounded-md"
+            />
+            */}
           </div>
         </div>
         <div className="mt-8 border-t pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
