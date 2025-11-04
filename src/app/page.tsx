@@ -10,7 +10,6 @@ import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
 import React, { useRef } from "react";
 import AnimatedCounter from "@/components/animated-counter";
-import logo from '../components/logo.png';
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 
@@ -75,18 +74,24 @@ const testimonials = [
 ];
 
 const clients = [
-  { name: "Innovate Solutions", logo: "https://placehold.co/150x60.png", hint: "tech logo" },
-  { name: "TechCorp", logo: "https://placehold.co/150x60.png", hint: "corporate logo" },
-  { name: "Creative Minds", logo: "https://placehold.co/150x60.png", hint: "design logo" },
-  { name: "Global Ventures", logo: "https://placehold.co/150x60.png", hint: "global logo" },
-  { name: "NextGen Industries", logo: "https://placehold.co/150x60.png", hint: "industrial logo" },
-  { name: "Apex Group", logo: "https://placehold.co/150x60.png", hint: "business logo" },
+    { name: "Innovate Solutions", logo: "https://picsum.photos/seed/logo1/150/60", hint: "tech logo" },
+    { name: "Reliance Industries"},
+    { name: "TechCorp", logo: "https://picsum.photos/seed/logo2/150/60", hint: "corporate logo" },
+    { name: "L&T Construction"},
+    { name: "Creative Minds", logo: "https://picsum.photos/seed/logo3/150/60", hint: "design logo" },
+    { name: "Tata Projects"},
+    { name: "Global Ventures", logo: "https://picsum.photos/seed/logo4/150/60", hint: "global logo" },
+    { name: "JSW Group"},
+    { name: "NextGen Industries", logo: "https://picsum.photos/seed/logo5/150/60", hint: "industrial logo" },
+    { name: "Adani Group"},
+    { name: "Apex Group", logo: "https://picsum.photos/seed/logo6/150/60", hint: "business logo" },
+    { name: "Shapoorji Pallonji"},
 ];
 
 const heroImages = [
-    { src: "https://placehold.co/1200x600.png", alt: "Modern architecture", hint: "modern architecture" },
-    { src: "https://placehold.co/1200x600.png", alt: "Construction site", hint: "construction site" },
-    { src: "https://placehold.co/1200x600.png", alt: "Finished project", hint: "luxury home" },
+    { src: "https://picsum.photos/seed/hero1/1200/600", alt: "Modern architecture", hint: "modern architecture" },
+    { src: "https://picsum.photos/seed/hero2/1200/600", alt: "Construction site", hint: "construction site" },
+    { src: "https://picsum.photos/seed/hero3/1200/600", alt: "Finished project", hint: "luxury home" },
 ]
 
 function StatCard({ stat, index }: { stat: typeof stats[0], index: number }) {
@@ -96,7 +101,7 @@ function StatCard({ stat, index }: { stat: typeof stats[0], index: number }) {
 
   return (
     <Card ref={ref} className="flex flex-col items-center justify-center p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: `${index * 150}ms`, animationFillMode: 'backwards' }}>
-      <CardContent className="flex flex-col items-center gap-4">
+      <CardContent className="flex flex-col items-center gap-4 p-0">
         {stat.icon}
         <div className="text-4xl font-bold">
             <AnimatedCounter target={stat.value} postfix={stat.postfix} isInView={isInView} />
@@ -221,25 +226,40 @@ export default function Home() {
         </section>
 
         <section id="clients" className="py-12 md:py-24">
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
-              Our Clientele & Partners
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center">
-              {clients.map((client, index) => (
-                <div key={client.name} className="flex justify-center animate-in fade-in zoom-in-95" style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'backwards' }}>
-                  <Image
-                    src={client.logo}
-                    alt={client.name}
-                    width={150}
-                    height={60}
-                    data-ai-hint={client.hint}
-                    className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-              ))}
+            <div className="container px-4 md:px-6">
+                <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
+                Our Clientele &amp; Partners
+                </h2>
             </div>
-          </div>
+            <Carousel
+                opts={{
+                align: "start",
+                loop: true,
+                }}
+                plugins={[Autoplay({ delay: 1500, stopOnInteraction: false })]}
+                className="w-full"
+            >
+                <CarouselContent className="-ml-4">
+                {clients.map((client, index) => (
+                    <CarouselItem key={index} className="pl-4 basis-auto">
+                    <div className="flex items-center justify-center h-24 w-60 p-4 bg-background rounded-lg shadow-sm border border-border/50">
+                        {client.logo ? (
+                        <Image
+                            src={client.logo}
+                            alt={client.name}
+                            width={150}
+                            height={60}
+                            data-ai-hint={client.hint}
+                            className="object-contain"
+                        />
+                        ) : (
+                        <p className="text-lg font-semibold text-center text-muted-foreground">{client.name}</p>
+                        )}
+                    </div>
+                    </CarouselItem>
+                ))}
+                </CarouselContent>
+            </Carousel>
         </section>
 
       </main>
