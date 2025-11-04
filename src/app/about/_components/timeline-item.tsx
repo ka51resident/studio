@@ -1,3 +1,4 @@
+
 // src/app/about/_components/timeline-item.tsx
 "use client";
 
@@ -59,3 +60,5 @@ export default function TimelineItem({ event, index }: TimelineItemProps) {
     </div>
   );
 }
+
+    

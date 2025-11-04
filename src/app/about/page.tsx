@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Briefcase, Flag, Trophy, Zap, Award, Leaf, Shield, Gem } from "lucide-react";
 import Image from "next/image";
@@ -100,7 +101,7 @@ export default function AboutPage() {
         </div>
         <div className="relative h-96 rounded-lg overflow-hidden shadow-lg animate-in fade-in zoom-in duration-700">
           <Image
-            src="https://placehold.co/600x450.png"
+            src="https://picsum.photos/seed/about-us/600/450"
             alt="Our team"
             data-ai-hint="construction team meeting"
             fill
@@ -164,3 +165,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    
