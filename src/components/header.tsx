@@ -42,35 +42,37 @@ export default function Header() {
           <Logo />
         </div>
         
-        <div className="flex-1 md:hidden">
-          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="h-8 w-6" />
-                <span className="sr-only">Toggle navigation menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left">
-                <SheetHeader>
-                    <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-                    <SheetDescription className="sr-only">Main navigation links for the site.</SheetDescription>
-                </SheetHeader>
-              <div className="py-6">
+        <div className="flex md:hidden items-center justify-between w-full">
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                <SheetTrigger asChild>
+                <Button variant="outline" size="icon">
+                    <Menu className="h-8 w-6" />
+                    <span className="sr-only">Toggle navigation menu</span>
+                </Button>
+                </SheetTrigger>
+                <SheetContent side="left">
+                    <SheetHeader>
+                        <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                        <SheetDescription className="sr-only">Main navigation links for the site.</SheetDescription>
+                    </SheetHeader>
+                <div className="py-6">
+                    <Logo />
+                </div>
+                <nav className="grid gap-6 text-lg font-medium">
+                    {navLinks.map((link) => (
+                    <NavLink key={link.href} {...link} />
+                    ))}
+                </nav>
+                </SheetContent>
+            </Sheet>
+            <div className="flex justify-center">
                 <Logo />
-              </div>
-              <nav className="grid gap-6 text-lg font-medium">
-                {navLinks.map((link) => (
-                  <NavLink key={link.href} {...link} />
-                ))}
-              </nav>
-            </SheetContent>
-          </Sheet>
+            </div>
+            <div className="w-10"></div>
         </div>
 
-        <div className="flex flex-1 items-center justify-center md:justify-start">
-          <div className="md:hidden">
-            <Logo />
-          </div>
+
+        <div className="flex-1 items-center justify-start hidden md:flex">
           <nav className="hidden md:flex md:items-center md:gap-6">
             {navLinks.map((link) => (
               <NavLink key={link.href} {...link} />
