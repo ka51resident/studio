@@ -8,9 +8,11 @@ import { Briefcase, Building2, ShieldCheck, Star, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
-import React, { useRef } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import AnimatedCounter from "@/components/animated-counter";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 
 
 const stats = [
@@ -73,20 +75,29 @@ const testimonials = [
   },
 ];
 
+const clientCategories = ["All", "Manufacturing", "Automobile", "IT", "Aerospace", "Pharma", "Educational", "Hospitality", "Maintenance", "Others"];
+
 const clients = [
-    { name: "Innovate Solutions", logo: "https://picsum.photos/seed/logo1/150/60", hint: "tech logo" },
-    { name: "Reliance Industries"},
-    { name: "TechCorp", logo: "https://picsum.photos/seed/logo2/150/60", hint: "corporate logo" },
-    { name: "L&T Construction"},
-    { name: "Creative Minds", logo: "https://picsum.photos/seed/logo3/150/60", hint: "design logo" },
-    { name: "Tata Projects"},
-    { name: "Global Ventures", logo: "https://picsum.photos/seed/logo4/150/60", hint: "global logo" },
-    { name: "JSW Group"},
-    { name: "NextGen Industries", logo: "https://picsum.photos/seed/logo5/150/60", hint: "industrial logo" },
-    { name: "Adani Group"},
-    { name: "Apex Group", logo: "https://picsum.photos/seed/logo6/150/60", hint: "business logo" },
-    { name: "Shapoorji Pallonji"},
+    { name: "Innovate Solutions", logo: "https://picsum.photos/seed/logo1/150/60", hint: "tech logo", category: "IT" },
+    { name: "Reliance Industries", category: "Manufacturing" },
+    { name: "TechCorp", logo: "https://picsum.photos/seed/logo2/150/60", hint: "corporate logo", category: "IT" },
+    { name: "L&T Construction", category: "Manufacturing" },
+    { name: "Creative Minds", logo: "https://picsum.photos/seed/logo3/150/60", hint: "design logo", category: "IT" },
+    { name: "Tata Projects", category: "Manufacturing" },
+    { name: "Global Ventures", logo: "https://picsum.photos/seed/logo4/150/60", hint: "global logo", category: "Others" },
+    { name: "JSW Group", category: "Manufacturing" },
+    { name: "NextGen Industries", logo: "https://picsum.photos/seed/logo5/150/60", hint: "industrial logo", category: "Manufacturing" },
+    { name: "Adani Group", category: "Others" },
+    { name: "Apex Group", logo: "https://picsum.photos/seed/logo6/150/60", hint: "business logo", category: "Others" },
+    { name: "Shapoorji Pallonji", category: "Manufacturing" },
+    { name: "Marquee Motors", logo: "https://picsum.photos/seed/auto1/150/60", hint: "car logo", category: "Automobile" },
+    { name: "AeroSpace Dynamics", category: "Aerospace" },
+    { name: "PharmaCure", logo: "https://picsum.photos/seed/pharma1/150/60", hint: "pharma logo", category: "Pharma" },
+    { name: "EduVerse", category: "Educational" },
+    { name: "Starlight Hotels", logo: "https://picsum.photos/seed/hotel1/150/60", hint: "hotel logo", category: "Hospitality" },
+    { name: "FixIt Pro", category: "Maintenance" },
 ];
+
 
 const heroImages = [
     { src: "https://picsum.photos/seed/hero1/1200/600", alt: "Modern architecture", hint: "modern architecture" },
@@ -120,6 +131,13 @@ export default function Home() {
     const testimonialsPlugin = React.useRef(
       Autoplay({ delay: 3000, stopOnInteraction: true })
     )
+    
+    const [selectedCategory, setSelectedCategory] = useState("All");
+
+    const filteredClients = useMemo(() => {
+        if (selectedCategory === "All") return clients;
+        return clients.filter(client => client.category === selectedCategory);
+    }, [selectedCategory]);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -230,39 +248,41 @@ export default function Home() {
                 <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
                 Our Clientele &amp; Partners
                 </h2>
+                 <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
+                    <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap justify-center gap-2 h-auto mb-8 bg-transparent">
+                        {clientCategories.map(category => (
+                            <TabsTrigger key={category} value={category} className="data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-sm text-base">
+                                {category}
+                            </TabsTrigger>
+                        ))}
+                    </TabsList>
+                    <TabsContent value={selectedCategory}>
+                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                            {filteredClients.map((client, index) => (
+                                <div key={index} className="flex items-center justify-center p-4 bg-background rounded-lg shadow-sm border border-border/50 aspect-video animate-in fade-in-0 duration-500" style={{ animationDelay: `${index * 50}ms`}}>
+                                    {client.logo ? (
+                                    <Image
+                                        src={client.logo}
+                                        alt={client.name}
+                                        width={150}
+                                        height={60}
+                                        data-ai-hint={client.hint}
+                                        className="object-contain"
+                                    />
+                                    ) : (
+                                    <p className="text-sm sm:text-base font-semibold text-center text-muted-foreground">{client.name}</p>
+                                    )}
+                                </div>
+                            ))}
+                         </div>
+                    </TabsContent>
+                </Tabs>
             </div>
-            <Carousel
-                opts={{
-                align: "start",
-                loop: true,
-                }}
-                plugins={[Autoplay({ delay: 1500, stopOnInteraction: false })]}
-                className="w-full"
-            >
-                <CarouselContent className="-ml-4">
-                {clients.map((client, index) => (
-                    <CarouselItem key={index} className="pl-4 basis-auto">
-                    <div className="flex items-center justify-center h-24 w-60 p-4 bg-background rounded-lg shadow-sm border border-border/50">
-                        {client.logo ? (
-                        <Image
-                            src={client.logo}
-                            alt={client.name}
-                            width={150}
-                            height={60}
-                            data-ai-hint={client.hint}
-                            className="object-contain"
-                        />
-                        ) : (
-                        <p className="text-lg font-semibold text-center text-muted-foreground">{client.name}</p>
-                        )}
-                    </div>
-                    </CarouselItem>
-                ))}
-                </CarouselContent>
-            </Carousel>
         </section>
 
       </main>
     </div>
   );
 }
+
+    
