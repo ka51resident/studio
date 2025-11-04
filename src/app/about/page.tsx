@@ -144,7 +144,7 @@ export default function AboutPage() {
             {policyItems.map((item) => (
               <AccordionItem value={item.value} key={item.value}>
                 <AccordionTrigger className="text-xl font-semibold hover:no-underline">
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 text-left">
                         {item.icon}
                         {item.title}
                     </div>
@@ -165,5 +165,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-    

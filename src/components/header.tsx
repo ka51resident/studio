@@ -42,7 +42,7 @@ export default function Header() {
           <Logo />
         </div>
         
-        <div className="md:hidden">
+        <div className="flex-1 md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon">
@@ -78,7 +78,7 @@ export default function Header() {
           </nav>
         </div>
 
-        <div className="hidden items-center justify-end md:flex">
+        <div className="flex-1 items-center justify-end hidden md:flex">
           <Button asChild>
             <Link href="/contact">Get a Quote</Link>
           </Button>
