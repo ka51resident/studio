@@ -206,7 +206,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="stats" className="py-12 bg-card">
+        <section id="stats" className="py-12 bg-background">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
               Our Achievements
@@ -219,7 +219,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="testimonials" className="py-12 md:py-24 bg-background">
+        <section id="testimonials" className="py-12 md:py-24 bg-card">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
               What Our Clients Say
@@ -260,7 +260,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="clients" className="py-12 md:py-24 bg-card">
+        <section id="clients" className="py-12 md:py-24 bg-background">
             <div className="container px-4 md:px-6">
                 <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
                 Our Clientele &amp; Partners

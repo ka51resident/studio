@@ -15,6 +15,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Us' },
   { href: '/portfolio', label: 'Services' },
+  { href: '/qhsc-policy', label: 'QHSE Policy' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -42,45 +43,44 @@ export default function Header() {
           <Logo />
         </div>
         
-        <div className="flex md:hidden items-center justify-between w-full">
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-                <SheetTrigger asChild>
-                <Button variant="outline" size="icon">
-                    <Menu className="h-8 w-6" />
-                    <span className="sr-only">Toggle navigation menu</span>
-                </Button>
-                </SheetTrigger>
-                <SheetContent side="left">
-                    <SheetHeader>
-                        <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-                        <SheetDescription className="sr-only">Main navigation links for the site.</SheetDescription>
-                    </SheetHeader>
-                <div className="py-6">
-                    <Logo />
-                </div>
-                <nav className="grid gap-6 text-lg font-medium">
-                    {navLinks.map((link) => (
-                    <NavLink key={link.href} {...link} />
-                    ))}
-                </nav>
-                </SheetContent>
-            </Sheet>
-            <div className="flex justify-center">
+        <div className="flex grow basis-0 md:hidden">
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon">
+                <Menu className="h-8 w-6" />
+                <span className="sr-only">Toggle navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left">
+              <SheetHeader>
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                <SheetDescription className="sr-only">Main navigation links for the site.</SheetDescription>
+              </SheetHeader>
+              <div className="py-6">
                 <Logo />
-            </div>
-            <div className="w-10"></div>
+              </div>
+              <nav className="grid gap-6 text-lg font-medium">
+                {navLinks.map((link) => (
+                  <NavLink key={link.href} {...link} />
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
 
-
-        <div className="flex-1 items-center justify-start hidden md:flex">
-          <nav className="hidden md:flex md:items-center md:gap-6">
+        <div className="flex justify-center md:hidden grow basis-0">
+          <Logo />
+        </div>
+        
+        <div className="hidden md:flex md:flex-1 md:items-center md:justify-start">
+          <nav className="flex items-center gap-6">
             {navLinks.map((link) => (
               <NavLink key={link.href} {...link} />
             ))}
           </nav>
         </div>
 
-        <div className="flex-1 items-center justify-end hidden md:flex">
+        <div className="flex grow basis-0 justify-end">
           <Button asChild>
             <Link href="/contact">Get a Quote</Link>
           </Button>
