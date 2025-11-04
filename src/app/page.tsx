@@ -105,26 +105,36 @@ const heroImages = [
     { src: "https://picsum.photos/seed/hero3/1200/600", alt: "Finished project", hint: "luxury home" },
 ]
 
-function StatItem({ stat }: { stat: typeof stats[0] }) {
-    const ref = useRef<HTMLDivElement>(null);
-    const entry = useIntersectionObserver(ref, { freezeOnceVisible: true, threshold: 0.1 });
-    const isInView = !!entry?.isIntersecting;
-  
-    return (
-      <div
-        ref={ref}
-        className={cn(
-          "flex flex-col items-center text-center opacity-0",
-          isInView && "animate-in fade-in slide-in-from-bottom-8 duration-500"
-        )}
-      >
-        <div className="text-4xl sm:text-5xl font-bold text-primary">
-          <AnimatedCounter target={stat.value} postfix={stat.postfix} isInView={isInView} />
-        </div>
-        <p className="text-sm sm:text-base text-muted-foreground mt-2">{stat.label}</p>
+function StatItem({ stat, index }: { stat: (typeof stats)[0]; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const entry = useIntersectionObserver(ref, {
+    freezeOnceVisible: true,
+    threshold: 0.1,
+  });
+  const isInView = !!entry?.isIntersecting;
+
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "flex flex-col items-center gap-2 p-6 text-center opacity-0",
+        isInView && "animate-in fade-in-0 duration-700",
+      )}
+      style={{ animationDelay: `${index * 150}ms` }}
+    >
+      <div className="text-4xl sm:text-5xl font-bold tracking-tighter text-primary">
+        <AnimatedCounter
+          target={stat.value}
+          postfix={stat.postfix}
+          isInView={isInView}
+        />
       </div>
-    );
-  }
+      <p className="text-sm sm:text-base text-muted-foreground mt-1">
+        {stat.label}
+      </p>
+    </div>
+  );
+}
 
 
 export default function Home() {
@@ -192,19 +202,18 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="stats" className="py-12 md:py-20 bg-background">
+        <section id="stats" className="py-8 bg-card">
           <div className="container px-4 md:px-6">
-            <div className="max-w-5xl mx-auto">
-                <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 md:gap-12">
-                    {stats.map((stat, index) => (
-                        <StatItem key={index} stat={stat} />
-                    ))}
-                </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x border-y">
+              {stats.map((stat, index) => (
+                <StatItem key={index} stat={stat} index={index} />
+              ))}
             </div>
           </div>
         </section>
 
-        <section id="testimonials" className="py-12 md:py-24 bg-card">
+
+        <section id="testimonials" className="py-12 md:py-24 bg-background">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
               What Our Clients Say
