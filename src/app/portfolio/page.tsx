@@ -22,6 +22,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Autoplay from "embla-carousel-autoplay";
 import React from "react";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const services = [
   {
@@ -171,27 +172,31 @@ export default function ServicesPage() {
         </p>
       </section>
 
-      <Tabs defaultValue={services[0].id} className="w-full" orientation="vertical">
-        <div className="grid md:grid-cols-4 gap-8">
-          <TabsList className="md:col-span-1 grid grid-cols-2 md:grid-cols-1 h-auto bg-transparent p-0 gap-2">
-            {services.map((service) => (
-              <TabsTrigger
-                key={service.id}
-                value={service.id}
-                className="w-full justify-start text-base font-semibold py-4 px-4 h-auto rounded-lg data-[state=active]:bg-primary/10 data-[state=active]:text-primary"
-              >
-                <div className="flex items-center gap-4">
-                  {service.icon}
-                  {service.title}
-                </div>
-              </TabsTrigger>
-            ))}
-          </TabsList>
+      <Tabs defaultValue={services[0].id} className="w-full">
+        <div className="flex justify-center">
+            <ScrollArea className="max-w-full w-auto whitespace-nowrap">
+                <TabsList className="h-auto bg-transparent p-0 gap-2 sm:gap-4">
+                    {services.map((service) => (
+                    <TabsTrigger
+                        key={service.id}
+                        value={service.id}
+                        className="w-full flex-col sm:flex-row justify-center sm:justify-start text-base font-semibold py-3 px-4 h-auto rounded-lg data-[state=active]:bg-primary/10 data-[state=active]:text-primary"
+                    >
+                        <div className="flex items-center gap-3">
+                            {service.icon}
+                            {service.title}
+                        </div>
+                    </TabsTrigger>
+                    ))}
+                </TabsList>
+                <ScrollBar orientation="horizontal" />
+            </ScrollArea>
+        </div>
 
-          <div className="md:col-span-3">
+        <div className="mt-8">
             {services.map((service) => (
               <TabsContent key={service.id} value={service.id} className="mt-0">
-                <Card className="overflow-hidden shadow-lg">
+                <Card className="overflow-hidden shadow-lg animate-in fade-in zoom-in-95 duration-500">
                   <div className="grid lg:grid-cols-2">
                     <div className="p-8 md:p-10 flex flex-col justify-center">
                       <h2 className="text-3xl font-bold mb-4">
@@ -256,7 +261,6 @@ export default function ServicesPage() {
                 </Card>
               </TabsContent>
             ))}
-          </div>
         </div>
       </Tabs>
     </div>
