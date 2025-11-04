@@ -13,10 +13,8 @@ import Logo from './logo';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About Us' },
-  { href: '/portfolio', label: 'Services' },
-  { href: '/qhsc-policy', label: 'QHSE Policy' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/about', label: 'Who We are' },
+  { href: '/portfolio', label: 'What We Do' },
 ];
 
 export default function Header() {

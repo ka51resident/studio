@@ -64,6 +64,28 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="mb-24 relative overflow-hidden rounded-lg shadow-xl animate-in fade-in duration-700">
+        <div className="relative h-96">
+          <Image
+            src="https://picsum.photos/seed/handshake/1200/400"
+            alt="A confident handshake"
+            data-ai-hint="happy customer handshake"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8 text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">A Message from Our Proprietor</h2>
+          <blockquote className="max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl italic mb-4">
+              "Building is not just about structures; it's about building trust, relationships, and a better future. Every project is a testament to our commitment to excellence and a promise of reliability to our clients."
+            </p>
+            <cite className="font-semibold not-italic text-primary-foreground/80">- Akash Patel, Founder</cite>
+          </blockquote>
+        </div>
+      </section>
+
       <section className="mb-24">
         <h2 className="text-4xl font-bold text-center mb-12">Our Journey</h2>
         <div className="relative">
