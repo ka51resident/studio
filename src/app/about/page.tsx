@@ -60,6 +60,7 @@ export default function AboutPage() {
             data-ai-hint="construction team meeting"
             fill
             className="object-cover"
+            loading="lazy"
           />
         </div>
       </section>
@@ -72,6 +73,7 @@ export default function AboutPage() {
             data-ai-hint="happy customer handshake"
             fill
             className="object-cover"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-black/60" />
         </div>

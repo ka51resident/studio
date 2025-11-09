@@ -196,6 +196,8 @@ export default function Home() {
                               width={1200}
                               height={600}
                               className="object-cover rounded-xl shadow-2xl"
+                              priority={index === 0}
+                              loading={index === 0 ? 'eager' : 'lazy'}
                             />
                         </CarouselItem>
                       ))}
@@ -285,6 +287,7 @@ export default function Home() {
                                         height={60}
                                         data-ai-hint={client.hint}
                                         className="object-contain"
+                                        loading="lazy"
                                     />
                                     ) : (
                                     <p className="text-sm sm:text-base font-semibold text-center text-muted-foreground">{client.name}</p>

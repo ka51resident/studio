@@ -242,6 +242,7 @@ export default function ServicesPage() {
                                   data-ai-hint={image.hint}
                                   fill
                                   className="object-cover rounded-lg"
+                                  loading="lazy"
                                 />
                               </div>
                             </CarouselItem>
