@@ -13,6 +13,7 @@ import AnimatedCounter from "@/components/animated-counter";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
+import Logo from "@/components/logo";
 
 
 const stats = [
@@ -75,27 +76,23 @@ const testimonials = [
   },
 ];
 
-const clientCategories = ["All", "Manufacturing", "Automobile", "IT", "Aerospace", "Pharma", "Educational", "Hospitality", "Maintenance", "Others"];
-
 const clients = [
-    { name: "Innovate Solutions", logo: "https://picsum.photos/seed/logo1/150/60", hint: "tech logo", category: "IT" },
-    { name: "Reliance Industries", category: "Manufacturing" },
-    { name: "TechCorp", logo: "https://picsum.photos/seed/logo2/150/60", hint: "corporate logo", category: "IT" },
-    { name: "L&T Construction", category: "Manufacturing" },
-    { name: "Creative Minds", logo: "https://picsum.photos/seed/logo3/150/60", hint: "design logo", category: "IT" },
-    { name: "Tata Projects", category: "Manufacturing" },
-    { name: "Global Ventures", logo: "https://picsum.photos/seed/logo4/150/60", hint: "global logo", category: "Others" },
-    { name: "JSW Group", category: "Manufacturing" },
-    { name: "NextGen Industries", logo: "https://picsum.photos/seed/logo5/150/60", hint: "industrial logo", category: "Manufacturing" },
-    { name: "Adani Group", category: "Others" },
-    { name: "Apex Group", logo: "https://picsum.photos/seed/logo6/150/60", hint: "business logo", category: "Others" },
-    { name: "Shapoorji Pallonji", category: "Manufacturing" },
-    { name: "Marquee Motors", logo: "https://picsum.photos/seed/auto1/150/60", hint: "car logo", category: "Automobile" },
-    { name: "AeroSpace Dynamics", category: "Aerospace" },
-    { name: "PharmaCure", logo: "https://picsum.photos/seed/pharma1/150/60", hint: "pharma logo", category: "Pharma" },
-    { name: "EduVerse", category: "Educational" },
-    { name: "Starlight Hotels", logo: "https://picsum.photos/seed/hotel1/150/60", hint: "hotel logo", category: "Hospitality" },
-    { name: "FixIt Pro", category: "Maintenance" },
+    { name: "Innovate Solutions", logo: "https://picsum.photos/seed/logo1/150/60", hint: "tech logo" },
+    { name: "TechCorp", logo: "https://picsum.photos/seed/logo2/150/60", hint: "corporate logo" },
+    { name: "Creative Minds", logo: "https://picsum.photos/seed/logo3/150/60", hint: "design logo" },
+    { name: "Global Ventures", logo: "https://picsum.photos/seed/logo4/150/60", hint: "global logo" },
+    { name: "NextGen Industries", logo: "https://picsum.photos/seed/logo5/150/60", hint: "industrial logo" },
+    { name: "Apex Group", logo: "https://picsum.photos/seed/logo6/150/60", hint: "business logo" },
+    { name: "Marquee Motors", logo: "https://picsum.photos/seed/auto1/150/60", hint: "car logo" },
+    { name: "PharmaCure", logo: "https://picsum.photos/seed/pharma1/150/60", hint: "pharma logo" },
+    { name: "Starlight Hotels", logo: "https://picsum.photos/seed/hotel1/150/60", hint: "hotel logo" },
+    { name: "Reliance Industries", logo: "https://picsum.photos/seed/reliance/150/60", hint: "industrial logo" },
+    { name: "L&T Construction", logo: "https://picsum.photos/seed/lnt/150/60", hint: "construction logo" },
+    { name: "Tata Projects", logo: "https://picsum.photos/seed/tata/150/60", hint: "corporate logo" },
+    { name: "JSW Group", logo: "https://picsum.photos/seed/jsw/150/60", hint: "steel logo" },
+    { name: "Adani Group", logo: "https://picsum.photos/seed/adani/150/60", hint: "corporate logo" },
+    { name: "Shapoorji Pallonji", logo: "https://picsum.photos/seed/shapoorji/150/60", hint: "construction logo" },
+    { name: "AeroSpace Dynamics", logo: "https://picsum.photos/seed/aero/150/60", hint: "aerospace logo" },
 ];
 
 
@@ -117,13 +114,13 @@ function StatItem({ stat, index }: { stat: (typeof stats)[0]; index: number }) {
     <div
       ref={ref}
       className={cn(
-        "flex flex-col items-center gap-4 p-6 text-center bg-card rounded-lg shadow-lg",
+        "flex flex-col items-center gap-2 p-6 text-center bg-card rounded-lg shadow-lg",
         "transition-all duration-300 hover:scale-105 hover:shadow-xl",
-        isInView && "animate-in fade-in-0 duration-700",
+        isInView ? "animate-in fade-in-0" : "opacity-0",
       )}
       style={{ animationDelay: `${index * 150}ms` }}
     >
-      <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mb-4">
+      <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mb-2">
         {stat.icon}
       </div>
       <div className="text-4xl sm:text-5xl font-bold tracking-tighter text-primary">
@@ -148,13 +145,6 @@ export default function Home() {
     const testimonialsPlugin = React.useRef(
       Autoplay({ delay: 3000, stopOnInteraction: true })
     )
-    
-    const [selectedCategory, setSelectedCategory] = useState("All");
-
-    const filteredClients = useMemo(() => {
-        if (selectedCategory === "All") return clients;
-        return clients.filter(client => client.category === selectedCategory);
-    }, [selectedCategory]);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -265,20 +255,30 @@ export default function Home() {
         <section id="clients" className="py-12 md:py-24 bg-background">
             <div className="container px-4 md:px-6">
                 <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
-                Our Clientele &amp; Partners
+                  Our Clientele & Partners
                 </h2>
-                 <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
-                    <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap justify-center gap-2 h-auto mb-8 bg-transparent">
-                        {clientCategories.map(category => (
-                            <TabsTrigger key={category} value={category} className="data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-sm text-base">
-                                {category}
-                            </TabsTrigger>
-                        ))}
-                    </TabsList>
-                    <TabsContent value={selectedCategory} key={selectedCategory} forceMount>
-                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                            {filteredClients.map((client, index) => (
-                                <div key={client.name} className={cn("flex items-center justify-center p-4 bg-card rounded-lg shadow-sm border border-border/50 aspect-video", "animate-jumble-in")} style={{ animationDelay: `${index * 75}ms`}}>
+                <div className="relative flex items-center justify-center min-h-[400px] md:min-h-[500px] lg:min-h-[600px] [perspective:2000px]">
+                    <div className="absolute w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 flex items-center justify-center">
+                         <div className="relative w-40 h-16 sm:w-48 sm:h-20 lg:w-56 lg:h-24 bg-card p-4 rounded-lg shadow-2xl flex items-center justify-center z-10">
+                            <Logo />
+                         </div>
+                    </div>
+                    <div className="relative w-full h-full animate-spin [animation-duration:40s] [animation-timing-function:linear] [animation-iteration-count:infinite]">
+                        {clients.slice(0, 16).map((client, index) => {
+                            const angle = (index / 16) * 360;
+                            const radiusX = 'min(45%, 300px)';
+                            const radiusY = 'min(30%, 200px)';
+                            return (
+                                <div
+                                    key={client.name}
+                                    className={cn(
+                                        "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-16 sm:w-32 sm:h-20 bg-card rounded-lg shadow-lg flex items-center justify-center p-2",
+                                        "transition-transform duration-300 hover:scale-110 hover:shadow-2xl hover:z-20"
+                                    )}
+                                    style={{
+                                        transform: `rotate(${angle}deg) translate(calc(${radiusX} * cos(${angle}deg)), calc(${radiusY} * sin(${angle}deg))) rotate(-${angle}deg)`,
+                                    }}
+                                >
                                     {client.logo ? (
                                     <Image
                                         src={client.logo}
@@ -286,20 +286,22 @@ export default function Home() {
                                         width={150}
                                         height={60}
                                         data-ai-hint={client.hint}
-                                        className="object-contain"
+                                        className="object-contain max-w-full max-h-full"
                                         loading="lazy"
                                     />
                                     ) : (
-                                    <p className="text-sm sm:text-base font-semibold text-center text-muted-foreground">{client.name}</p>
+                                    <p className="text-xs sm:text-sm font-semibold text-center text-muted-foreground">{client.name}</p>
                                     )}
                                 </div>
-                            ))}
-                         </div>
-                    </TabsContent>
-                </Tabs>
+                            );
+                        })}
+                    </div>
+                </div>
             </div>
         </section>
       </main>
     </div>
   )
 };
+
+    
