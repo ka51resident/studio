@@ -253,53 +253,33 @@ export default function Home() {
         </section>
 
         <section id="clients" className="py-12 md:py-24 bg-background">
-            <div className="container px-4 md:px-6">
-                <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
-                  Our Clientele & Partners
-                </h2>
-                <div className="relative flex items-center justify-center min-h-[400px] md:min-h-[500px] lg:min-h-[600px] [perspective:2000px]">
-                    <div className="absolute w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 flex items-center justify-center">
-                         <div className="relative w-40 h-16 sm:w-48 sm:h-20 lg:w-56 lg:h-24 bg-card p-4 rounded-lg shadow-2xl flex items-center justify-center z-10">
-                            <Logo />
-                         </div>
-                    </div>
-                    <div className="relative w-full h-full">
-                        {clients.slice(0, 16).map((client, index) => {
-                            const angle = (index / 16) * 360;
-                            const radiusX = 'min(45%, 300px)';
-                            const radiusY = 'min(30%, 200px)';
-                            return (
-                                <div
-                                    key={client.name}
-                                    className={cn(
-                                        "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-16 sm:w-32 sm:h-20 bg-card rounded-lg shadow-lg flex items-center justify-center p-2",
-                                        "transition-transform duration-300 hover:scale-110 hover:shadow-2xl hover:z-20"
-                                    )}
-                                    style={{
-                                        transform: `rotate(${angle}deg) translate(calc(${radiusX} * cos(${angle}deg)), calc(${radiusY} * sin(${angle}deg))) rotate(-${angle}deg)`,
-                                    }}
-                                >
-                                    {client.logo ? (
-                                    <Image
-                                        src={client.logo}
-                                        alt={client.name}
-                                        width={150}
-                                        height={60}
-                                        data-ai-hint={client.hint}
-                                        className="object-contain max-w-full max-h-full"
-                                        loading="lazy"
-                                    />
-                                    ) : (
-                                    <p className="text-xs sm:text-sm font-semibold text-center text-muted-foreground">{client.name}</p>
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
+          <div className="container px-4 md:px-6">
+            <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
+              Our Clientele & Partners
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-6 gap-y-8 items-center">
+              {clients.slice(0, 18).map((client, index) => (
+                <div
+                  key={index}
+                  className="flex justify-center items-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                >
+                  <Image
+                    src={client.logo}
+                    alt={client.name}
+                    width={150}
+                    height={60}
+                    data-ai-hint={client.hint}
+                    className="object-contain max-w-full max-h-12"
+                    loading="lazy"
+                  />
                 </div>
+              ))}
             </div>
+          </div>
         </section>
       </main>
     </div>
   )
 };
+
+    
