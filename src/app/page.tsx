@@ -263,7 +263,7 @@ export default function Home() {
                             <Logo />
                          </div>
                     </div>
-                    <div className="relative w-full h-full animate-spin [animation-duration:40s] [animation-timing-function:linear] [animation-iteration-count:infinite]">
+                    <div className="relative w-full h-full">
                         {clients.slice(0, 16).map((client, index) => {
                             const angle = (index / 16) * 360;
                             const radiusX = 'min(45%, 300px)';
@@ -303,5 +303,3 @@ export default function Home() {
     </div>
   )
 };
-
-    
