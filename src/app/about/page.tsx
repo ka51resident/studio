@@ -73,13 +73,13 @@ export default function AboutPage() {
           <div className="order-2 md:order-1">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">A Message from Our Proprietor</h2>
             <blockquote className="max-w-3xl mx-auto">
-              <p className="text-base md:text-lg text-muted-foreground mb-6 space-y-4">
-                <span>“Our journey began with a single commitment: to deliver work that people could trust and to stand by every promise we made.”</span>
-                <span>Akash Enterprises was founded on the belief that quality, safety, and integrity form the true foundation of every successful project. What started as a small, dedicated team has grown into a trusted name in electrical contracting, known for reliability, precision, and a hands-on approach.</span>
-                <span>Over the years, we have had the privilege of powering industries, institutions, and communities. Each project has strengthened our conviction that excellence is achieved through discipline, teamwork, and genuine care for our clients and partners.</span>
-                <span>Today, as the second generation steps in to take this legacy forward, our principles remain unchanged. The next chapter of Akash Enterprises is driven by innovation, sustainability, and a renewed commitment to the people who have always been at the heart of our success: our clients, our employees, and our partners.</span>
-                <span>For us, true success lies in earning our clients’ trust, one project at a time.</span>
-              </p>
+              <div className="text-base md:text-lg text-muted-foreground mb-6 space-y-4">
+                <p>“Our journey began with a single commitment: to deliver work that people could trust and to stand by every promise we made.”</p>
+                <p>Akash Enterprises was founded on the belief that quality, safety, and integrity form the true foundation of every successful project. What started as a small, dedicated team has grown into a trusted name in electrical contracting, known for reliability, precision, and a hands-on approach.</p>
+                <p>Over the years, we have had the privilege of powering industries, institutions, and communities. Each project has strengthened our conviction that excellence is achieved through discipline, teamwork, and genuine care for our clients and partners.</p>
+                <p>Today, as the second generation steps in to take this legacy forward, our principles remain unchanged. The next chapter of Akash Enterprises is driven by innovation, sustainability, and a renewed commitment to the people who have always been at the heart of our success: our clients, our employees, and our partners.</p>
+                <p>For us, true success lies in earning our clients’ trust, one project at a time.</p>
+              </div>
               <cite className="font-semibold not-italic text-primary">- Ravindra Nayak, Proprietor and Founder</cite>
             </blockquote>
           </div>
