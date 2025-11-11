@@ -40,33 +40,6 @@ export default function ContactPage() {
           <ContactForm />
         </div>
         <div className="space-y-8">
-          <div className="flex items-start gap-4">
-            <div className="bg-primary/10 text-primary p-3 rounded-full">
-              <Mail className="h-6 w-6" />
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold">Email</h3>
-              <p className="text-muted-foreground">Send us an email for inquiries.</p>
-              <a href="mailto:contact@akash.enterprises" className="text-primary hover:underline">
-                contact@akash.enterprises
-              </a>
-            </div>
-          </div>
-          <div className="flex items-start gap-4">
-            <div className="bg-primary/10 text-primary p-3 rounded-full">
-              <Phone className="h-6 w-6" />
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold">Phone</h3>
-              <p className="text-muted-foreground">Give us a call during business hours.</p>
-              <a href="tel:+1234567890" className="text-primary hover:underline">
-                (123) 456-7890
-              </a>
-            </div>
-          </div>
-          
-          <Separator />
-
           <div>
             <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
               <MapPin className="h-7 w-7 text-primary" />
@@ -86,7 +59,6 @@ export default function ContactPage() {
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </div>
