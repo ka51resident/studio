@@ -37,7 +37,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
 
   const mailOptions = {
     from: `"${name}" <${email}>`,
-    to: process.env.GMAIL_EMAIL,
+    to: process.env.CONTACT_FORM_RECIPIENT_EMAIL,
     subject: `Contact Form: ${subject}`,
     html: `
       <h2>New Contact Form Submission</h2>
