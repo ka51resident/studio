@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Briefcase, Flag, Trophy, Zap, Award, Leaf, Shield, Gem } from "lucide-react";
+import { Briefcase, Flag, Trophy, Zap, Award, Leaf, Shield, Gem, ShieldCheck, TrendingUp, Users, Globe } from "lucide-react";
 import Image from "next/image";
 import TimelineItem from "./_components/timeline-item";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -9,26 +9,38 @@ const timelineEvents = [
   {
     year: "1992",
     title: "Foundation",
-    description: "Akash Enterprises was founded with a vision to revolutionize the construction industry through quality and innovation.",
+    description: "A Humble Beginning Started as a solo venture providing maintenance services to manufacturing industries, ensuring uptime and reliability from the very beginning.",
     icon: <Flag className="h-5 w-5 text-primary" />,
   },
   {
-    year: "2012",
-    title: "First Major Project",
-    description: "Successfully completed our first large-scale commercial project, setting a new benchmark for excellence.",
-    icon: <Briefcase className="h-5 w-5 text-primary" />,
+    year: "2000",
+    title: "Building Trust and Safety",
+    description: "Chosen as a vendor for a leading Japanese automobile giant. This partnership strengthened our commitment to safety and established a culture of trust and discipline.",
+    icon: <ShieldCheck className="h-5 w-5 text-primary" />,
+  },
+  {
+    year: "2010",
+    title: "Expanding Horizons",
+    description: "Reached the milestone of 250 completed projects, marking our transformation from a small operation into a recognized electrical contracting partner.",
+    icon: <TrendingUp className="h-5 w-5 text-primary" />,
   },
   {
     year: "2018",
-    title: "Expansion",
-    description: "Expanded operations to new regions and diversified our portfolio to include residential and industrial projects.",
-    icon: <Zap className="h-5 w-5 text-primary" />,
+    title: "Commitment to Quality and Standards",
+    description: "Earned ISO 9001 and ISO 18001 (now ISO 45001) certifications, demonstrating our dedication to quality management and workplace safety",
+    icon: <Award className="h-5 w-5 text-primary" />,
   },
   {
-    year: "2023",
-    title: "Industry Award",
-    description: "Recognized with the 'Excellence in Construction' award for our commitment to quality, safety, and sustainability.",
-    icon: <Trophy className="h-5 w-5 text-primary" />,
+    year: "2019",
+    title: "The Next Generation",
+    description: "The second generation joined the company, bringing renewed focus on technology, process efficiency, and continuous improvement.",
+    icon: <Users className="h-5 w-5 text-primary" />,
+  },
+  {
+    year: "2025",
+    title: "Continuing the Legacy",
+    description: "Crossed 600 projects, achieved more than 3 million safe man-hours, and earned ISO 14001 certification for environmental commitment. The journey continues...",
+    icon: <Globe className="h-5 w-5 text-primary" />,
   },
 ];
 
