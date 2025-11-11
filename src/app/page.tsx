@@ -149,7 +149,7 @@ function ClientLogo({ client, index }: { client: (typeof clients)[0]; index: num
     <div
       ref={ref}
       className={cn(
-        "flex justify-center items-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
+        "flex justify-center items-center transition-all duration-300",
         isInView ? "animate-in fade-in-0 slide-in-from-bottom-4" : "opacity-0"
       )}
       style={{ animationDelay: `${index * 50}ms` }}
