@@ -149,7 +149,8 @@ function ClientLogo({ client, index }: { client: (typeof clients)[0]; index: num
     <div
       ref={ref}
       className={cn(
-        "flex justify-center items-center transition-all duration-300",
+        "flex justify-center items-center p-4 bg-card rounded-lg shadow",
+        "transition-all duration-300 ease-in-out",
         isInView ? "animate-in fade-in-0 slide-in-from-bottom-4" : "opacity-0"
       )}
       style={{ animationDelay: `${index * 50}ms` }}
@@ -179,7 +180,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="w-full py-12 md:py-20 lg:py-28 bg-card">
+        <section className="w-full py-12 md:py-20 lg:py-28 bg-background">
           <div className="container px-4 md:px-6 text-center">
             <div className="flex flex-col items-center space-y-6">
               <div className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-700">
@@ -228,7 +229,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="stats" className="py-12 bg-background">
+        <section id="stats" className="py-12 md:py-24 bg-card">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
               Our Achievements
@@ -241,7 +242,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="testimonials" className="py-12 md:py-24 bg-card">
+        <section id="testimonials" className="py-12 md:py-24 bg-background">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
               What Our Clients Say
@@ -282,12 +283,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="clients" className="py-12 md:py-24 bg-background">
+        <section id="clients" className="py-12 md:py-24 bg-card">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
               Our Clientele & Partners
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-6 gap-y-8 items-center">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
               {clients.map((client, index) => (
                 <ClientLogo key={index} client={client} index={index} />
               ))}
@@ -298,3 +299,5 @@ export default function Home() {
     </div>
   )
 };
+
+    
