@@ -288,7 +288,7 @@ export default function Home() {
               Our Clientele & Partners
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-6 gap-y-8 items-center">
-              {clients.slice(0, 18).map((client, index) => (
+              {clients.map((client, index) => (
                 <ClientLogo key={index} client={client} index={index} />
               ))}
             </div>
@@ -298,5 +298,3 @@ export default function Home() {
     </div>
   )
 };
-
-    
