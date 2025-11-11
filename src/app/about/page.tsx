@@ -73,7 +73,7 @@ export default function AboutPage() {
           <div className="order-2 md:order-1">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">A Message from Our Proprietor</h2>
             <blockquote className="max-w-3xl mx-auto">
-              <div className="text-base md:text-lg text-muted-foreground mb-6 space-y-4">
+              <div className="text-base md:text-lg text-muted-foreground mb-6 space-y-4 text-justify">
                 <p>“Our journey began with a single commitment: to deliver work that people could trust and to stand by every promise we made.”</p>
                 <p>Akash Enterprises was founded on the belief that quality, safety, and integrity form the true foundation of every successful project. What started as a small, dedicated team has grown into a trusted name in electrical contracting, known for reliability, precision, and a hands-on approach.</p>
                 <p>Over the years, we have had the privilege of powering industries, institutions, and communities. Each project has strengthened our conviction that excellence is achieved through discipline, teamwork, and genuine care for our clients and partners.</p>
