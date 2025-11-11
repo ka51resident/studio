@@ -19,27 +19,27 @@ import Logo from "@/components/logo";
 const stats = [
   {
     icon: <Building2 className="h-8 w-8 text-primary" />,
-    value: 15,
+    value: 30,
     label: "Years of Service",
     postfix: "+",
   },
   {
     icon: <Briefcase className="h-8 w-8 text-primary" />,
-    value: 300,
+    value: 750,
     label: "Projects Completed",
     postfix: "+",
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
-    value: 250,
+    value: 350,
     label: "Satisfied Clients",
     postfix: "+",
   },
   {
     icon: <ShieldCheck className="h-8 w-8 text-primary" />,
-    value: 1.5,
+    value: 3,
     label: "Million Safe Man-Hours",
-    postfix: "M+",
+    postfix: "+",
   },
 ];
 
@@ -186,10 +186,10 @@ export default function Home() {
             <div className="flex flex-col items-center space-y-6">
               <div className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-700">
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                  Building the Future, One Project at a Time.
+                  Powering Progress with People, Safety and Sustainability
                 </h1>
                 <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
-                  Akash Enterprises is your trusted partner in construction and development, delivering excellence and reliability for over a decade.
+                Akash Enterprises delivers safe, sustainable, and quality-driven power solutions across industrial, commercial, and infrastructure projects built on trust, technical excellence, and over three decades of experience.
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center animate-in fade-in slide-in-from-top-6 duration-700">
@@ -289,7 +289,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
               Our Clientele & Partners
             </h2>
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
               {clients.map((client, index) => (
                 <ClientLogo key={index} client={client} index={index} />
               ))}
@@ -300,9 +300,3 @@ export default function Home() {
     </div>
   )
 };
-
-    
-
-    
-
-    
