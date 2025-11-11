@@ -289,7 +289,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
               Our Clientele & Partners
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-6">
               {clients.map((client, index) => (
                 <ClientLogo key={index} client={client} index={index} />
               ))}
@@ -300,6 +300,8 @@ export default function Home() {
     </div>
   )
 };
+
+    
 
     
 
