@@ -149,9 +149,8 @@ function ClientLogo({ client, index }: { client: (typeof clients)[0]; index: num
     <div
       ref={ref}
       className={cn(
-        "flex justify-center items-center p-4 bg-card rounded-lg shadow",
+        "flex justify-center items-center p-4  shadow bg-background",
         "transition-all duration-300 ease-in-out",
-        "opacity-0",
         isInView ? "animate-in fade-in-0 slide-in-from-bottom-4" : ""
       )}
       style={{ animationDelay: `${index * 50}ms` }}
@@ -284,7 +283,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="clients" className="py-12 md:py-24 bg-card">
+        <section id="clients" className="py-12 md:py-24 bg-background">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
               Our Clientele & Partners
