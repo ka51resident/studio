@@ -137,6 +137,36 @@ function StatItem({ stat, index }: { stat: (typeof stats)[0]; index: number }) {
   );
 }
 
+function ClientLogo({ client, index }: { client: (typeof clients)[0]; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const entry = useIntersectionObserver(ref, {
+    freezeOnceVisible: true,
+    threshold: 0.1,
+  });
+  const isInView = !!entry?.isIntersecting;
+
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "flex justify-center items-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
+        isInView ? "animate-in fade-in-0 slide-in-from-bottom-4" : "opacity-0"
+      )}
+      style={{ animationDelay: `${index * 50}ms` }}
+    >
+      <Image
+        src={client.logo}
+        alt={client.name}
+        width={150}
+        height={60}
+        data-ai-hint={client.hint}
+        className="object-contain max-w-full max-h-12"
+        loading="lazy"
+      />
+    </div>
+  );
+}
+
 
 export default function Home() {
     const heroPlugin = React.useRef(
@@ -259,20 +289,7 @@ export default function Home() {
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-6 gap-y-8 items-center">
               {clients.slice(0, 18).map((client, index) => (
-                <div
-                  key={index}
-                  className="flex justify-center items-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                >
-                  <Image
-                    src={client.logo}
-                    alt={client.name}
-                    width={150}
-                    height={60}
-                    data-ai-hint={client.hint}
-                    className="object-contain max-w-full max-h-12"
-                    loading="lazy"
-                  />
-                </div>
+                <ClientLogo key={index} client={client} index={index} />
               ))}
             </div>
           </div>

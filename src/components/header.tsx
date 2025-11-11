@@ -78,7 +78,7 @@ export default function Header() {
           </nav>
         </div>
 
-        <div className="flex grow basis-0 justify-end">
+        <div className="hidden grow basis-0 justify-end md:flex">
           <Button asChild>
             <Link href="/contact">Get a Quote</Link>
           </Button>
