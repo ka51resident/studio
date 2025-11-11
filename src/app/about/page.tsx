@@ -7,7 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const timelineEvents = [
   {
-    year: "2008",
+    year: "1992",
     title: "Foundation",
     description: "Akash Enterprises was founded with a vision to revolutionize the construction industry through quality and innovation.",
     icon: <Flag className="h-5 w-5 text-primary" />,
@@ -46,11 +46,14 @@ export default function AboutPage() {
         <div className="animate-in fade-in slide-in-from-left duration-700">
           <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
           <p className="text-muted-foreground mb-4">
-            Our mission is to deliver superior construction services by consistently improving the quality of our product; to add value for clients through innovation, foresight, integrity, and aggressive performance; and to serve with character and purpose that brings honor to our name.
+          To be the industry’s leading client-focused electrical solution provider, delivering exceptional quality through innovative, sustainable practices, energy conservation, adherence to international standards, and a steadfast commitment to safety.
           </p>
           <h2 className="text-3xl font-bold mb-4">Our Vision</h2>
+        
+          <b>People-Planet-Profit Framework</b><br/>
           <p className="text-muted-foreground">
-            To be the preeminent provider of superior construction services by consistently improving the quality of our product; to add value for clients through innovation, foresight, and integrity.
+           We strive to grow People, Planet, and Profits in balance, creating safe, sustainable, and high-quality electrical infrastructure that serves communities today and empowers generations to come.
+
           </p>
         </div>
         <div className="relative h-96 rounded-lg overflow-hidden shadow-lg animate-in fade-in zoom-in duration-700">
@@ -65,26 +68,31 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mb-24 relative overflow-hidden rounded-lg shadow-xl animate-in fade-in duration-700">
-        <div className="relative h-96">
-          <Image
-            src="https://picsum.photos/seed/handshake/1200/400"
-            alt="A confident handshake"
-            data-ai-hint="happy customer handshake"
-            fill
-            className="object-cover"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8 text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">A Message from Our Proprietor</h2>
-          <blockquote className="max-w-3xl mx-auto">
-            <p className="text-lg md:text-xl italic mb-4">
-              "Building is not just about structures; it's about building trust, relationships, and a better future. Every project is a testament to our commitment to excellence and a promise of reliability to our clients."
-            </p>
-            <cite className="font-semibold not-italic text-primary-foreground/80">- Akash Patel, Founder</cite>
-          </blockquote>
+      <section className="mb-24 bg-card p-8 md:p-12 rounded-lg shadow-xl animate-in fade-in duration-700">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="order-2 md:order-1">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">A Message from Our Proprietor</h2>
+            <blockquote className="max-w-3xl mx-auto">
+              <p className="text-base md:text-lg text-muted-foreground mb-6 space-y-4">
+                <span>“Our journey began with a single commitment: to deliver work that people could trust and to stand by every promise we made.”</span>
+                <span>Akash Enterprises was founded on the belief that quality, safety, and integrity form the true foundation of every successful project. What started as a small, dedicated team has grown into a trusted name in electrical contracting, known for reliability, precision, and a hands-on approach.</span>
+                <span>Over the years, we have had the privilege of powering industries, institutions, and communities. Each project has strengthened our conviction that excellence is achieved through discipline, teamwork, and genuine care for our clients and partners.</span>
+                <span>Today, as the second generation steps in to take this legacy forward, our principles remain unchanged. The next chapter of Akash Enterprises is driven by innovation, sustainability, and a renewed commitment to the people who have always been at the heart of our success: our clients, our employees, and our partners.</span>
+                <span>For us, true success lies in earning our clients’ trust, one project at a time.</span>
+              </p>
+              <cite className="font-semibold not-italic text-primary">- Ravindra Nayak, Proprietor and Founder</cite>
+            </blockquote>
+          </div>
+          <div className="order-1 md:order-2 relative h-80 md:h-full rounded-lg overflow-hidden shadow-lg">
+            <Image
+              src="https://picsum.photos/seed/handshake/600/800"
+              alt="A confident handshake"
+              data-ai-hint="happy customer handshake"
+              fill
+              className="object-cover"
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
 

@@ -45,34 +45,32 @@ const stats = [
 
 const testimonials = [
   {
-    quote: "Akash Enterprises transformed our vision into reality. Their commitment to quality and deadlines is unparalleled. We couldn't be happier with the outcome.",
-    name: "Priya Sharma",
-    title: "CEO, Innovate Solutions",
+    quote: "Akash Enterprises handled our complete HT and LT electrical installation flawlessly. The team’s professionalism, adherence to timelines, and focus on safety were exceptional",
+    name: "Manjushree Technopack Ltd",
   },
   {
-    quote: "The team's professionalism and expertise were evident from day one. They delivered an exceptional product that exceeded all our expectations.",
-    name: "Rohan Gupta",
-    title: "Director, TechCorp",
+    quote: "The quality of work and technical expertise Akash Enterprises brings to every site sets them apart. Their attention to detail and coordination with other contractors ensured seamless execution",
+    name: "Suprajit Engineering Limited",
   },
   {
-    quote: "Working with Akash Enterprises was a seamless experience. Their communication was clear and consistent, making the entire process a breeze.",
-    name: "Anjali Mehta",
-    title: "Founder, Creative Minds",
+    quote: "Electrical safety is critical for hospitals, and Akash Enterprises exceeded our expectations. Their understanding of healthcare systems, conformity to audit standards, and commitment to zero downtime impressed us",
+    name: "Bagchi Sri Shankara Cancer Care & Research Institute",
   },
   {
-    quote: "Akash Enterprises transformed our vision into reality. Their commitment to quality and deadlines is unparalleled. We couldn't be happier with the outcome.",
-    name: "Priya Sharma",
-    title: "CEO, Innovate Solutions",
+    quote: "From design to commissioning, Akash Enterprises demonstrated complete ownership. The lighting and power systems in our hotel were executed with precision and quality workmanship",
+    name: "Marasa Sarovar Premiere, Tirupati",
   },
   {
-    quote: "The team's professionalism and expertise were evident from day one. They delivered an exceptional product that exceeded all our expectations.",
-    name: "Rohan Gupta",
-    title: "Director, TechCorp",
+    quote: "The team at Akash Enterprises is dependable and highly skilled. They worked efficiently in a live office environment with minimal disruption and excellent results",
+    name: "Bosch India",
   },
   {
-    quote: "Working with Akash Enterprises was a seamless experience. Their communication was clear and consistent, making the entire process a breeze.",
-    name: "Anjali Mehta",
-    title: "Founder, Creative Minds",
+    quote: "We’ve partnered with Akash Enterprises on multiple expansion projects. Their consistency in quality and proactive communication make them our preferred electrical contractor",
+    name: "Toyota Kirloskar Motor Limiteda",
+  },
+  {
+    quote: "Akash Enterprises executed the entire electrical scope of our office towers flawlessly. The team maintained quality and safety throughout, earning our full confidence.",
+    name: "MSRDB North Tower",
   },
 ];
 
@@ -149,7 +147,7 @@ function ClientLogo({ client, index }: { client: (typeof clients)[0]; index: num
     <div
       ref={ref}
       className={cn(
-        "flex justify-center items-center p-4  shadow bg-background",
+        "flex justify-center items-center p-4  shadow bg-card",
         "transition-all duration-300 ease-in-out",
         isInView ? "animate-in fade-in-0 slide-in-from-bottom-4" : ""
       )}
@@ -180,7 +178,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="w-full py-12 md:py-20 lg:py-28 bg-background">
+        <section className="w-full py-12 md:py-20 lg:py-28 bg-card">
           <div className="container px-4 md:px-6 text-center">
             <div className="flex flex-col items-center space-y-6">
               <div className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-700">
@@ -229,7 +227,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="stats" className="py-12 md:py-24 bg-card">
+        <section id="stats" className="py-12 md:py-24 bg-background">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
               Our Achievements
@@ -242,7 +240,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="testimonials" className="py-12 md:py-24 bg-background">
+        <section id="testimonials" className="py-12 md:py-24 bg-card">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
               What Our Clients Say
@@ -263,11 +261,7 @@ export default function Home() {
                     <div className="p-1 h-full">
                       <Card className="flex flex-col justify-between p-6 h-full shadow-lg">
                         <div>
-                          <div className="flex mb-2">
-                            {[...Array(5)].map((_, i) => (
-                              <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
-                            ))}
-                          </div>
+                         
                           <p className="text-muted-foreground mb-4">&quot;{testimonial.quote}&quot;</p>
                         </div>
                         <div>
