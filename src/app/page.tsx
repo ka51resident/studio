@@ -151,7 +151,8 @@ function ClientLogo({ client, index }: { client: (typeof clients)[0]; index: num
       className={cn(
         "flex justify-center items-center p-4 bg-card rounded-lg shadow",
         "transition-all duration-300 ease-in-out",
-        isInView ? "animate-in fade-in-0 slide-in-from-bottom-4" : "opacity-0"
+        "opacity-0",
+        isInView ? "animate-in fade-in-0 slide-in-from-bottom-4" : ""
       )}
       style={{ animationDelay: `${index * 50}ms` }}
     >
@@ -299,5 +300,7 @@ export default function Home() {
     </div>
   )
 };
+
+    
 
     
