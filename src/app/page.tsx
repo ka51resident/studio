@@ -266,7 +266,7 @@ export default function Home() {
                         </div>
                         <div>
                           <p className="font-semibold">{testimonial.name}</p>
-                          <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                      
                         </div>
                       </Card>
                     </div>
