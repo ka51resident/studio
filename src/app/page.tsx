@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Briefcase, Building2, ShieldCheck, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -138,11 +138,13 @@ export default function Home() {
     const heroPlugin = React.useRef(
       Autoplay({ delay: 5000, stopOnInteraction: true })
     )
+    const testimonialPlugin = React.useRef(
+      Autoplay({ delay: 5000, stopOnInteraction: true })
+    );
     
     const clientsFirstRow = clients.slice(0, Math.ceil(clients.length / 2));
     const clientsSecondRow = clients.slice(Math.ceil(clients.length / 2));
 
-    const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -214,32 +216,32 @@ export default function Home() {
             <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
               What Our Clients Say
             </h2>
-            <div className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_48px,_black_calc(100%-48px),transparent_100%)]">
-              <ul className="flex items-start justify-center animate-infinite-scroll">
-                {duplicatedTestimonials.map((testimonial, index) => (
-                  <li key={index} className="w-[350px] mx-4 flex-shrink-0">
-                    <Card className="h-full p-6 shadow-lg">
-                      <blockquote className="flex flex-col justify-between h-full">
-                        <p className="text-muted-foreground mb-4 text-lg">“{testimonial.quote}”</p>
-                        <footer className="font-semibold text-right">- {testimonial.name}</footer>
-                      </blockquote>
-                    </Card>
-                  </li>
-                ))}
-              </ul>
-               <ul className="flex items-start justify-center animate-infinite-scroll" aria-hidden="true">
-                {duplicatedTestimonials.map((testimonial, index) => (
-                  <li key={index} className="w-[350px] mx-4 flex-shrink-0">
-                    <Card className="h-full p-6 shadow-lg">
-                      <blockquote className="flex flex-col justify-between h-full">
-                        <p className="text-muted-foreground mb-4 text-lg">“{testimonial.quote}”</p>
-                        <footer className="font-semibold text-right">- {testimonial.name}</footer>
-                      </blockquote>
-                    </Card>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <Carousel
+                plugins={[testimonialPlugin.current]}
+                className="w-full max-w-4xl mx-auto"
+                onMouseEnter={testimonialPlugin.current.stop}
+                onMouseLeave={testimonialPlugin.current.reset}
+                opts={{
+                    loop: true,
+                }}
+            >
+                <CarouselContent>
+                    {testimonials.map((testimonial, index) => (
+                        <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                            <div className="p-1 h-full">
+                                <Card className="h-full p-6 shadow-lg flex flex-col justify-between">
+                                    <blockquote className="flex flex-col justify-between h-full">
+                                        <p className="text-muted-foreground mb-4 text-lg">“{testimonial.quote}”</p>
+                                        <footer className="font-semibold text-right">- {testimonial.name}</footer>
+                                    </blockquote>
+                                </Card>
+                            </div>
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+            </Carousel>
           </div>
         </section>
 
@@ -290,6 +292,3 @@ export default function Home() {
     </div>
   )
 };
-
-    
-    
