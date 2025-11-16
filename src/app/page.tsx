@@ -138,13 +138,11 @@ export default function Home() {
     const heroPlugin = React.useRef(
       Autoplay({ delay: 5000, stopOnInteraction: true })
     )
-    const testimonialsPlugin = React.useRef(
-      Autoplay({ delay: 3000, stopOnInteraction: true })
-    )
     
     const clientsFirstRow = clients.slice(0, Math.ceil(clients.length / 2));
     const clientsSecondRow = clients.slice(Math.ceil(clients.length / 2));
 
+    const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -216,33 +214,32 @@ export default function Home() {
             <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
               What Our Clients Say
             </h2>
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              plugins={[testimonialsPlugin.current]}
-              onMouseEnter={testimonialsPlugin.current.stop}
-              onMouseLeave={testimonialsPlugin.current.reset}
-              className="w-full max-w-4xl mx-auto"
-            >
-              <CarouselContent>
-                {testimonials.map((testimonial, index) => (
-                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                    <div className="p-1 h-full">
-                      <Card className="flex flex-col justify-between p-6 h-full shadow-lg">
-                        <div>
-                          <p className="text-muted-foreground mb-4">&quot;{testimonial.quote}&quot;</p>
-                        </div>
-                        <div>
-                          <p className="font-semibold">{testimonial.name}</p>
-                        </div>
-                      </Card>
-                    </div>
-                  </CarouselItem>
+            <div className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_48px,_black_calc(100%-48px),transparent_100%)]">
+              <ul className="flex items-start justify-center animate-infinite-scroll">
+                {duplicatedTestimonials.map((testimonial, index) => (
+                  <li key={index} className="w-[350px] mx-4 flex-shrink-0">
+                    <Card className="h-full p-6 shadow-lg">
+                      <blockquote className="flex flex-col justify-between h-full">
+                        <p className="text-muted-foreground mb-4 text-lg">“{testimonial.quote}”</p>
+                        <footer className="font-semibold text-right">- {testimonial.name}</footer>
+                      </blockquote>
+                    </Card>
+                  </li>
                 ))}
-              </CarouselContent>
-            </Carousel>
+              </ul>
+               <ul className="flex items-start justify-center animate-infinite-scroll" aria-hidden="true">
+                {duplicatedTestimonials.map((testimonial, index) => (
+                  <li key={index} className="w-[350px] mx-4 flex-shrink-0">
+                    <Card className="h-full p-6 shadow-lg">
+                      <blockquote className="flex flex-col justify-between h-full">
+                        <p className="text-muted-foreground mb-4 text-lg">“{testimonial.quote}”</p>
+                        <footer className="font-semibold text-right">- {testimonial.name}</footer>
+                      </blockquote>
+                    </Card>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
