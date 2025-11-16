@@ -86,7 +86,7 @@ export default function Header() {
 
         <div className="hidden grow basis-0 justify-end md:flex">
           <Button asChild>
-            <Link href="/contact">Get a Quote</Link>
+            <Link href="/contact">Contact Us</Link>
           </Button>
         </div>
       </div>
