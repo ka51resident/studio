@@ -234,12 +234,15 @@ export default function Home() {
                     <div className="p-1 h-full">
                       <Card className="flex flex-col justify-between p-6 h-full shadow-lg">
                         <div>
-                         
+                          <div className="flex gap-0.5 mb-2">
+                              {[...Array(5)].map((_, i) => (
+                                  <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
+                              ))}
+                          </div>
                           <p className="text-muted-foreground mb-4">&quot;{testimonial.quote}&quot;</p>
                         </div>
                         <div>
                           <p className="font-semibold">{testimonial.name}</p>
-                      +
                         </div>
                       </Card>
                     </div>
@@ -297,5 +300,7 @@ export default function Home() {
     </div>
   )
 };
+
+    
 
     
