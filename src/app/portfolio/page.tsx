@@ -103,14 +103,14 @@ const services = [
     content:
       "We design and implement complete electrical systems that support both frontline guest experiences and back-end operations, integrating energy-efficient lighting, automation, and power distribution for 24/7 performance. Our experience includes corporate offices, retail environments, hotels, resorts, education institutions, and mixed-use commercial spaces, all executed to the highest standards of safety and quality.",
     substations: [
-        "Complete electrical wiring and distribution for commercial and hospitality projects",
-        "LT panels, distribution boards, bus ducts, and rising mains",
-        "Lighting design, façade lighting, and ambience-driven illumination",
-        "Backup power systems, UPS solutions, and generator integration",
-        "Smart lighting controls and building management systems",
-        "Cable management, tray systems, and structured electrical layouts",
-        "Earthing and lightning protection systems",
-        "Renovation, retrofitting, and upgrades for running facilities",
+      "Complete electrical wiring and distribution for commercial and hospitality projects",
+      "LT panels, distribution boards, bus ducts, and rising mains",
+      "Lighting design, façade lighting, and ambience-driven illumination",
+      "Backup power systems, UPS solutions, and generator integration",
+      "Smart lighting controls and building management systems",
+      "Cable management, tray systems, and structured electrical layouts",
+      "Earthing and lightning protection systems",
+      "Renovation, retrofitting, and upgrades for running facilities",
     ],
   },
   {
@@ -161,13 +161,13 @@ const services = [
     content:
       "Our ELV solutions are engineered for reliability, scalability, and compliance, ensuring your facility remains secure and future-ready.",
     substations: [
-        "Structured cabling and data networks",
-        "Access control and biometric systems",
-        "CCTV surveillance and monitoring solutions",
-        "Public address and voice evacuation systems",
-        "Fire alarm systems and detection equipment",
-        "Building automation and integrated control systems",
-        "Server rooms, racks, and IT infrastructure support"
+      "Structured cabling and data networks",
+      "Access control and biometric systems",
+      "CCTV surveillance and monitoring solutions",
+      "Public address and voice evacuation systems",
+      "Fire alarm systems and detection equipment",
+      "Building automation and integrated control systems",
+      "Server rooms, racks, and IT infrastructure support",
     ],
   },
   {
@@ -189,13 +189,13 @@ const services = [
     content:
       "Through detailed analysis and targeted improvements, we help you optimize energy consumption, prevent downtime, and extend the life of your electrical assets.",
     substations: [
-        "Energy audits and efficiency assessments",
-        "Power quality analysis and harmonic studies",
-        "Preventive and predictive maintenance programs",
-        "Thermal imaging and hot spot detection",
-        "System retrofitting and lifecycle upgrades",
-        "Load studies and optimization strategies",
-        "Advisory services for compliance and standardization",
+      "Energy audits and efficiency assessments",
+      "Power quality analysis and harmonic studies",
+      "Preventive and predictive maintenance programs",
+      "Thermal imaging and hot spot detection",
+      "System retrofitting and lifecycle upgrades",
+      "Load studies and optimization strategies",
+      "Advisory services for compliance and standardization",
     ],
   },
 ];
@@ -253,13 +253,13 @@ export default function ServicesPage() {
                             <h3 className="font-bold text-xl mb-4">
                               Scope of Services
                             </h3>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                            <div className="flex flex-wrap gap-3">
                               {service.substations.map((item, index) => (
                                 <div
                                   key={index}
-                                  className="flex items-center gap-3 bg-muted/50 p-3 rounded-lg"
+                                  className="flex items-center gap-2 bg-muted/50 py-2 px-3 rounded-full"
                                 >
-                                  <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
+                                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
                                   <span className="font-medium text-sm">
                                     {item}
                                   </span>
