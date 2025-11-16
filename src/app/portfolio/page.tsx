@@ -85,33 +85,42 @@ const services = [
     ],
   },
   {
-    id: "commercial-residential",
-    title: "Commercial & Residential",
+    id: "commercial-hospitality",
+    title: "Commercial & Hospitality",
     icon: <Building className="h-6 w-6" />,
     images: [
       {
         src: "https://picsum.photos/seed/commercial1/800/600",
-        hint: "modern apartment building",
+        hint: "modern office building",
       },
       {
         src: "https://picsum.photos/seed/commercial2/800/600",
-        hint: "office building exterior",
+        hint: "hotel lobby interior",
       },
     ],
     description:
-      "Tailored electrical services for commercial buildings and residential properties, focusing on safety, aesthetics, and modern conveniences.",
+      "Akash Enterprises delivers specialized electrical solutions for commercial and hospitality environments, ensuring safety, functionality, and an elevated user experience. We understand the unique demands of offices, retail spaces, hotels, and resorts, where reliability, aesthetics, and seamless operations are critical.",
     content:
-      "From office buildings and retail spaces to multi-family homes and custom residences, we provide complete electrical wiring, lighting design, smart home integration, and energy-efficient solutions. Our goal is to create safe, comfortable, and functional environments for work and living.",
-    substations: [],
+      "We design and implement complete electrical systems that support both frontline guest experiences and back-end operations, integrating energy-efficient lighting, automation, and power distribution for 24/7 performance. Our experience includes corporate offices, retail environments, hotels, resorts, education institutions, and mixed-use commercial spaces, all executed to the highest standards of safety and quality.",
+    substations: [
+        "Complete electrical wiring and distribution for commercial and hospitality projects",
+        "LT panels, distribution boards, bus ducts, and rising mains",
+        "Lighting design, façade lighting, and ambience-driven illumination",
+        "Backup power systems, UPS solutions, and generator integration",
+        "Smart lighting controls and building management systems",
+        "Cable management, tray systems, and structured electrical layouts",
+        "Earthing and lightning protection systems",
+        "Renovation, retrofitting, and upgrades for running facilities",
+    ],
   },
   {
-    id: "healthcare-hospitality",
-    title: "Healthcare & Hospitality",
+    id: "healthcare",
+    title: "Healthcare",
     icon: <Hospital className="h-6 w-6" />,
     images: [
       {
         src: "https://picsum.photos/seed/hospitality1/800/600",
-        hint: "hotel lobby",
+        hint: "modern hospital exterior",
       },
       {
         src: "https://picsum.photos/seed/hospitality2/800/600",
