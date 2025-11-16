@@ -135,37 +135,6 @@ function StatItem({ stat, index }: { stat: (typeof stats)[0]; index: number }) {
   );
 }
 
-function ClientLogo({ client, index }: { client: (typeof clients)[0]; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const entry = useIntersectionObserver(ref, {
-    freezeOnceVisible: true,
-    threshold: 0.1,
-  });
-  const isInView = !!entry?.isIntersecting;
-
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "flex justify-center items-center p-4  shadow bg-card",
-        "transition-all duration-300 ease-in-out",
-        isInView ? "animate-in fade-in-0 slide-in-from-bottom-4" : ""
-      )}
-      style={{ animationDelay: `${index * 50}ms` }}
-    >
-      <Image
-        src={client.logo}
-        alt={client.name}
-        width={150}
-        height={60}
-        data-ai-hint={client.hint}
-        className="object-contain max-w-full max-h-12"
-        loading="lazy"
-      />
-    </div>
-  );
-}
-
 
 export default function Home() {
     const heroPlugin = React.useRef(
@@ -174,6 +143,10 @@ export default function Home() {
     const testimonialsPlugin = React.useRef(
       Autoplay({ delay: 3000, stopOnInteraction: true })
     )
+    
+    const clientsFirstRow = clients.slice(0, Math.ceil(clients.length / 2));
+    const clientsSecondRow = clients.slice(Math.ceil(clients.length / 2));
+
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -278,18 +251,51 @@ export default function Home() {
         </section>
 
         <section id="clients" className="py-12 md:py-24 bg-background">
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
-              Our Clientele & Partners
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              {clients.map((client, index) => (
-                <ClientLogo key={index} client={client} index={index} />
-              ))}
+            <div className="container px-4 md:px-6">
+                <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl mb-12">
+                    Our Clientele & Partners
+                </h2>
+                <div 
+                    className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]"
+                >
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
+                        {clientsFirstRow.map((client) => (
+                            <li key={client.name}>
+                                <Image src={client.logo} alt={client.name} data-ai-hint={client.hint} width={150} height={60} className="object-contain max-h-12"/>
+                            </li>
+                        ))}
+                    </ul>
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
+                        {clientsFirstRow.map((client) => (
+                            <li key={client.name}>
+                                <Image src={client.logo} alt={client.name} data-ai-hint={client.hint} width={150} height={60} className="object-contain max-h-12"/>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                 <div 
+                    className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] mt-8"
+                >
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll-reverse">
+                        {clientsSecondRow.map((client) => (
+                            <li key={client.name}>
+                                <Image src={client.logo} alt={client.name} data-ai-hint={client.hint} width={150} height={60} className="object-contain max-h-12"/>
+                            </li>
+                        ))}
+                    </ul>
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll-reverse" aria-hidden="true">
+                        {clientsSecondRow.map((client) => (
+                            <li key={client.name}>
+                                <Image src={client.logo} alt={client.name} data-ai-hint={client.hint} width={150} height={60} className="object-contain max-h-12"/>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
-          </div>
         </section>
       </main>
     </div>
   )
 };
+
+    

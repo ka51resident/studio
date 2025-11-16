@@ -1,3 +1,4 @@
+
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -104,14 +105,22 @@ export default {
             opacity: '1',
             transform: 'translateY(0) scale(1)',
           }
-        }
+        },
+        'infinite-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'jumble-in': 'jumble-in 0.6s ease-out forwards',
+        'infinite-scroll': 'infinite-scroll 40s linear infinite',
+        'infinite-scroll-reverse': 'infinite-scroll 40s linear infinite reverse',
       },
     },
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
+
+    
