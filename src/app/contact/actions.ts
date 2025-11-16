@@ -1,13 +1,14 @@
+
 "use server";
 
 import * as z from "zod";
 import nodemailer from "nodemailer";
 
 const formSchema = z.object({
-  name: z.string().min(2),
+  name: z.string().min(1),
   email: z.string().email(),
-  subject: z.string().min(5),
-  message: z.string().min(10),
+  subject: z.string().min(1),
+  message: z.string().min(1),
   gRecaptchaToken: z.string(),
 });
 
@@ -70,12 +71,38 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     to: process.env.CONTACT_FORM_RECIPIENT_EMAIL,
     subject: `Contact Form: ${subject}`,
     html: `
-      <h2>New Contact Form Submission</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Subject:</strong> ${subject}</p>
-      <p><strong>Message:</strong></p>
-      <p>${message.replace(/\n/g, '<br>')}</p>
+      <div style="font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 20px auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <div style="background-color: hsl(16, 89%, 53%); color: #ffffff; padding: 20px; text-align: center;">
+          <h2 style="margin: 0; font-size: 24px;">New Contact Form Submission</h2>
+        </div>
+        <div style="padding: 24px;">
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 12px 0; font-weight: bold; color: #555; width: 120px; vertical-align: top;">Name:</td>
+              <td style="padding: 12px 0;">${name}</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 12px 0; font-weight: bold; color: #555; width: 120px; vertical-align: top;">Email:</td>
+              <td style="padding: 12px 0;">
+                <a href="mailto:${email}" style="color: hsl(16, 89%, 53%); text-decoration: none;">${email}</a>
+              </td>
+            </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 12px 0; font-weight: bold; color: #555; width: 120px; vertical-align: top;">Subject:</td>
+              <td style="padding: 12px 0;">${subject}</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px 0; font-weight: bold; color: #555; width: 120px; vertical-align: top;">Message:</td>
+              <td style="padding: 12px 0;">
+                <div style="white-space: pre-wrap; background-color: #f9f9f9; border-radius: 4px; padding: 12px;">${message.replace(/\n/g, '<br>')}</div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div style="background-color: #f7f7f7; padding: 12px; text-align: center; font-size: 12px; color: #888;">
+          This email was sent from the contact form on your website.
+        </div>
+      </div>
     `,
   };
 
