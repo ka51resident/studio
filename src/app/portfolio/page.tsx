@@ -69,10 +69,20 @@ const services = [
       },
     ],
     description:
-      "Comprehensive electrical solutions for industrial facilities, ensuring safety, efficiency, and reliability for all your manufacturing and operational needs.",
+      "Akash Enterprises delivers comprehensive electrical solutions for industrial facilities, ensuring safety, efficiency, and long-term reliability. We support new industrial developments as well as system upgrades, helping manufacturers maintain uninterrupted operations and meet evolving industry standards.",
     content:
-      "We specialize in providing robust electrical systems for new industrial constructions and upgrades. Our services cover everything from power distribution and motor control centers to automated systems and hazardous location wiring, ensuring your facility meets all industry standards and operates at peak performance.",
-    substations: [],
+      "Our expertise spans power distribution, control systems, automation, and specialized installations for challenging industrial environments. Every solution is engineered with precision so your facility operates at peak performance while maintaining compliance and safety. Our experience across automotive, aerospace, FMCG, pharmaceuticals, engineering, packaging, and textiles ensures each project is executed with industry-specific understanding and best practices.",
+    substations: [
+      "Industrial power distribution systems",
+      "Motor Control Centers (MCC) and Power Control Centers (PCC)",
+      "HT and LT panel installation and integration",
+      "Process automation and control wiring",
+      "Hazardous area electrical works and flameproof installations",
+      "Cable routing, tray systems, and earthing networks",
+      "Machine power connectivity and equipment upgrades",
+      "Energy-efficient solutions and power factor improvement",
+      "Preventive and breakdown maintenance support",
+    ],
   },
   {
     id: "commercial-residential",
@@ -207,7 +217,7 @@ export default function ServicesPage() {
                         service.substations.length > 0 && (
                           <div className="mt-8">
                             <h3 className="font-bold text-xl mb-4">
-                              Specialized Installations
+                              Scope of Services
                             </h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
                               {service.substations.map((item, index) => (
