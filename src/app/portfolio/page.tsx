@@ -115,7 +115,7 @@ const services = [
   },
   {
     id: "healthcare",
-    title: "Healthcare",
+    title: "Healthcare & Pharmaceutical",
     icon: <Hospital className="h-6 w-6" />,
     images: [
       {
@@ -128,10 +128,19 @@ const services = [
       },
     ],
     description:
-      "Specialized electrical systems for healthcare and hospitality sectors, meeting stringent regulatory requirements and ensuring guest and patient safety.",
+      "Akash Enterprises delivers specialized electrical solutions for healthcare and pharmaceutical environments where safety, reliability, and regulatory compliance are critical. These facilities demand uninterrupted power, precise environmental control, and infrastructure that supports both patient care and process integrity.",
     content:
-      "We understand the critical nature of electrical systems in hospitals, clinics, and hotels. We provide reliable power, life-safety systems, nurse call stations, and sophisticated lighting and energy management systems designed for 24/7 operation and the comfort of your guests and patients.",
-    substations: [],
+      "We design and implement electrical systems that support continuous operation, audit readiness, sterile environments, and enhanced safety for patients, staff, and technical teams. Our experience in high-dependency and process-critical areas ensures that every installation meets stringent healthcare and pharmaceutical standards. Our solutions are designed to maintain sterile conditions, ensure process reliability, and safeguard patient care. We work closely with facility teams, consultants, and auditors to deliver electrical systems that operate flawlessly in demanding 24/7 environments.",
+    substations: [
+      "Electrical systems for hospitals, clinics, laboratories, and pharmaceutical plants",
+      "HT and LT distribution systems for critical and non-critical zones",
+      "Life safety systems including fire alarm, emergency lighting, and evacuation support",
+      "Nurse call systems, medical-grade wiring, and isolated power systems",
+      "Cleanroom electrical installations and process-critical cabling",
+      "Power integration for HVAC, chillers, AHUs, and specialized medical equipment",
+      "Energy management systems and high-efficiency lighting",
+      "Compliance support for audits and statutory requirements",
+    ],
   },
   {
     id: "elv",
