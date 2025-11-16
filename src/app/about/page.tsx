@@ -57,13 +57,13 @@ export default function AboutPage() {
       <section className="grid md:grid-cols-2 gap-12 items-center mb-24">
         <div className="animate-in fade-in slide-in-from-left duration-700">
           <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
-          <p className="text-muted-foreground mb-4">
+          <p className="text-muted-foreground mb-4 text-justify">
           To be the industry’s leading client-focused electrical solution provider, delivering exceptional quality through innovative, sustainable practices, energy conservation, adherence to international standards, and a steadfast commitment to safety.
           </p>
           <h2 className="text-3xl font-bold mb-4">Our Vision</h2>
         
           <b>People-Planet-Profit Framework</b><br/>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground text-justify">
            We strive to grow People, Planet, and Profits in balance, creating safe, sustainable, and high-quality electrical infrastructure that serves communities today and empowers generations to come.
 
           </p>
