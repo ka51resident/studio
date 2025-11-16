@@ -4,16 +4,14 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import { Briefcase, Building2, ShieldCheck, Star, Users } from "lucide-react";
+import { Briefcase, Building2, ShieldCheck, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
-import React, { useMemo, useRef, useState } from "react";
+import React, { useRef } from "react";
 import AnimatedCounter from "@/components/animated-counter";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
-import Logo from "@/components/logo";
 
 
 const stats = [
@@ -234,11 +232,6 @@ export default function Home() {
                     <div className="p-1 h-full">
                       <Card className="flex flex-col justify-between p-6 h-full shadow-lg">
                         <div>
-                          <div className="flex gap-0.5 mb-2">
-                              {[...Array(5)].map((_, i) => (
-                                  <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
-                              ))}
-                          </div>
                           <p className="text-muted-foreground mb-4">&quot;{testimonial.quote}&quot;</p>
                         </div>
                         <div>
@@ -300,7 +293,5 @@ export default function Home() {
     </div>
   )
 };
-
-    
 
     
