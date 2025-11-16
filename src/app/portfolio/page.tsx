@@ -253,11 +253,11 @@ export default function ServicesPage() {
                             <h3 className="font-bold text-xl mb-4">
                               Scope of Services
                             </h3>
-                            <div className="flex flex-wrap gap-3">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
                               {service.substations.map((item, index) => (
                                 <div
                                   key={index}
-                                  className="flex items-center gap-2 bg-muted/50 py-2 px-3 rounded-full"
+                                  className="flex items-center gap-2 bg-muted/50 p-3 rounded-lg"
                                 >
                                   <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
                                   <span className="font-medium text-sm">
