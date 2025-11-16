@@ -171,8 +171,8 @@ const services = [
     ],
   },
   {
-    id: "value-added",
-    title: "Value Added Services",
+    id: "value-engineering",
+    title: "Value Engineering",
     icon: <Gem className="h-6 w-6" />,
     images: [
       {
@@ -185,10 +185,18 @@ const services = [
       },
     ],
     description:
-      "Beyond standard installations, we offer services that enhance the longevity, efficiency, and reliability of your electrical infrastructure.",
+      "Akash Enterprises offers value engineering services that enhance the performance, efficiency, and longevity of your electrical infrastructure. Our goal is to help clients reduce operational costs, improve system reliability, and achieve long-term sustainability without compromising quality or safety.",
     content:
-      "Our value-added services include energy audits, power quality analysis, preventative maintenance programs, thermal imaging, and retrofitting of existing systems. We help you optimize energy consumption, prevent downtime, and extend the life of your electrical assets.",
-    substations: [],
+      "Through detailed analysis and targeted improvements, we help you optimize energy consumption, prevent downtime, and extend the life of your electrical assets.",
+    substations: [
+        "Energy audits and efficiency assessments",
+        "Power quality analysis and harmonic studies",
+        "Preventive and predictive maintenance programs",
+        "Thermal imaging and hot spot detection",
+        "System retrofitting and lifecycle upgrades",
+        "Load studies and optimization strategies",
+        "Advisory services for compliance and standardization",
+    ],
   },
 ];
 
