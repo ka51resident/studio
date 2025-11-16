@@ -86,7 +86,7 @@ const services = [
   },
   {
     id: "commercial-hospitality",
-    title: "Commercial & Hospitality",
+    title: "Commercial & Hospitality Electrification",
     icon: <Building className="h-6 w-6" />,
     images: [
       {
@@ -115,7 +115,7 @@ const services = [
   },
   {
     id: "healthcare",
-    title: "Healthcare & Pharmaceutical",
+    title: "Healthcare & Pharmaceutical Electrification",
     icon: <Hospital className="h-6 w-6" />,
     images: [
       {
@@ -157,10 +157,18 @@ const services = [
       },
     ],
     description:
-      "Design and installation of Extra-Low Voltage (ELV) systems for modern communication, security, and building automation.",
+      "Akash Enterprises provides complete design and installation of Extra Low Voltage (ELV) systems that support modern communication, security, and building automation needs. Our integrated approach ensures that all ELV systems work together seamlessly to enhance safety, connectivity, and operational efficiency.",
     content:
-      "Our ELV services include structured cabling, access control, CCTV, public address systems, and fire alarm systems. We integrate these critical systems to enhance the safety, security, and connectivity of your facility, all while ensuring seamless operation.",
-    substations: [],
+      "Our ELV solutions are engineered for reliability, scalability, and compliance, ensuring your facility remains secure and future-ready.",
+    substations: [
+        "Structured cabling and data networks",
+        "Access control and biometric systems",
+        "CCTV surveillance and monitoring solutions",
+        "Public address and voice evacuation systems",
+        "Fire alarm systems and detection equipment",
+        "Building automation and integrated control systems",
+        "Server rooms, racks, and IT infrastructure support"
+    ],
   },
   {
     id: "value-added",
