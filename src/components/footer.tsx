@@ -1,7 +1,5 @@
-import { Twitter, Linkedin, Facebook } from 'lucide-react';
 import Link from 'next/link';
 import Logo from './logo';
-import { Button } from './ui/button';
 import Image from 'next/image';
 import certificationLogo from './certification.jpg';
 import { PrivacyPolicyModal } from './privacy-policy-modal';
@@ -10,7 +8,7 @@ export default function Footer() {
   return (
     <footer className="border-t bg-card">
       <div className="container py-8">
-        <div className="grid gap-8 md:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-3">
           <div className="space-y-4">
             <Logo width={150} height={48} />
             <p className="text-sm text-muted-foreground">
@@ -26,26 +24,6 @@ export default function Footer() {
               <li><Link href="/qhsc-policy" className="text-sm text-muted-foreground hover:text-primary">QHSE Policy</Link></li>
               <li><Link href="/contact" className="text-sm text-muted-foreground hover:text-primary">Contact</Link></li>
             </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-4">Connect With Us</h3>
-            <div className="flex space-x-4">
-              <Button variant="outline" size="icon" asChild>
-                <Link href="#" aria-label="Twitter">
-                  <Twitter className="h-4 w-4" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="icon" asChild>
-                <Link href="#" aria-label="LinkedIn">
-                  <Linkedin className="h-4 w-4" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="icon" asChild>
-                <Link href="#" aria-label="Facebook">
-                  <Facebook className="h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
           </div>
           <div>
             <h3 className="font-semibold mb-4">Our Certifications</h3>

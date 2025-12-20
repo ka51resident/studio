@@ -2,16 +2,24 @@
   "services": {
     "eht-ht-lt": [
       {
-        "src": "/services/eht-ht-lt/1.png",
-        "hint": "electrical substation"
+        "src": "/services/eht-ht-lt/1.JPG",
+        "hint": ""
       },
       {
-        "src": "/services/eht-ht-lt/2.png",
-        "hint": "power lines"
+        "src": "/services/eht-ht-lt/2.jpg",
+        "hint": ""
       },
       {
-        "src": "/services/eht-ht-lt/3.png",
-        "hint": "transformer station"
+        "src": "/services/eht-ht-lt/3.jpg",
+        "hint": ""
+      },
+      {
+        "src": "/services/eht-ht-lt/4.jpg",
+        "hint": ""
+      },
+      {
+        "src": "/services/eht-ht-lt/5.jpg",
+        "hint": ""
       }
     ],
     "industrial": [
