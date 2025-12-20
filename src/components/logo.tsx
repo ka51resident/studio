@@ -8,8 +8,8 @@ export default function Logo() {
       <Image
         src={logo}
         alt="Akash Enterprises Logo"
-        width={200}
-        height={64}
+        width={160}
+        height={51}
         className="text-primary"
         priority
       />

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Logo from './logo';
 import { Button } from './ui/button';
 import Image from 'next/image';
-// import certificationLogo from './certification.png';
+import certificationLogo from './certification.jpg';
 
 export default function Footer() {
   return (
@@ -48,7 +48,7 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="font-semibold mb-4">Our Certifications</h3>
-            {/* 
+            
             <Image 
                 src={certificationLogo}
                 alt="TÜV NORD Certification" 
@@ -56,7 +56,7 @@ export default function Footer() {
                 height={150}
                 className="rounded-md"
             />
-            */}
+            
           </div>
         </div>
         <div className="mt-8 border-t pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">

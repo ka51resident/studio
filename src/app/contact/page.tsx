@@ -8,15 +8,15 @@ import { Separator } from "@/components/ui/separator";
 
 const officeLocations = [
   {
-    title: "Head Office",
+    title: "HEAD OFFICE",
     address: " <b>ANNA</b> Complex, 4th Floor,# 430, Hennagara Gate, Bommasandra Indl. Area, Hosur Road, Bangalore - 560 099",
   },
   {
-    title: "Regional Office (North)",
+    title: "BIDADI",
     address: " # 391 / 468, <b>Shreya Complex</b> Bidadi Indl. Area Main Road, Medanahalli Village, Bidadi Hobli, Ramanagara Dist. Bangalore - 562 109.",
   },
   {
-    title: "Odisha Office",
+    title: "ODISHA",
     address: "Ramachandrapur Bazar, PO Jatni, PS Jatni, Khordha District - 752050",
   }
 ];
