@@ -68,14 +68,14 @@ export default function AboutPage() {
 
           </p>
         </div>
-        <div className="relative rounded-lg overflow-hidden shadow-lg animate-in fade-in zoom-in duration-700">
+        <div className="relative rounded-lg overflow-hidden shadow-lg animate-in fade-in zoom-in duration-700 flex justify-center items-center">
           <Image
             src="/OVOM.png"
             alt="Our team"
             data-ai-hint="construction team meeting"
-            width={600}
-            height={400}
-            className="object-cover w-full h-auto"
+            width={300}
+            height={200}
+            className="object-cover w-full h-auto max-w-[300px]"
             loading="lazy"
           />
         </div>
