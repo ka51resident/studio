@@ -75,7 +75,7 @@ export default function AboutPage() {
             data-ai-hint="construction team meeting"
             width={300}
             height={200}
-            className="object-cover w-full h-auto max-w-[300px]"
+            className="object-contain w-full h-auto max-w-[300px]"
             loading="lazy"
           />
         </div>
