@@ -126,9 +126,9 @@ export default function Home() {
 
     useEffect(() => {
         const clientLogos = [
-            '1.png', '2.png', '3.jpg', '4.png', '5.png', '6.jpeg',
-            '7.jpg', '8.png', '9.png', '10.png', '11.png',
-            '12.png', '14.png','15.jpeg', '16.png','17.png','18.jpg','19.png'
+            '1.png', '2.png', '3.png', '4.png', '5.png', '6.png',
+            '7.png', '8.png', '9.png', '10.png', '11.png',
+            '12.png', '13.png','14.png', '15.png','16.png','17.png','18.png'
         ].map(fileName => ({
             name: fileName.split('.')[0].replace(/(\d+)$/, ' $1').split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
             logo: `/clients/${fileName}`
