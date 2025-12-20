@@ -4,6 +4,7 @@ import Logo from './logo';
 import { Button } from './ui/button';
 import Image from 'next/image';
 import certificationLogo from './certification.jpg';
+import { PrivacyPolicyModal } from './privacy-policy-modal';
 
 export default function Footer() {
   return (
@@ -62,7 +63,7 @@ export default function Footer() {
         <div className="mt-8 border-t pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Akash Enterprises. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <Link href="#" className="hover:text-primary">Privacy Policy</Link>
+            <PrivacyPolicyModal />
             <Link href="#" className="hover:text-primary">Terms of Service</Link>
           </div>
         </div>
