@@ -40,6 +40,7 @@ export default function Footer() {
         </div>
         <div className="mt-8 border-t pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Akash Enterprises. All rights reserved.</p>
+          <p>Designed and Developed by AE.Labs</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <PrivacyPolicyModal />
             <Link href="#" className="hover:text-primary">Terms of Service</Link>
