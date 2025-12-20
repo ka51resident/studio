@@ -134,9 +134,10 @@ export default function Home() {
         setClients(clientLogos);
 
         const images = [
-            { src: "/hero/1.jpg", alt: "Modern architecture", hint: "modern architecture" },
-            { src: "/hero/2.jpg", alt: "Construction site", hint: "construction site" },
-            { src: "/hero/3.jpg", alt: "Finished project", hint: "luxury home" },
+            { src: "/Hero1.png", alt: "Modern architecture", hint: "modern architecture" },
+            { src: "/Hero2.png", alt: "Construction site", hint: "construction site" },
+            { src: "/Hero3.png", alt: "Finished project", hint: "luxury home" },
+            { src: "/Hero4.png", alt: "Finished project", hint: "luxury home" },
         ];
         setHeroImages(images);
 
@@ -292,6 +293,8 @@ export default function Home() {
     </div>
   )
 };
+
+    
 
     
 
