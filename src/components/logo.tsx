@@ -4,7 +4,7 @@ import logo from './logo.png';
 
 export default function Logo() {
   return (
-    <Link href="/" className="flex items-center space-x-2" aria-label="Akash Enterprises Home">
+    <Link href="/" className="flex items-center space-x-2 py-2" aria-label="Akash Enterprises Home">
       <Image
         src={logo}
         alt="Akash Enterprises Logo"

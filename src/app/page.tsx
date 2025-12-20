@@ -8,7 +8,7 @@ import { Briefcase, Building2, ShieldCheck, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import AnimatedCounter from "@/components/animated-counter";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { cn } from "@/lib/utils";
@@ -72,26 +72,6 @@ const testimonials = [
   },
 ];
 
-const clients = [
-    { name: "Innovate Solutions", logo: "https://picsum.photos/seed/logo1/150/60", hint: "tech logo" },
-    { name: "TechCorp", logo: "https://picsum.photos/seed/logo2/150/60", hint: "corporate logo" },
-    { name: "Creative Minds", logo: "https://picsum.photos/seed/logo3/150/60", hint: "design logo" },
-    { name: "Global Ventures", logo: "https://picsum.photos/seed/logo4/150/60", hint: "global logo" },
-    { name: "NextGen Industries", logo: "https://picsum.photos/seed/logo5/150/60", hint: "industrial logo" },
-    { name: "Apex Group", logo: "https://picsum.photos/seed/logo6/150/60", hint: "business logo" },
-    { name: "Marquee Motors", logo: "https://picsum.photos/seed/auto1/150/60", hint: "car logo" },
-    { name: "PharmaCure", logo: "https://picsum.photos/seed/pharma1/150/60", hint: "pharma logo" },
-    { name: "Starlight Hotels", logo: "https://picsum.photos/seed/hotel1/150/60", hint: "hotel logo" },
-    { name: "Reliance Industries", logo: "https://picsum.photos/seed/reliance/150/60", hint: "industrial logo" },
-    { name: "L&T Construction", logo: "https://picsum.photos/seed/lnt/150/60", hint: "construction logo" },
-    { name: "Tata Projects", logo: "https://picsum.photos/seed/tata/150/60", hint: "corporate logo" },
-    { name: "JSW Group", logo: "https://picsum.photos/seed/jsw/150/60", hint: "steel logo" },
-    { name: "Adani Group", logo: "https://picsum.photos/seed/adani/150/60", hint: "corporate logo" },
-    { name: "Shapoorji Pallonji", logo: "https://picsum.photos/seed/shapoorji/150/60", hint: "construction logo" },
-    { name: "AeroSpace Dynamics", logo: "https://picsum.photos/seed/aero/150/60", hint: "aerospace logo" },
-];
-
-
 const heroImages = [
     { src: "https://picsum.photos/seed/hero1/1200/600", alt: "Modern architecture", hint: "modern architecture" },
     { src: "https://picsum.photos/seed/hero2/1200/600", alt: "Construction site", hint: "construction site" },
@@ -141,7 +121,21 @@ export default function Home() {
     const testimonialPlugin = React.useRef(
       Autoplay({ delay: 5000, stopOnInteraction: true })
     );
-    
+
+    const [clients, setClients] = useState<{name: string, logo: string}[]>([]);
+
+    useEffect(() => {
+        const clientLogos = [
+            'logo1.png', 'logo2.png', 'logo3.png', 'logo4.png', 'logo5.png', 'logo6.png',
+            'auto1.png', 'pharma1.png', 'hotel1.png', 'reliance.png', 'lnt.png',
+            'tata.png', 'jsw.png', 'adani.png', 'shapoorji.png', 'aero.png'
+        ].map(fileName => ({
+            name: fileName.split('.')[0].replace(/(\d+)$/, ' $1').split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
+            logo: `/clients/${fileName}`
+        }));
+        setClients(clientLogos);
+    }, []);
+
     const clientsFirstRow = clients.slice(0, Math.ceil(clients.length / 2));
     const clientsSecondRow = clients.slice(Math.ceil(clients.length / 2));
 
@@ -234,7 +228,7 @@ export default function Home() {
                                         <p className="text-muted-foreground mb-4 text-lg">“{testimonial.quote}”</p>
                                         <footer className="font-semibold text-right">- {testimonial.name}</footer>
                                     </blockquote>
-                                </Card>
+                                 </Card>
                             </div>
                         </CarouselItem>
                     ))}
@@ -256,14 +250,14 @@ export default function Home() {
                     <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
                         {clientsFirstRow.map((client) => (
                             <li key={client.name}>
-                                <Image src={client.logo} alt={client.name} data-ai-hint={client.hint} width={150} height={60} className="object-contain max-h-12"/>
+                                <Image src={client.logo} alt={client.name} width={150} height={60} className="object-contain max-h-12" loading="lazy" />
                             </li>
                         ))}
                     </ul>
                     <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
                         {clientsFirstRow.map((client) => (
                             <li key={client.name}>
-                                <Image src={client.logo} alt={client.name} data-ai-hint={client.hint} width={150} height={60} className="object-contain max-h-12"/>
+                                <Image src={client.logo} alt={client.name} width={150} height={60} className="object-contain max-h-12" loading="lazy" />
                             </li>
                         ))}
                     </ul>
@@ -274,14 +268,14 @@ export default function Home() {
                     <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll-reverse">
                         {clientsSecondRow.map((client) => (
                             <li key={client.name}>
-                                <Image src={client.logo} alt={client.name} data-ai-hint={client.hint} width={150} height={60} className="object-contain max-h-12"/>
+                                <Image src={client.logo} alt={client.name} width={150} height={60} className="object-contain max-h-12" loading="lazy" />
                             </li>
                         ))}
                     </ul>
                     <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll-reverse" aria-hidden="true">
                         {clientsSecondRow.map((client) => (
                             <li key={client.name}>
-                                <Image src={client.logo} alt={client.name} data-ai-hint={client.hint} width={150} height={60} className="object-contain max-h-12"/>
+                                <Image src={client.logo} alt={client.name} width={150} height={60} className="object-contain max-h-12" loading="lazy" />
                             </li>
                         ))}
                     </ul>
@@ -292,3 +286,7 @@ export default function Home() {
     </div>
   )
 };
+
+    
+
+    
