@@ -72,12 +72,6 @@ const testimonials = [
   },
 ];
 
-const heroImages = [
-    { src: "https://picsum.photos/seed/hero1/1200/600", alt: "Modern architecture", hint: "modern architecture" },
-    { src: "https://picsum.photos/seed/hero2/1200/600", alt: "Construction site", hint: "construction site" },
-    { src: "https://picsum.photos/seed/hero3/1200/600", alt: "Finished project", hint: "luxury home" },
-]
-
 function StatItem({ stat, index }: { stat: (typeof stats)[0]; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const entry = useIntersectionObserver(ref, {
@@ -123,8 +117,12 @@ export default function Home() {
     );
 
     const [clients, setClients] = useState<{name: string, logo: string}[]>([]);
+    const [heroImages, setHeroImages] = useState<{ src: string; alt: string; hint: string }[]>([]);
 
     useEffect(() => {
+        // Since this is a client component, we can't use fs.
+        // We'll hardcode the list of images we know exist in public/clients.
+        // A better approach in a real app would be to have an API endpoint that returns this list.
         const clientLogos = [
             '1.png', '2.png', '3.png', '4.png', '5.png', '6.png',
             '7.png', '8.png', '9.png', '10.png', '11.png',
@@ -134,6 +132,14 @@ export default function Home() {
             logo: `/clients/${fileName}`
         }));
         setClients(clientLogos);
+
+        const images = [
+            { src: "/hero/1.jpg", alt: "Modern architecture", hint: "modern architecture" },
+            { src: "/hero/2.jpg", alt: "Construction site", hint: "construction site" },
+            { src: "/hero/3.jpg", alt: "Finished project", hint: "luxury home" },
+        ];
+        setHeroImages(images);
+
     }, []);
 
     const clientsFirstRow = clients.slice(0, Math.ceil(clients.length / 2));
@@ -288,4 +294,5 @@ export default function Home() {
 };
 
     
+
     

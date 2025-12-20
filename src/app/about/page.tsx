@@ -70,11 +70,12 @@ export default function AboutPage() {
         </div>
         <div className="relative h-96 rounded-lg overflow-hidden shadow-lg animate-in fade-in zoom-in duration-700">
           <Image
-            src="https://picsum.photos/seed/about-us/600/450"
+            src="/OVOM.png"
             alt="Our team"
             data-ai-hint="construction team meeting"
-            fill
-            className="object-cover"
+            width={600}
+            height={450}
+            className="object-cover w-full h-full"
             loading="lazy"
           />
         </div>
@@ -97,11 +98,12 @@ export default function AboutPage() {
           </div>
           <div className="order-1 md:order-2 relative h-80 md:h-full rounded-lg overflow-hidden shadow-lg">
             <Image
-              src="https://picsum.photos/seed/handshake/600/800"
+              src="/RN.png"
               alt="A confident handshake"
               data-ai-hint="happy customer handshake"
-              fill
-              className="object-cover"
+              width={600}
+              height={800}
+              className="object-cover w-full h-full"
               loading="lazy"
             />
           </div>
