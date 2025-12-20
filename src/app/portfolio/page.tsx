@@ -18,30 +18,18 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Autoplay from "embla-carousel-autoplay";
 import React from "react";
+import placeholderImages from "@/lib/placeholder-images.json";
 
 const services = [
   {
     id: "eht-ht-lt",
     title: "EHT, HT & LT",
     icon: <PlugZap className="h-6 w-6" />,
-    images: [
-      {
-        src: "https://picsum.photos/seed/eht1/800/600",
-        hint: "electrical substation",
-      },
-      {
-        src: "https://picsum.photos/seed/eht2/800/600",
-        hint: "power lines",
-      },
-      {
-        src: "https://picsum.photos/seed/eht3/800/600",
-        hint: "transformer station",
-      },
-    ],
+    images: placeholderImages.services['eht-ht-lt'],
     description:
       "We provide the solution to your Substation Construction needs by involving in all the phases from the scratch resulting in the requirement of Customer’s each structural, electrical and mechanical specifications.",
     content:
@@ -58,16 +46,7 @@ const services = [
     id: "industrial",
     title: "Industrial Electrification",
     icon: <Factory className="h-6 w-6" />,
-    images: [
-      {
-        src: "https://picsum.photos/seed/industrial1/800/600",
-        hint: "industrial factory interior",
-      },
-      {
-        src: "https://picsum.photos/seed/industrial2/800/600",
-        hint: "manufacturing plant",
-      },
-    ],
+    images: placeholderImages.services.industrial,
     description:
       "Akash Enterprises delivers comprehensive electrical solutions for industrial facilities, ensuring safety, efficiency, and long-term reliability. We support new industrial developments as well as system upgrades, helping manufacturers maintain uninterrupted operations and meet evolving industry standards.",
     content:
@@ -88,16 +67,7 @@ const services = [
     id: "commercial-hospitality",
     title: "Commercial & Hospitality Electrification",
     icon: <Building className="h-6 w-6" />,
-    images: [
-      {
-        src: "https://picsum.photos/seed/commercial1/800/600",
-        hint: "modern office building",
-      },
-      {
-        src: "https://picsum.photos/seed/commercial2/800/600",
-        hint: "hotel lobby interior",
-      },
-    ],
+    images: placeholderImages.services['commercial-hospitality'],
     description:
       "Akash Enterprises delivers specialized electrical solutions for commercial and hospitality environments, ensuring safety, functionality, and an elevated user experience. We understand the unique demands of offices, retail spaces, hotels, and resorts, where reliability, aesthetics, and seamless operations are critical.",
     content:
@@ -117,16 +87,7 @@ const services = [
     id: "healthcare",
     title: "Healthcare & Pharmaceutical Electrification",
     icon: <Hospital className="h-6 w-6" />,
-    images: [
-      {
-        src: "https://picsum.photos/seed/hospitality1/800/600",
-        hint: "modern hospital exterior",
-      },
-      {
-        src: "https://picsum.photos/seed/hospitality2/800/600",
-        hint: "hospital room",
-      },
-    ],
+    images: placeholderImages.services.healthcare,
     description:
       "Akash Enterprises delivers specialized electrical solutions for healthcare and pharmaceutical environments where safety, reliability, and regulatory compliance are critical. These facilities demand uninterrupted power, precise environmental control, and infrastructure that supports both patient care and process integrity.",
     content:
@@ -146,16 +107,7 @@ const services = [
     id: "elv",
     title: "ELV Systems",
     icon: <Shield className="h-6 w-6" />,
-    images: [
-      {
-        src: "https://picsum.photos/seed/elv1/800/600",
-        hint: "security camera network",
-      },
-      {
-        src: "https://picsum.photos/seed/elv2/800/600",
-        hint: "server room",
-      },
-    ],
+    images: placeholderImages.services.elv,
     description:
       "Akash Enterprises provides complete design and installation of Extra Low Voltage (ELV) systems that support modern communication, security, and building automation needs. Our integrated approach ensures that all ELV systems work together seamlessly to enhance safety, connectivity, and operational efficiency.",
     content:
@@ -174,16 +126,7 @@ const services = [
     id: "value-engineering",
     title: "Value Engineering",
     icon: <Gem className="h-6 w-6" />,
-    images: [
-      {
-        src: "https://picsum.photos/seed/value1/800/600",
-        hint: "electrical engineering schematic",
-      },
-      {
-        src: "https://picsum.photos/seed/value2/800/600",
-        hint: "energy audit",
-      },
-    ],
+    images: placeholderImages.services['value-engineering'],
     description:
       "Akash Enterprises offers value engineering services that enhance the performance, efficiency, and longevity of your electrical infrastructure. Our goal is to help clients reduce operational costs, improve system reliability, and achieve long-term sustainability without compromising quality or safety.",
     content:

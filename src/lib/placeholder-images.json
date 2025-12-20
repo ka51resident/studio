@@ -1,0 +1,68 @@
+{
+  "services": {
+    "eht-ht-lt": [
+      {
+        "src": "/services/eht-ht-lt/1.png",
+        "hint": "electrical substation"
+      },
+      {
+        "src": "/services/eht-ht-lt/2.png",
+        "hint": "power lines"
+      },
+      {
+        "src": "/services/eht-ht-lt/3.png",
+        "hint": "transformer station"
+      }
+    ],
+    "industrial": [
+      {
+        "src": "/services/industrial/1.png",
+        "hint": "industrial factory interior"
+      },
+      {
+        "src": "/services/industrial/2.png",
+        "hint": "manufacturing plant"
+      }
+    ],
+    "commercial-hospitality": [
+      {
+        "src": "/services/commercial-hospitality/1.png",
+        "hint": "modern office building"
+      },
+      {
+        "src": "/services/commercial-hospitality/2.png",
+        "hint": "hotel lobby interior"
+      }
+    ],
+    "healthcare": [
+      {
+        "src": "/services/healthcare/1.png",
+        "hint": "modern hospital exterior"
+      },
+      {
+        "src": "/services/healthcare/2.png",
+        "hint": "hospital room"
+      }
+    ],
+    "elv": [
+      {
+        "src": "/services/elv/1.png",
+        "hint": "security camera network"
+      },
+      {
+        "src": "/services/elv/2.png",
+        "hint": "server room"
+      }
+    ],
+    "value-engineering": [
+      {
+        "src": "/services/value-engineering/1.png",
+        "hint": "electrical engineering schematic"
+      },
+      {
+        "src": "/services/value-engineering/2.png",
+        "hint": "energy audit"
+      }
+    ]
+  }
+}
