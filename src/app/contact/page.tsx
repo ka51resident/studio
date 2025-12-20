@@ -9,18 +9,15 @@ import { Separator } from "@/components/ui/separator";
 const officeLocations = [
   {
     title: "Head Office",
-    address: "123 Construction Ave, Suite 100, Metropolis, ST 12345",
-    mapLink: "https://www.google.com/maps/search/?api=1&query=123+Construction+Ave,+Metropolis"
+    address: " <b>ANNA</b> Complex, 4th Floor,# 430, Hennagara Gate, Bommasandra Indl. Area, Hosur Road, Bangalore - 560 099",
   },
   {
     title: "Regional Office (North)",
-    address: "456 Industry Blvd, Gotham City, ST 67890",
-    mapLink: "https://www.google.com/maps/search/?api=1&query=456+Industry+Blvd,+Gotham+City"
+    address: " # 391 / 468, <b>Shreya Complex</b> Bidadi Indl. Area Main Road, Medanahalli Village, Bidadi Hobli, Ramanagara Dist. Bangalore - 562 109.",
   },
   {
-    title: "Regional Office (South)",
-    address: "789 Innovation Drive, Star City, ST 54321",
-    mapLink: "https://www.google.com/maps/search/?api=1&query=789+Innovation+Drive,+Star+City"
+    title: "Odisha Office",
+    address: "Ramachandrapur Bazar, PO Jatni, PS Jatni, Khordha District - 752050",
   }
 ];
 
@@ -49,12 +46,11 @@ export default function ContactPage() {
               {officeLocations.map((office, index) => (
                 <div key={index}>
                   <h4 className="font-semibold text-lg">{office.title}</h4>
-                  <p className="text-muted-foreground mb-2">{office.address}</p>
-                  <Button asChild variant="link" className="p-0 h-auto">
-                    <Link href={office.mapLink} target="_blank" rel="noopener noreferrer">
-                      View on Map
-                    </Link>
-                  </Button>
+                  <p 
+                    className="text-muted-foreground mb-2"
+                    dangerouslySetInnerHTML={{ __html: office.address }}
+                  />
+                 
                 </div>
               ))}
             </div>
