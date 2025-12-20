@@ -73,8 +73,9 @@ export default function AboutPage() {
             src="/OVOM.png"
             alt="Our team"
             data-ai-hint="construction team meeting"
+            fill
             className="object-contain"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 800px) 100vw, 50vw"
             loading="lazy"
           />
         </div>

@@ -74,10 +74,6 @@
     ],
     "elv": [
       {
-        "src": "/services/elv/1.png",
-        "hint": "security camera network"
-      },
-      {
         "src": "/services/elv/2.png",
         "hint": "server room"
       }
