@@ -273,14 +273,14 @@ export default function Home() {
                  <div 
                     className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] mt-8"
                 >
-                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 animate-infinite-scroll-reverse">
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-3 animate-infinite-scroll-reverse">
                         {clientsSecondRow.map((client) => (
                             <li key={client.name} className="relative w-[300px] h-[120px]">
                                 <Image src={client.logo} alt={client.name} fill className="object-contain" loading="lazy" />
                             </li>
                         ))}
                     </ul>
-                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 animate-infinite-scroll-reverse" aria-hidden="true">
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-3 animate-infinite-scroll-reverse" aria-hidden="true">
                         {clientsSecondRow.map((client) => (
                             <li key={client.name} className="relative w-[300px] h-[120px]">
                                 <Image src={client.logo} alt={client.name} fill className="object-contain" loading="lazy" />
