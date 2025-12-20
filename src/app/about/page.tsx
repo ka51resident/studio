@@ -73,7 +73,6 @@ export default function AboutPage() {
             src="/OVOM.png"
             alt="Our team"
             data-ai-hint="construction team meeting"
-            fill
             className="object-cover"
             loading="lazy"
           />
