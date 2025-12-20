@@ -23,6 +23,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Autoplay from "embla-carousel-autoplay";
 import React from "react";
 import placeholderImages from "@/lib/placeholder-images.json";
+import ImageWithLoader from "@/components/ui/image-with-loader";
 
 const services = [
   {
@@ -222,16 +223,16 @@ export default function ServicesPage() {
                         <CarouselContent>
                           {service.images.map((image, index) => (
                             <CarouselItem key={index}>
-                              <div className="relative aspect-video">
-                                <Image
-                                  src={image.src}
-                                  alt={service.title}
-                                  data-ai-hint={image.hint}
-                                  fill
-                                  className="object-cover rounded-lg"
-                                  loading="lazy"
-                                />
-                              </div>
+                              <ImageWithLoader
+                                src={image.src}
+                                alt={service.title}
+                                data-ai-hint={image.hint}
+                                fill
+                                className="object-cover"
+                                wrapperClassName="aspect-video"
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                              />
                             </CarouselItem>
                           ))}
                         </CarouselContent>

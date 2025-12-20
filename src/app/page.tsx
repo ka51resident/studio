@@ -12,6 +12,7 @@ import React, { useRef, useEffect, useState } from "react";
 import AnimatedCounter from "@/components/animated-counter";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { cn } from "@/lib/utils";
+import ImageWithLoader from "@/components/ui/image-with-loader";
 
 
 const stats = [
@@ -181,13 +182,14 @@ export default function Home() {
                     <CarouselContent>
                       {heroImages.map((image, index) => (
                         <CarouselItem key={index} className="pl-0">
-                           <Image
+                           <ImageWithLoader
                               src={image.src}
                               alt={image.alt}
                               data-ai-hint={image.hint}
                               width={1200}
                               height={600}
                               className="object-cover rounded-xl shadow-2xl"
+                              wrapperClassName="aspect-[2/1] w-full"
                               priority={index === 0}
                               loading={index === 0 ? 'eager' : 'lazy'}
                             />
@@ -255,14 +257,14 @@ export default function Home() {
                 <div 
                     className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]"
                 >
-                    <ul className="flex items-center justify-center md:justify-start [&_li] animate-infinite-scroll">
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_li]:shrink-0 animate-infinite-scroll">
                         {clientsFirstRow.map((client) => (
                             <li key={client.name} className="relative w-[300px] h-[120px]">
                                 <Image src={client.logo} alt={client.name} fill className="object-contain" loading="lazy" />
                             </li>
                         ))}
                     </ul>
-                    <ul className="flex items-center justify-center md:justify-start [&_li] animate-infinite-scroll" aria-hidden="true">
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_li]:shrink-0 animate-infinite-scroll" aria-hidden="true">
                         {clientsFirstRow.map((client) => (
                             <li key={client.name} className="relative w-[300px] h-[120px]">
                                 <Image src={client.logo} alt={client.name} fill className="object-contain" loading="lazy" />
@@ -273,14 +275,14 @@ export default function Home() {
                  <div 
                     className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] mt-8"
                 >
-                    <ul className="flex items-center justify-center md:justify-start [&_li] animate-infinite-scroll-reverse">
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_li]:shrink-0 animate-infinite-scroll-reverse">
                         {clientsSecondRow.map((client) => (
                             <li key={client.name} className="relative w-[300px] h-[120px]">
                                 <Image src={client.logo} alt={client.name} fill className="object-contain" loading="lazy" />
                             </li>
                         ))}
                     </ul>
-                    <ul className="flex items-center justify-center md:justify-start [&_li] animate-infinite-scroll-reverse" aria-hidden="true">
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_li]:shrink-0 animate-infinite-scroll-reverse" aria-hidden="true">
                         {clientsSecondRow.map((client) => (
                             <li key={client.name} className="relative w-[300px] h-[120px]">
                                 <Image src={client.logo} alt={client.name} fill className="object-contain" loading="lazy" />
@@ -294,11 +296,3 @@ export default function Home() {
     </div>
   )
 };
-
-    
-
-    
-
-    
-
-    
