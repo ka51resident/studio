@@ -111,7 +111,7 @@ function StatItem({ stat, index }: { stat: (typeof stats)[0]; index: number }) {
 
 export default function Home() {
     const heroPlugin = React.useRef(
-      Autoplay({ delay: 300, stopOnInteraction: true })
+      Autoplay({ delay: 2000, stopOnInteraction: true })
     )
     const testimonialPlugin = React.useRef(
       Autoplay({ delay: 500, stopOnInteraction: true })
@@ -296,3 +296,5 @@ export default function Home() {
     </div>
   )
 };
+
+    
