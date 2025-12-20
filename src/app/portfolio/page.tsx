@@ -132,15 +132,6 @@ const services = [
       "Akash Enterprises offers value engineering services that enhance the performance, efficiency, and longevity of your electrical infrastructure. Our goal is to help clients reduce operational costs, improve system reliability, and achieve long-term sustainability without compromising quality or safety.",
     content:
       "Through detailed analysis and targeted improvements, we help you optimize energy consumption, prevent downtime, and extend the life of your electrical assets.",
-    substations: [
-      "Energy audits and efficiency assessments",
-      "Power quality analysis and harmonic studies",
-      "Preventive and predictive maintenance programs",
-      "Thermal imaging and hot spot detection",
-      "System retrofitting and lifecycle upgrades",
-      "Load studies and optimization strategies",
-      "Advisory services for compliance and standardization",
-    ],
   },
 ];
 
