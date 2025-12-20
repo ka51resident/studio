@@ -126,9 +126,9 @@ export default function Home() {
 
     useEffect(() => {
         const clientLogos = [
-            'logo1.png', 'logo2.png', 'logo3.png', 'logo4.png', 'logo5.png', 'logo6.png',
-            'auto1.png', 'pharma1.png', 'hotel1.png', 'reliance.png', 'lnt.png',
-            'tata.png', 'jsw.png', 'adani.png', 'shapoorji.png', 'aero.png'
+            '1.png', '2.png', '3.jpg', '4.png', '5.png', '6.jpeg',
+            '7.jpg', '8.png', '9.png', '10.png', '11.png',
+            '12.png', '14.png','15.jpeg', '16.png','17.png','18.jpg','19.png'
         ].map(fileName => ({
             name: fileName.split('.')[0].replace(/(\d+)$/, ' $1').split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
             logo: `/clients/${fileName}`
@@ -247,17 +247,17 @@ export default function Home() {
                 <div 
                     className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]"
                 >
-                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll">
                         {clientsFirstRow.map((client) => (
-                            <li key={client.name}>
-                                <Image src={client.logo} alt={client.name} width={150} height={60} className="object-contain max-h-12" loading="lazy" />
+                            <li key={client.name} className="relative w-[150px] h-[60px]">
+                                <Image src={client.logo} alt={client.name} fill className="object-contain" loading="lazy" />
                             </li>
                         ))}
                     </ul>
-                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll" aria-hidden="true">
                         {clientsFirstRow.map((client) => (
-                            <li key={client.name}>
-                                <Image src={client.logo} alt={client.name} width={150} height={60} className="object-contain max-h-12" loading="lazy" />
+                            <li key={client.name} className="relative w-[150px] h-[60px]">
+                                <Image src={client.logo} alt={client.name} fill className="object-contain" loading="lazy" />
                             </li>
                         ))}
                     </ul>
@@ -265,17 +265,17 @@ export default function Home() {
                  <div 
                     className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] mt-8"
                 >
-                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll-reverse">
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll-reverse">
                         {clientsSecondRow.map((client) => (
-                            <li key={client.name}>
-                                <Image src={client.logo} alt={client.name} width={150} height={60} className="object-contain max-h-12" loading="lazy" />
+                            <li key={client.name} className="relative w-[150px] h-[60px]">
+                                <Image src={client.logo} alt={client.name} fill className="object-contain" loading="lazy" />
                             </li>
                         ))}
                     </ul>
-                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll-reverse" aria-hidden="true">
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll-reverse" aria-hidden="true">
                         {clientsSecondRow.map((client) => (
-                            <li key={client.name}>
-                                <Image src={client.logo} alt={client.name} width={150} height={60} className="object-contain max-h-12" loading="lazy" />
+                            <li key={client.name} className="relative w-[150px] h-[60px]">
+                                <Image src={client.logo} alt={client.name} fill className="object-contain" loading="lazy" />
                             </li>
                         ))}
                     </ul>
@@ -286,7 +286,3 @@ export default function Home() {
     </div>
   )
 };
-
-    
-
-    
