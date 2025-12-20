@@ -110,7 +110,7 @@ function StatItem({ stat, index }: { stat: (typeof stats)[0]; index: number }) {
 
 export default function Home() {
     const heroPlugin = React.useRef(
-      Autoplay({ delay: 5000, stopOnInteraction: true })
+      Autoplay({ delay: 3000, stopOnInteraction: true })
     )
     const testimonialPlugin = React.useRef(
       Autoplay({ delay: 5000, stopOnInteraction: true })
@@ -143,8 +143,9 @@ export default function Home() {
 
     }, []);
 
-    const clientsFirstRow = clients.slice(0, Math.ceil(clients.length / 2));
-    const clientsSecondRow = clients.slice(Math.ceil(clients.length / 2));
+    const midpoint = Math.ceil(clients.length / 2);
+    const clientsFirstRow = clients.slice(0, midpoint);
+    const clientsSecondRow = clients.slice(midpoint);
 
 
   return (
