@@ -65,7 +65,7 @@ const testimonials = [
   },
   {
     quote: "We’ve partnered with Akash Enterprises on multiple expansion projects. Their consistency in quality and proactive communication make them our preferred electrical contractor",
-    name: "Toyota Kirloskar Motor Limiteda",
+    name: "Toyota Kirloskar Motor Limited",
   },
   {
     quote: "Akash Enterprises executed the entire electrical scope of our office towers flawlessly. The team maintained quality and safety throughout, earning our full confidence.",
@@ -111,7 +111,7 @@ function StatItem({ stat, index }: { stat: (typeof stats)[0]; index: number }) {
 
 export default function Home() {
     const heroPlugin = React.useRef(
-      Autoplay({ delay: 2000, stopOnInteraction: false })
+      Autoplay({ delay: 300, stopOnInteraction: true })
     )
     const testimonialPlugin = React.useRef(
       Autoplay({ delay: 500, stopOnInteraction: true })
@@ -296,5 +296,3 @@ export default function Home() {
     </div>
   )
 };
-
-    
