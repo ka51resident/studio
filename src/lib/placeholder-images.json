@@ -86,6 +86,10 @@
       {
         "src": "/services/value-engineering/1.jpeg",
         "hint": "electrical engineering schematic"
+      },
+      {
+        "src": "/services/value-engineering/2.png",
+        "hint": "electrical engineering schematic"
       }
     ]
   }
