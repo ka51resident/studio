@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="container py-8">
         <div className="grid gap-8 md:grid-cols-4">
           <div className="space-y-4">
-            <Logo />
+            <Logo width={150} height={48} />
             <p className="text-sm text-muted-foreground">
               Building the future, one project at a time.
             </p>
