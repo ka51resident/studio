@@ -24,19 +24,19 @@ const stats = [
   },
   {
     icon: <Briefcase className="h-8 w-8 text-primary" />,
-    value: 750,
+    value: 650,
     label: "Projects Completed",
     postfix: "+",
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
-    value: 350,
+    value: 450,
     label: "Satisfied Clients",
     postfix: "+",
   },
   {
     icon: <ShieldCheck className="h-8 w-8 text-primary" />,
-    value: 3,
+    value: 1.5,
     label: "Million Safe Man-Hours",
     postfix: "+",
   },

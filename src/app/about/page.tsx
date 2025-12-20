@@ -50,7 +50,7 @@ export default function AboutPage() {
       <section className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4 animate-in fade-in slide-in-from-top-4 duration-700">About Akash Enterprises</h1>
         <p className="max-w-3xl mx-auto text-muted-foreground text-lg animate-in fade-in slide-in-from-top-6 duration-700">
-          For over 15 years, we have been a cornerstone of the construction industry, committed to building with integrity, quality, and a passion for excellence.
+        With a legacy spanning over three decades, Akash Enterprises delivers dependable electrical solutions defined by uncompromised safety standards, rigorous quality control, and a commitment to operational excellence
         </p>
       </section>
 
@@ -68,14 +68,14 @@ export default function AboutPage() {
 
           </p>
         </div>
-        <div className="relative rounded-lg overflow-hidden shadow-lg animate-in fade-in zoom-in duration-700 flex justify-center items-center">
+        <div className="relative aspect-[4/3] w-full max-w-md mx-auto rounded-lg overflow-hidden shadow-lg animate-in fade-in zoom-in duration-700">
           <Image
             src="/OVOM.png"
             alt="Our team"
             data-ai-hint="construction team meeting"
-            width={300}
-            height={200}
-            className="object-contain w-full h-auto max-w-[300px]"
+            fill
+            className="object-contain"
+            sizes="(max-width: 768px) 100vw, 50vw"
             loading="lazy"
           />
         </div>
