@@ -3,8 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useActionState, useEffect, useRef, useState, useCallback } from "react";
-import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { useActionState, useEffect, useRef } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { submitContactForm } from "../actions";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -27,13 +27,11 @@ const initialState = {
   success: false,
 };
 
-function ContactFormContent() {
-  const [state, formAction] = useActionState(submitContactForm, initialState);
+export default function ContactForm() {
+  const [state, formAction, isPending] = useActionState(submitContactForm, initialState);
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
-  const { executeRecaptcha } = useGoogleReCaptcha();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
+  
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -46,7 +44,6 @@ function ContactFormContent() {
 
   useEffect(() => {
     if (state.message) {
-        setIsSubmitting(false);
         if (state.success) {
             toast({
                 title: "Success!",
@@ -62,36 +59,14 @@ function ContactFormContent() {
         }
     }
   }, [state, toast, form]);
-
-  const handleFormSubmit = useCallback(
-    async (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-      
-      if (!executeRecaptcha) {
-        console.log("Recaptcha not ready");
-        return;
-      }
   
-      const isValid = await form.trigger();
-      if (!isValid) {
-        return;
-      }
-
-      setIsSubmitting(true);
-  
-      const token = await executeRecaptcha("contactForm");
-  
-      const formData = new FormData(formRef.current!);
-      formData.append("gRecaptchaToken", token);
-  
-      formAction(formData);
-    },
-    [executeRecaptcha, form, formAction]
-  );
-
   return (
     <Form {...form}>
-      <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-4">
+      <form
+        ref={formRef}
+        action={formAction}
+        className={cn("space-y-4", isPending && "opacity-50")}
+      >
         <FormField
           control={form.control}
           name="name"
@@ -144,28 +119,10 @@ function ContactFormContent() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full" disabled={isSubmitting}>
-          {isSubmitting ? "Sending..." : "Send Message"}
+        <Button type="submit" className="w-full" disabled={isPending}>
+          {isPending ? "Sending..." : "Send Message"}
         </Button>
       </form>
     </Form>
   );
-}
-
-export default function ContactForm() {
-    const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-
-    if (!recaptchaSiteKey) {
-        return (
-            <div className="p-4 rounded-lg bg-destructive/10 text-destructive">
-                <h4 className="font-bold">Configuration Error</h4>
-                <p>reCAPTCHA is not configured. Please add NEXT_PUBLIC_RECAPTCHA_SITE_KEY to your environment variables.</p>
-            </div>
-        )
-    }
-    return (
-        <GoogleReCaptchaProvider reCaptchaKey={recaptchaSiteKey}>
-            <ContactFormContent />
-        </GoogleReCaptchaProvider>
-    )
 }
