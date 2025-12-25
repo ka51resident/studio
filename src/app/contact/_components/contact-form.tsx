@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useActionState, useEffect, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,6 +19,7 @@ const formSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
   subject: z.string().min(5, { message: "Subject must be at least 5 characters." }),
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+  recaptcha: z.string().min(1, { message: "Please complete the reCAPTCHA." }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -31,6 +33,7 @@ export default function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContactForm, initialState);
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -39,6 +42,7 @@ export default function ContactForm() {
       email: "",
       subject: "",
       message: "",
+      recaptcha: "",
     },
   });
 
@@ -50,6 +54,7 @@ export default function ContactForm() {
                 description: state.message,
             });
             form.reset();
+            recaptchaRef.current?.reset();
         } else {
             toast({
                 title: "Error",
@@ -60,11 +65,33 @@ export default function ContactForm() {
     }
   }, [state, toast, form]);
   
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const recaptchaValue = recaptchaRef.current?.getValue();
+    
+    // Manually trigger validation to show errors
+    form.trigger().then((isValid) => {
+      // Also check recaptcha manually
+      if (!recaptchaValue) {
+        form.setError("recaptcha", { type: "manual", message: "Please complete the reCAPTCHA." });
+        return;
+      }
+      form.clearErrors("recaptcha");
+      
+      if(isValid) {
+        form.setValue("recaptcha", recaptchaValue);
+        formData.set("recaptcha", recaptchaValue);
+        formAction(formData);
+      }
+    });
+  };
+
   return (
     <Form {...form}>
       <form
         ref={formRef}
-        action={formAction}
+        onSubmit={handleFormSubmit}
         className={cn("space-y-4", isPending && "opacity-50")}
       >
         <FormField
@@ -119,6 +146,24 @@ export default function ContactForm() {
             </FormItem>
           )}
         />
+
+        <FormField
+          control={form.control}
+          name="recaptcha"
+          render={() => (
+            <FormItem>
+                <FormControl>
+                    <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                        onChange={(value) => form.setValue("recaptcha", value || "")}
+                    />
+                </FormControl>
+                <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <Button type="submit" className="w-full" disabled={isPending}>
           {isPending ? "Sending..." : "Send Message"}
         </Button>

@@ -9,6 +9,7 @@ const formSchema = z.object({
   email: z.string().email(),
   subject: z.string().min(1),
   message: z.string().min(1),
+  recaptcha: z.string().min(1),
 });
 
 export async function submitContactForm(prevState: any, formData: FormData) {
@@ -17,6 +18,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     email: formData.get("email"),
     subject: formData.get("subject"),
     message: formData.get("message"),
+    recaptcha: formData.get("recaptcha"),
   });
   
   if (!validatedFields.success) {
@@ -26,7 +28,28 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     };
   }
 
-  const { name, email, subject, message } = validatedFields.data;
+  const { name, email, subject, message, recaptcha } = validatedFields.data;
+
+  // Verify reCAPTCHA
+  const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+  const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${recaptcha}`;
+
+  try {
+    const recaptchaResponse = await fetch(recaptchaUrl, { method: "POST" });
+    const recaptchaData = await recaptchaResponse.json();
+    if (!recaptchaData.success) {
+      return {
+        success: false,
+        message: "reCAPTCHA verification failed. Please try again.",
+      };
+    }
+  } catch (error) {
+    console.error("reCAPTCHA verification error:", error);
+    return {
+      success: false,
+      message: "Something went wrong with reCAPTCHA verification.",
+    };
+  }
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
