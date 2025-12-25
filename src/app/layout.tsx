@@ -4,8 +4,13 @@ import { Inter } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+<<<<<<< HEAD
 import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@vercel/analytics/next"
+=======
+import { Toaster } from "@/components/ui/toaster";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+>>>>>>> fec8c71 (implement vercel speed-insights)
 
 const inter = Inter({
   subsets: ['latin'],
@@ -36,7 +41,11 @@ export default function RootLayout({
           <Footer />
         </div>
         <Toaster />
+<<<<<<< HEAD
         <Analytics />
+=======
+        <SpeedInsights />
+>>>>>>> fec8c71 (implement vercel speed-insights)
       </body>
     </html>
   );
