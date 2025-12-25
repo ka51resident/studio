@@ -111,7 +111,7 @@ function StatItem({ stat, index }: { stat: (typeof stats)[0]; index: number }) {
 
 export default function Home() {
     const heroPlugin = React.useRef(
-      Autoplay({ delay: 2000, stopOnInteraction: true })
+      Autoplay({ delay: 2000, stopOnInteraction: false })
     )
     const testimonialPlugin = React.useRef(
       Autoplay({ delay: 3000, stopOnInteraction: true })
@@ -177,7 +177,7 @@ export default function Home() {
                     plugins={[heroPlugin.current]}
                     className="w-full"
                     onMouseEnter={heroPlugin.current.stop}
-                    onMouseLeave={heroPlugin.current.reset}
+                    onMouseLeave={heroPlugin.current.play}
                  >
                     <CarouselContent>
                       {heroImages.map((image, index) => (
@@ -243,8 +243,8 @@ export default function Home() {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
+                <CarouselPrevious className="left-2 md:-left-12" />
+                <CarouselNext className="right-2 md:-right-12" />
             </Carousel>
           </div>
         </section>
@@ -259,14 +259,14 @@ export default function Home() {
                 >
                     <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_li]:shrink-0 animate-infinite-scroll">
                         {clientsFirstRow.map((client) => (
-                            <li key={client.name} className="relative w-[300px] h-[120px]">
+                            <li key={client.name} className="relative w-[150px] h-[60px] sm:w-[300px] sm:h-[120px]">
                                 <Image src={client.logo} alt={client.name} fill className="object-contain" loading="lazy" />
                             </li>
                         ))}
                     </ul>
                     <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_li]:shrink-0 animate-infinite-scroll" aria-hidden="true">
                         {clientsFirstRow.map((client) => (
-                            <li key={client.name} className="relative w-[300px] h-[120px]">
+                            <li key={client.name} className="relative w-[150px] h-[60px] sm:w-[300px] sm:h-[120px]">
                                 <Image src={client.logo} alt={client.name} fill className="object-contain" loading="lazy" />
                             </li>
                         ))}
@@ -277,14 +277,14 @@ export default function Home() {
                 >
                     <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_li]:shrink-0 animate-infinite-scroll-reverse">
                         {clientsSecondRow.map((client) => (
-                            <li key={client.name} className="relative w-[300px] h-[120px]">
+                            <li key={client.name} className="relative w-[150px] h-[60px] sm:w-[300px] sm:h-[120px]">
                                 <Image src={client.logo} alt={client.name} fill className="object-contain" loading="lazy" />
                             </li>
                         ))}
                     </ul>
                     <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_li]:shrink-0 animate-infinite-scroll-reverse" aria-hidden="true">
                         {clientsSecondRow.map((client) => (
-                            <li key={client.name} className="relative w-[300px] h-[120px]">
+                            <li key={client.name} className="relative w-[150px] h-[60px] sm:w-[300px] sm:h-[120px]">
                                 <Image src={client.logo} alt={client.name} fill className="object-contain" loading="lazy" />
                             </li>
                         ))}

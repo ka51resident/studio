@@ -229,8 +229,8 @@ export default function ServicesPage() {
                         </CarouselContent>
                         {service.images.length > 1 && (
                           <>
-                            <CarouselPrevious className="left-2" />
-                            <CarouselNext className="right-2" />
+                            <CarouselPrevious className="left-2 md:-left-4" />
+                            <CarouselNext className="right-2 md:-right-4" />
                           </>
                         )}
                       </Carousel>
