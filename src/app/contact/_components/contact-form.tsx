@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useActionState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
 import { Button } from "@/components/ui/button";
@@ -30,7 +30,8 @@ const initialState = {
 };
 
 export default function ContactForm() {
-  const [state, formAction, isPending] = useActionState(submitContactForm, initialState);
+  const [state, setState] = useState(initialState);
+  const [isPending, startTransition] = useTransition();
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -70,9 +71,7 @@ export default function ContactForm() {
     const formData = new FormData(event.currentTarget);
     const recaptchaValue = recaptchaRef.current?.getValue();
     
-    // Manually trigger validation to show errors
     form.trigger().then((isValid) => {
-      // Also check recaptcha manually
       if (!recaptchaValue) {
         form.setError("recaptcha", { type: "manual", message: "Please complete the reCAPTCHA." });
         return;
@@ -82,7 +81,11 @@ export default function ContactForm() {
       if(isValid) {
         form.setValue("recaptcha", recaptchaValue);
         formData.set("recaptcha", recaptchaValue);
-        formAction(formData);
+        
+        startTransition(async () => {
+          const result = await submitContactForm(state, formData);
+          setState(result);
+        });
       }
     });
   };
