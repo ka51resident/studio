@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="space-y-4">
             <Logo width={150} height={48} />
             <p className="text-sm text-muted-foreground">
-              Building the future, one project at a time.
+            Powering Progress with People, Safety and Sustainability
             </p>
           </div>
           <div>

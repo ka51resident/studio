@@ -135,10 +135,10 @@ export default function Home() {
         setClients(clientLogos);
 
         const images = [
-            { src: "/hero/Hero1.png", alt: "", hint: "" },
-            { src: "/hero/Hero2.png", alt: "", hint: "" },
-            { src: "/hero/Hero3.png", alt: "", hint: "" },
-            { src: "/hero/Hero4.png", alt: "", hint: "" },
+            { src: "/hero/Hero1.png", alt: "State-of-the-art electrical substation and distribution panel", hint: "electrical substation" },
+            { src: "/hero/Hero2.png", alt: "Complex industrial electrical wiring and infrastructure", hint: "industrial wiring" },
+            { src: "/hero/Hero3.png", alt: "Brightly lit modern commercial building exterior", hint: "commercial lighting" },
+            { src: "/hero/Hero4.png", alt: "Neatly organized data center server racks and cabling", hint: "data center" },
         ];
         setHeroImages(images);
 

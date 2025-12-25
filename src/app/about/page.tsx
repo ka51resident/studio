@@ -4,6 +4,12 @@ import { Briefcase, Flag, Trophy, Zap, Award, Leaf, Shield, Gem, ShieldCheck, Tr
 import Image from "next/image";
 import TimelineItem from "./_components/timeline-item";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'About Us',
+  description: 'Learn about the history, mission, and vision of Akash Enterprises. A legacy of safety, quality, and trust in electrical contracting since 1992.',
+};
 
 const timelineEvents = [
   {
@@ -71,7 +77,7 @@ export default function AboutPage() {
         <div className="relative aspect-[4/3] w-full max-w-md mx-auto rounded-lg overflow-hidden shadow-lg animate-in fade-in zoom-in duration-700">
           <Image
             src="/OVOM.png"
-            alt="Our team"
+            alt="Our team discussing a project in a modern office"
             data-ai-hint="construction team meeting"
             fill
             className="object-contain"
@@ -99,7 +105,7 @@ export default function AboutPage() {
           <div className="order-1 md:order-2 relative h-80 md:h-full rounded-lg overflow-hidden shadow-lg">
             <Image
               src="/RN.png"
-              alt="A confident handshake"
+              alt="Ravindra Nayak, Proprietor and Founder of Akash Enterprises"
               data-ai-hint="happy customer handshake"
               width={600}
               height={800}

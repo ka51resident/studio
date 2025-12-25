@@ -24,6 +24,12 @@ import Autoplay from "embla-carousel-autoplay";
 import React from "react";
 import placeholderImages from "@/lib/placeholder-images.json";
 import ImageWithLoader from "@/components/ui/image-with-loader";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Our Services',
+  description: 'Explore the comprehensive electrical engineering services offered by Akash Enterprises, including EHT/HT/LT, industrial, commercial, healthcare, and ELV systems.',
+};
 
 const services = [
   {
@@ -216,7 +222,7 @@ export default function ServicesPage() {
                             <CarouselItem key={index}>
                               <ImageWithLoader
                                 src={image.src}
-                                alt={service.title}
+                                alt={`${service.title} - example project ${index + 1}`}
                                 data-ai-hint={image.hint}
                                 fill
                                 className="object-cover"
