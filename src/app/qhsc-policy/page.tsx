@@ -2,12 +2,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Award, Leaf, Shield, Gem } from "lucide-react";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: 'QHSE Policy',
-  description: 'Learn about Akash Enterprises\' commitment to Quality (ISO 9001), Health & Safety (ISO 45001), and Environmental (ISO 14001) standards.',
-};
 
 const policyItems = [
   {

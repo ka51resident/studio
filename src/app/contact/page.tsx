@@ -5,12 +5,6 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: 'Contact Us',
-  description: 'Get in touch with Akash Enterprises. Find our office locations, contact information, or send us a message to start your next electrical project.',
-};
 
 const officeLocations = [
   {
