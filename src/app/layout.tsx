@@ -4,13 +4,9 @@ import { Inter } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
-<<<<<<< HEAD
 import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@vercel/analytics/next"
-=======
-import { Toaster } from "@/components/ui/toaster";
 import { SpeedInsights } from "@vercel/speed-insights/next"
->>>>>>> fec8c71 (implement vercel speed-insights)
 
 const inter = Inter({
   subsets: ['latin'],
@@ -33,6 +29,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link rel="icon" href='/favicon.ico'/>
       </head>
       <body className={cn('min-h-screen bg-background font-body antialiased', inter.variable)}>
         <div className="relative flex min-h-screen flex-col">
@@ -41,11 +38,8 @@ export default function RootLayout({
           <Footer />
         </div>
         <Toaster />
-<<<<<<< HEAD
         <Analytics />
-=======
         <SpeedInsights />
->>>>>>> fec8c71 (implement vercel speed-insights)
       </body>
     </html>
   );
