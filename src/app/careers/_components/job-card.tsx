@@ -37,7 +37,7 @@ export default function JobCard({ job }: { job: Job }) {
         </div>
         
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="responsibilities" className="border-none">
+            <AccordionItem value={job.title} className="border-none">
                 <AccordionTrigger className="text-base font-semibold py-2 hover:no-underline">
                     Responsibilities
                 </AccordionTrigger>
