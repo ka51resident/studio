@@ -1,7 +1,6 @@
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { MapPin, GraduationCap, Calendar } from "lucide-react";
+import { MapPin, GraduationCap, Calendar, ListChecks } from "lucide-react";
 import ApplyModal from "./apply-modal";
 
 type Job = {
@@ -36,20 +35,17 @@ export default function JobCard({ job }: { job: Job }) {
           </div>
         </div>
         
-        <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value={job.title} className="border-none">
-                <AccordionTrigger className="text-base font-semibold py-2 hover:no-underline">
-                    Responsibilities
-                </AccordionTrigger>
-                <AccordionContent>
-                    <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
-                        {job.responsibilities.map((resp, i) => (
-                        <li key={i}>{resp}</li>
-                        ))}
-                    </ul>
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
+        <div>
+            <h3 className="text-base font-semibold flex items-center gap-2 mb-2">
+                <ListChecks className="h-4 w-4 text-primary" />
+                Responsibilities
+            </h3>
+            <ul className="list-disc space-y-1 pl-6 text-sm text-muted-foreground">
+                {job.responsibilities.map((resp, i) => (
+                <li key={i}>{resp}</li>
+                ))}
+            </ul>
+        </div>
       </CardContent>
       <CardFooter>
         <ApplyModal jobTitle={job.title} />
