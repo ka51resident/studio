@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Logo from './logo';
 import Image from 'next/image';
@@ -21,6 +22,7 @@ export default function Footer() {
               <li><Link href="/" className="text-sm text-muted-foreground hover:text-primary">Home</Link></li>
               <li><Link href="/about" className="text-sm text-muted-foreground hover:text-primary">Who We Are</Link></li>
               <li><Link href="/portfolio" className="text-sm text-muted-foreground hover:text-primary">What We Do</Link></li>
+              <li><Link href="/careers" className="text-sm text-muted-foreground hover:text-primary">Careers</Link></li>
               <li><Link href="/qhsc-policy" className="text-sm text-muted-foreground hover:text-primary">QHSE Policy</Link></li>
               <li><Link href="/contact" className="text-sm text-muted-foreground hover:text-primary">Contact</Link></li>
             </ul>
