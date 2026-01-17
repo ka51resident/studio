@@ -2,7 +2,7 @@
 "use client";
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { MapPin, GraduationCap, Calendar, ListChecks, CheckCircle2 } from "lucide-react";
+import { MapPin, GraduationCap, Calendar, ListChecks } from "lucide-react";
 import ApplyModal from "./apply-modal";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -52,14 +52,11 @@ export default function JobCard({ job }: { job: Job }) {
                 <ListChecks className="h-4 w-4 text-primary" />
                 Responsibilities
             </h3>
-            <div className="space-y-2 text-sm text-muted-foreground">
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
               {shownResponsibilities.map((resp, i) => (
-                <div key={i} className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                  <span>{resp}</span>
-                </div>
+                <li key={i}>{resp}</li>
               ))}
-            </div>
+            </ul>
             {job.responsibilities.length > RESPONSIBILITIES_TO_SHOW && (
               <Button variant="link" onClick={toggleExpanded} className="p-0 h-auto text-sm mt-2 text-primary hover:no-underline">
                 {isExpanded ? "Show less" : `Show ${job.responsibilities.length - RESPONSIBILITIES_TO_SHOW} more...`}
