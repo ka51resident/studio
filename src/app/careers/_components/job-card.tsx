@@ -1,6 +1,6 @@
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { MapPin, GraduationCap, Calendar, ListChecks } from "lucide-react";
+import { MapPin, GraduationCap, Calendar, ListChecks, CheckCircle2 } from "lucide-react";
 import ApplyModal from "./apply-modal";
 
 type Job = {
@@ -40,11 +40,14 @@ export default function JobCard({ job }: { job: Job }) {
                 <ListChecks className="h-4 w-4 text-primary" />
                 Responsibilities
             </h3>
-            <ul className="list-disc space-y-1 pl-6 text-sm text-muted-foreground">
-                {job.responsibilities.map((resp, i) => (
-                <li key={i}>{resp}</li>
-                ))}
-            </ul>
+            <div className="space-y-2 text-sm text-muted-foreground">
+              {job.responsibilities.map((resp, i) => (
+                <div key={i} className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                  <span>{resp}</span>
+                </div>
+              ))}
+            </div>
         </div>
       </CardContent>
       <CardFooter>
