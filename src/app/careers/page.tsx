@@ -178,10 +178,10 @@ export default function CareersPage() {
         <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4 animate-in fade-in slide-in-from-top-4 duration-700">
           Careers at Akash Enterprises
         </h1>
-        <p className="max-w-3xl mx-auto text-muted-foreground text-lg text-justify animate-in fade-in slide-in-from-top-6 duration-700">
+        <p className="max-w-3xl mx-auto text-muted-foreground text-lg text-center animate-in fade-in slide-in-from-top-6 duration-700">
           Join our team and be a part of a legacy of excellence in the electrical engineering industry. We are looking for passionate, skilled, and dedicated individuals to help us power the future.
         </p>
-        <p className="mt-4 font-semibold text-primary">OPEN ROLES AS ON 14 JANUARY 2026</p>
+        <p className="mt-4 font-semibold text-primary">OPEN ROLES AS ON 17 JANUARY 2026</p>
       </section>
 
       <JobList jobs={jobOpenings} />

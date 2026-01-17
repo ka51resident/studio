@@ -19,6 +19,7 @@ const formSchema = z.object({
       (file) => ACCEPTED_FILE_TYPES.includes(file.type),
       ".pdf, .doc, and .docx files are accepted."
     ),
+  recaptcha: z.string().min(1),
 });
 
 export async function submitApplicationForm(prevState: any, formData: FormData) {
@@ -28,6 +29,7 @@ export async function submitApplicationForm(prevState: any, formData: FormData) 
     phone: formData.get("phone"),
     role: formData.get("role"),
     resume: formData.get("resume"),
+    recaptcha: formData.get("recaptcha"),
   });
   
   if (!validatedFields.success) {
@@ -38,7 +40,28 @@ export async function submitApplicationForm(prevState: any, formData: FormData) 
     };
   }
 
-  const { name, email, phone, role, resume } = validatedFields.data;
+  const { name, email, phone, role, resume, recaptcha } = validatedFields.data;
+
+  // Verify reCAPTCHA
+  const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+  const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${recaptcha}`;
+
+  try {
+    const recaptchaResponse = await fetch(recaptchaUrl, { method: "POST" });
+    const recaptchaData = await recaptchaResponse.json();
+    if (!recaptchaData.success) {
+      return {
+        success: false,
+        message: "reCAPTCHA verification failed. Please try again.",
+      };
+    }
+  } catch (error) {
+    console.error("reCAPTCHA verification error:", error);
+    return {
+      success: false,
+      message: "Something went wrong with reCAPTCHA verification.",
+    };
+  }
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',

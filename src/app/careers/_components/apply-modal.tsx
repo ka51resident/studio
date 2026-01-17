@@ -1,10 +1,10 @@
-
 "use client";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useState, useTransition, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -30,6 +30,7 @@ const formSchema = z.object({
       (files) => ACCEPTED_FILE_TYPES.includes(files?.[0]?.type),
       ".pdf, .doc, and .docx files are accepted."
     ),
+  recaptcha: z.string().min(1, { message: "Please complete the reCAPTCHA." }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -44,6 +45,7 @@ export default function ApplyModal({ jobTitle }: { jobTitle: string }) {
   const [isPending, startTransition] = useTransition();
   const { toast } = useToast();
   const [isOpen, setIsOpen] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -52,6 +54,7 @@ export default function ApplyModal({ jobTitle }: { jobTitle: string }) {
       email: "",
       phone: "",
       role: jobTitle,
+      recaptcha: "",
     },
   });
 
@@ -63,6 +66,7 @@ export default function ApplyModal({ jobTitle }: { jobTitle: string }) {
                 description: state.message,
             });
             form.reset();
+            recaptchaRef.current?.reset();
             setIsOpen(false);
         } else {
             toast({
@@ -81,6 +85,7 @@ export default function ApplyModal({ jobTitle }: { jobTitle: string }) {
     formData.append("phone", values.phone);
     formData.append("role", values.role);
     formData.append("resume", values.resume[0]);
+    formData.append("recaptcha", values.recaptcha);
 
     startTransition(async () => {
       const result = await submitApplicationForm(state, formData);
@@ -158,6 +163,24 @@ export default function ApplyModal({ jobTitle }: { jobTitle: string }) {
                     </FormItem>
                   )}
                 />
+                
+                <FormField
+                  control={form.control}
+                  name="recaptcha"
+                  render={() => (
+                    <FormItem>
+                        <FormControl>
+                            <ReCAPTCHA
+                                ref={recaptchaRef}
+                                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                                onChange={(value) => form.setValue("recaptcha", value || "")}
+                            />
+                        </FormControl>
+                        <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
                 <input type="hidden" {...form.register("role")} />
                 
                 <DialogFooter>
