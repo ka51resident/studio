@@ -4,6 +4,12 @@ import { Briefcase, Flag, Trophy, Zap, Award, Leaf, Shield, Gem, ShieldCheck, Tr
 import Image from "next/image";
 import TimelineItem from "./_components/timeline-item";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About | Akash Enterprises",
+  description: "Learn about the journey, mission, and vision of Akash Enterprises, a leader in electrical engineering with over three decades of experience.",
+};
 
 
 const timelineEvents = [

@@ -3,6 +3,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Award, Leaf, Shield, Gem } from "lucide-react";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "QHSE Policy | Akash Enterprises",
+  description: "Read about our unwavering commitment to Quality, Health, Safety, and Environment (QHSE) that governs all our operations at Akash Enterprises.",
+};
+
 const policyItems = [
   {
     value: "quality",

@@ -25,6 +25,14 @@ import React from "react";
 import placeholderImages from "@/lib/placeholder-images.json";
 import ImageWithLoader from "@/components/ui/image-with-loader";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Services | Akash Enterprises",
+  description: "Explore our comprehensive electrical engineering services, from industrial electrification to healthcare solutions, all delivered with a commitment to quality and safety.",
+};
+
+
 const services = [
   {
     id: "eht-ht-lt",

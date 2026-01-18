@@ -6,6 +6,14 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact | Akash Enterprises",
+  description: "Get in touch with Akash Enterprises. Find our office locations or use our contact form for inquiries about your next electrical project.",
+};
+
+
 const officeLocations = [
   {
     title: "HEAD OFFICE",
