@@ -1,17 +1,21 @@
-
 "use server";
 
 import * as z from "zod";
 import nodemailer from "nodemailer";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
-const ACCEPTED_FILE_TYPES = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+const ACCEPTED_FILE_TYPES = [
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+];
 
 const formSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
   phone: z.string().min(10),
   role: z.string().min(1),
+  referralSource: z.string(),
   resume: z
     .instanceof(File)
     .refine((file) => file.size <= MAX_FILE_SIZE, `Max file size is 5MB.`)
@@ -22,16 +26,20 @@ const formSchema = z.object({
   recaptcha: z.string().min(1),
 });
 
-export async function submitApplicationForm(prevState: any, formData: FormData) {
+export async function submitApplicationForm(
+  prevState: any,
+  formData: FormData
+) {
   const validatedFields = formSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
     phone: formData.get("phone"),
     role: formData.get("role"),
+    referralSource: formData.get("referralSource"),
     resume: formData.get("resume"),
     recaptcha: formData.get("recaptcha"),
   });
-  
+
   if (!validatedFields.success) {
     console.log(validatedFields.error.flatten().fieldErrors);
     return {
@@ -40,7 +48,8 @@ export async function submitApplicationForm(prevState: any, formData: FormData) 
     };
   }
 
-  const { name, email, phone, role, resume, recaptcha } = validatedFields.data;
+  const { name, email, phone, role, resume, recaptcha, referralSource } =
+    validatedFields.data;
 
   // Verify reCAPTCHA
   const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
@@ -64,7 +73,7 @@ export async function submitApplicationForm(prevState: any, formData: FormData) 
   }
 
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: "gmail",
     auth: {
       user: process.env.GMAIL_EMAIL,
       pass: process.env.GMAIL_APP_PASSWORD,
@@ -102,6 +111,10 @@ export async function submitApplicationForm(prevState: any, formData: FormData) 
               <td style="padding: 12px 0; font-weight: bold; color: #555; width: 120px; vertical-align: top;">Phone:</td>
               <td style="padding: 12px 0;">${phone}</td>
             </tr>
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 12px 0; font-weight: bold; color: #555; width: 120px; vertical-align: top;">Heard From:</td>
+              <td style="padding: 12px 0;">${referralSource || "N/A"}</td>
+            </tr>
           </table>
           <p style="margin-top: 20px; font-size: 14px; color: #555;">
             The candidate's resume is attached to this email.
@@ -113,11 +126,11 @@ export async function submitApplicationForm(prevState: any, formData: FormData) 
       </div>
     `,
     attachments: [
-        {
-            filename: resume.name,
-            content: resumeBuffer,
-            contentType: resume.type,
-        },
+      {
+        filename: resume.name,
+        content: resumeBuffer,
+        contentType: resume.type,
+      },
     ],
   };
 
@@ -125,13 +138,15 @@ export async function submitApplicationForm(prevState: any, formData: FormData) 
     await transporter.sendMail(mailOptions);
     return {
       success: true,
-      message: "Your application has been submitted successfully! We will get back to you shortly.",
+      message:
+        "Your application has been submitted successfully! We will get back to you shortly.",
     };
   } catch (error) {
     console.error("Error sending email:", error);
     return {
       success: false,
-      message: "Something went wrong while sending your application. Please try again later.",
+      message:
+        "Something went wrong while sending your application. Please try again later.",
     };
   }
 }
