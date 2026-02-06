@@ -39,21 +39,21 @@ const jobOpenings = [
       "Report progress and issues to the Project Manager",
     ],
   },
-  {
-    title: "SAFETY MANAGER",
-    location: "Bommasandra and Site Visits",
-    qualification: "Diploma in HSE or equivalent",
-    experience: "7 to 9 years",
-    summary: "Leads safety planning and compliance across all projects.",
-    responsibilities: [
-      "Develop and monitor safety systems and procedures",
-      "Conduct safety audits and inspections",
-      "Guide Safety Officers and project teams",
-      "Ensure statutory and client safety compliance",
-      "Investigate incidents and implement preventive measures",
-      "Promote a strong safety culture across the organisation",
-    ],
-  },
+  //   {
+  //     title: "SAFETY MANAGER",
+  //     location: "Bommasandra and Site Visits",
+  //     qualification: "Diploma in HSE or equivalent",
+  //     experience: "7 to 9 years",
+  //     summary: "Leads safety planning and compliance across all projects.",
+  //     responsibilities: [
+  //       "Develop and monitor safety systems and procedures",
+  //       "Conduct safety audits and inspections",
+  //       "Guide Safety Officers and project teams",
+  //       "Ensure statutory and client safety compliance",
+  //       "Investigate incidents and implement preventive measures",
+  //       "Promote a strong safety culture across the organisation",
+  //     ],
+  //   },
   {
     title: "HSE OFFICER",
     location: "Mysore / Bangalore",
@@ -86,7 +86,7 @@ const jobOpenings = [
   //     ],
   // },
   {
-    title: "STORE KEEPER",
+    title: "STOREKEEPER",
     location: "Mysore / Site Locations",
     qualification: "Diploma or BE in Electrical Engineering",
     experience: "1 to 3 years",
@@ -185,7 +185,7 @@ export default function CareersPage() {
           skilled, and dedicated individuals to help us power the future.
         </p>
         <p className="mt-4 font-semibold text-primary">
-          OPEN ROLES AS ON 6th February 2026
+          OPEN ROLES AS ON 6th FEBRUARY 2026
         </p>
       </section>
 
