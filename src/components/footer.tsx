@@ -1,6 +1,13 @@
 import Link from "next/link";
 import Logo from "./logo";
 import { PrivacyPolicyModal } from "./privacy-policy-modal";
+import { CertificateModal } from "./certificate-modal";
+
+const certifications = [
+  { title: "ISO 9001:2015", imageSrc: "/certs/9001.webp" },
+  { title: "ISO 14001:2015", imageSrc: "/certs/14001.webp" },
+  { title: "ISO 45001:2018", imageSrc: "/certs/45001.webp" },
+];
 
 export default function Footer() {
   return (
@@ -68,38 +75,15 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="font-semibold mb-4">Our Certifications</h3>
-            <ul className="space-y-2">
-              <li>
-                <b>
-                  <Link
-                    href="https://drive.google.com/file/d/1n9EYjqfRbPzC_PIYo4nB3ZuXlobZOjse/view?usp=drive_link"
-                    className="text-sm text-muted-foreground hover:text-primary"
-                  >
-                    ISO 9001:2015
-                  </Link>
-                </b>
-              </li>
-              <li>
-                <b>
-                  <Link
-                    href="https://drive.google.com/file/d/1a5IU0oCRoTB7shhZ9GpdCVEM_3w177RQ/view?usp=drive_link"
-                    className="text-sm text-muted-foreground hover:text-primary"
-                  >
-                    ISO 14001:2015
-                  </Link>
-                </b>
-              </li>
-              <li>
-                <b>
-                  <Link
-                    href="https://drive.google.com/file/d/1hZ38XEDU856SzPgsKlUBXMgKCdO0HtyS/view?usp=drive_link"
-                    className="text-sm text-muted-foreground hover:text-primary"
-                  >
-                    ISO 45001:2018
-                  </Link>
-                </b>
-              </li>
-            </ul>
+            <div className="flex flex-col space-y-2 items-start">
+              {certifications.map((cert) => (
+                <CertificateModal
+                  key={cert.title}
+                  title={cert.title}
+                  imageSrc={cert.imageSrc}
+                />
+              ))}
+            </div>
           </div>
         </div>
         <div className="mt-8 border-t pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
