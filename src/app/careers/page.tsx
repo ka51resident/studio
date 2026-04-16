@@ -54,22 +54,22 @@ const jobOpenings = [
   //       "Promote a strong safety culture across the organisation",
   //     ],
   //   },
-  {
-    title: "HSE OFFICER",
-    location: "Mysore / Bangalore",
-    qualification: "Diploma in HSE or equivalent",
-    experience: "1 to 3 years",
-    summary:
-      "Ensures safety rules and procedures along with liaising with Client for Safety Instructions where needed at project sites.",
-    responsibilities: [
-      "Conduct toolbox talks and safety briefings",
-      "Implement permit-to-work systems",
-      "Monitor safe and unsafe activities",
-      "Provide on-job safety training",
-      "Conduct regular site safety inspections",
-      "Report incidents and support corrective actions",
-    ],
-  },
+  // {
+  //   title: "HSE OFFICER",
+  //   location: "Mysore / Bangalore",
+  //   qualification: "Diploma in HSE or equivalent",
+  //   experience: "1 to 3 years",
+  //   summary:
+  //     "Ensures safety rules and procedures along with liaising with Client for Safety Instructions where needed at project sites.",
+  //   responsibilities: [
+  //     "Conduct toolbox talks and safety briefings",
+  //     "Implement permit-to-work systems",
+  //     "Monitor safe and unsafe activities",
+  //     "Provide on-job safety training",
+  //     "Conduct regular site safety inspections",
+  //     "Report incidents and support corrective actions",
+  //   ],
+  // },
   // {
   //     title: "STORES MANAGER",
   //     location: "Head Office",
@@ -85,20 +85,20 @@ const jobOpenings = [
   //         "Maintain accurate store records and reports",
   //     ],
   // },
-  {
-    title: "STOREKEEPER",
-    location: "Mysore / Site Locations",
-    qualification: "Diploma or BE in Electrical Engineering",
-    experience: "1 to 3 years",
-    summary: "Handles daily store operations at site or yard.",
-    responsibilities: [
-      "Receive, issue, and record materials",
-      "Maintain stock registers and inventory records",
-      "Ensure proper handling and storage of materials",
-      "Support site teams with timely material availability",
-      "Assist in material reconciliation and reporting",
-    ],
-  },
+  // {
+  //   title: "STOREKEEPER",
+  //   location: "Mysore / Site Locations",
+  //   qualification: "Diploma or BE in Electrical Engineering",
+  //   experience: "1 to 3 years",
+  //   summary: "Handles daily store operations at site or yard.",
+  //   responsibilities: [
+  //     "Receive, issue, and record materials",
+  //     "Maintain stock registers and inventory records",
+  //     "Ensure proper handling and storage of materials",
+  //     "Support site teams with timely material availability",
+  //     "Assist in material reconciliation and reporting",
+  //   ],
+  // },
   {
     title: "ADMIN EXECUTIVE",
     location: "Site / Office",
