@@ -185,7 +185,7 @@ export default function CareersPage() {
           skilled, and dedicated individuals to help us power the future.
         </p>
         <p className="mt-4 font-semibold text-primary">
-          OPEN ROLES AS ON 6th FEBRUARY 2026
+          OPEN ROLES AS ON 9th April 2026
         </p>
       </section>
 
